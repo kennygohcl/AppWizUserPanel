@@ -1,0 +1,10 @@
+C:\SourceCodes\DFrontierAppWizard\Azure.EmailNotification\bin\Release\ServiceConfiguration.cscfg
+C:\SourceCodes\DFrontierAppWizard\Azure.EmailNotification\bin\Release\ServiceDefinition.csdef
+C:\SourceCodes\DFrontierAppWizard\Azure.EmailNotification\obj\Release\WorkerRole.EmailNotification\Microsoft.AppFabricCAT.Samples.Azure.TransientFaultHandling.dll
+C:\SourceCodes\DFrontierAppWizard\Azure.EmailNotification\obj\Release\WorkerRole.EmailNotification\Microsoft.CSharp.dll
+C:\SourceCodes\DFrontierAppWizard\Azure.EmailNotification\obj\Release\WorkerRole.EmailNotification\Microsoft.WindowsAzure.Diagnostics.dll
+C:\SourceCodes\DFrontierAppWizard\Azure.EmailNotification\obj\Release\WorkerRole.EmailNotification\Microsoft.WindowsAzure.ServiceRuntime.dll
+C:\SourceCodes\DFrontierAppWizard\Azure.EmailNotification\obj\Release\WorkerRole.EmailNotification\Microsoft.WindowsAzure.StorageClient.dll
+C:\SourceCodes\DFrontierAppWizard\Azure.EmailNotification\obj\Release\WorkerRole.EmailNotification\WorkerRole.EmailNotification.dll
+C:\SourceCodes\DFrontierAppWizard\Azure.EmailNotification\obj\Release\WorkerRole.EmailNotification\WorkerRole.EmailNotification.dll.config
+C:\SourceCodes\DFrontierAppWizard\Azure.EmailNotification\obj\Release\WorkerRole.EmailNotification\WorkerRole.EmailNotification.pdb

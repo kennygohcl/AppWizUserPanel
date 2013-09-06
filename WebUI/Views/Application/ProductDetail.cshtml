@@ -1,0 +1,114 @@
+﻿@{
+    ViewBag.Title = "Application - Product Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.SelectedView = 5;
+}
+
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+
+
+<div style="width: 980px; height: 800px; float: left;">
+       <div style="width: 700px; height: 800px; float: left;">
+                <div style="height: 800px; width: 1100px; ">
+                     <div  style="height: 800px; float: left;  " >
+                         <img src="@Url.Content("~/Content/51foodInfo.png")" style="padding: 30px; float: left; "  />
+                  
+                         <div  style="float:left; left:180px; top:280px;  width: 325px; height: 60px; position: absolute; background-color: white;">
+                             <input class="awe-btn" style="width: 100px; height: 30px; font-size: small;" type="button" title="Products" value="Products" onclick="location.href='@Url.Action("MainScreen", "Application")    '" />
+                                <strong style="text-align: center; font-size: 14px; font-weight: bolder; padding: 5px; width: 150px;"></strong>
+                             <div class="fr">
+                                 <input class="awe-btn" style="width: 100px; height: 30px; font-size: small;" type="button" title="Share" value="Share"  />
+                             </div>
+                             <div class="cbt"></div>
+                             <div class="fl" style="padding: 5px; text-align: left; width: 325px;">@ViewBag.Category >> @ViewBag.Name</div>
+                         </div>
+                         <div id="prodTab@(ViewBag.Id)" style="width: 315px; top:340px;  left:180px;  height: 390px; float: left; position: absolute;">
+                           
+                              <div class="fl">
+                                   <img  src='@Url.Content("~/pictures/Products/" + (string.IsNullOrEmpty(ViewBag.Picture) ? "0.jpg" : ViewBag.Picture))' class="productDetailDisplay"  alt='picture' />
+                              </div>
+                             <div  style="float:left; left:0px; top:220px;  width: 325px; height: 80px; position: absolute; background-color: white;">
+                                 @ViewBag.Description
+                             </div>
+                              <div  style="float:left; left:0px; top:280px;  width: 325px; height: 80px; position: absolute; background-color: white; font-size: 16px; color:darkred; font-weight: bold;">
+                                 Price @ViewBag.Price
+                             </div>
+                          </div>
+                            
+                            <div  style="float:left; left:180px; top:680px;  width: 325px; height: 60px; position: absolute; background-color: white;">
+                              <input class="awe-btn" style="width: 130px; height: 30px; font-size: small;" type="button" title="ADD TO CART" value="ADD TO CART"  />
+                          
+                              <div class="fl" style="margin-right: 1em; font-size: 12px; font-weight: normal;">
+          
+                                @{
+                                    // Difference in days, hours, and minutes.
+                                    TimeSpan ts = @ViewBag.End - DateTime.Now;
+                                    // Difference in days.
+                                    int differenceInDays = ts.Days;
+                                    int differenceInHours = ts.Hours;
+                                    ViewBag.differenceInDays = differenceInDays;
+                                    ViewBag.differenceInHours = differenceInHours;
+                   
+                                }
+
+                                @{
+                                    string value = string.Format("{0} day(s) {1} hour(s) left", ViewBag.differenceInDays, ViewBag.differenceInHours);
+                                    if (ViewBag.differenceInDays > 0)
+                                    {
+                                        ViewBag.TimeRemaining = value;
+                                    }
+                                    else
+                                    {
+                                        if (ViewBag.differenceInHours>0)
+                                        {
+                                            value = string.Format("{0} hours(s) left", differenceInHours < 0 ? 0 : differenceInHours);
+                                            ViewBag.TimeRemaining = value;
+                                        }
+                                        else
+                                        {
+                                            ViewBag.TimeRemaining = "Promo expired";
+                                        }
+                                    }
+                                    <span style="font-size: 12px;">
+                                        @ViewBag.TimeRemaining
+                                    </span>
+                                }
+                            </div> 
+                         
+                            </div> 
+                   </div>
+               </div>
+              
+         
+
+       </div>
+          <div style="width: 200px; height: 500px; float: left;">
+            <div id="productDetail"  style="width: 600px; height: 700px;  overflow-y: auto; max-width:580px; max-height:750px; ">
+                <br/>
+                <div style="text-align: center;">
+                  <input class="awe-btn" style="width: 150px;height: 35px; font-size: large;" type="button" title="Main Screen" value="Main Screen" onclick="location.href='@Url.Action("MainScreen", "Application")    '" />
+                </div>
+             </div>
+    </div>
+    </div>
+
+
+
+
+
+
+      
+<script type="text/javascript">
+
+    jQuery(document).ready(function () {
+        
+      
+    });
+
+
+
+  
+</script>
+

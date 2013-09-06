@@ -1,0 +1,188 @@
+﻿<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <div id="viewLeftArrowDiv" class="applicationSelectorDetailLeftArrow" >
+        <div class="fl" >
+            <a href="#"  >
+                <img id="viewLeftArrow" src="@Url.Content("~/Content/arrow_left_blue.png")"  />
+            </a>
+        </div>
+    </div>
+    <div id="viewIndexDiv" class="applicationSelectorDetail">
+        <a href="@Url.Action("Index", "Application")"  >
+            <img src="@Url.Content("~/Content/Images/shortcuts/1loginTiny.png")"/>
+        </a>
+    </div>
+    <div id="viewUserProfileDiv" class="applicationSelectorDetail">
+        <a href="@Url.Action("UserProfile", "Application")"  >
+            <img src="@Url.Content("~/Content/Images/shortcuts/2registerTiny.png")" />
+        </a>
+    </div>
+    <div id="viewRetailerIntroDiv" class="applicationSelectorDetail">
+        <a href="@Url.Action("RetailerInfo", "Application")"  >
+            <img src="@Url.Content("~/Content/Images/shortcuts/3retailerIntroTiny.png")" />
+        </a>
+    </div>
+    <div id="viewPushNotificationDiv" class="applicationSelectorDetail">
+        <a href="@Url.Action("PushNotification", "Application")"  >
+            <img src="@Url.Content("~/Content/Images/shortcuts/4notiTiny.png")" />
+        </a>
+    </div>
+    <div id="viewEshopDiv" class="applicationSelectorDetail">
+        <a href="@Url.Action("Eshop", "Application")"  >
+            <img src="@Url.Content("~/Content/Images/shortcuts/50foodlistTiny.png")"/>
+        </a>
+    </div>
+    <div id="viewProductDetailDiv" class="applicationSelectorDetail">
+        <a href="@Url.Action("ProductDetailStatic", "Application")"  >
+            <img src="@Url.Content("~/Content/Images/shortcuts/51foodInfoTiny.png")" />
+        </a>
+    </div>
+  @*  <div id="viewShoppingCartDiv"  class="applicationSelectorDetail">
+        <a href="@Url.Action("ShoppingCart", "Application")"  >
+            <img src="@Url.Content("~/Content/8shoppingcart.png")" />
+        </a>
+    </div>*@
+    <div id="viewPaymentDiv"  class="applicationSelectorDetail">
+        <a href="@Url.Action("Payment", "Application")"  >
+            <img src="@Url.Content("~/Content/Images/shortcuts/9accInfoTiny.png")" />
+        </a>
+    </div>
+    <div id="viewTermsandConditionsDiv"  class="applicationSelectorDetail">
+        <a href="@Url.Action("TermsAndConditions", "Application")"  >
+            <img src="@Url.Content("~/Content/Images/shortcuts/12termconditionTiny.png")" />
+        </a>
+    </div>
+    <div id="viewLoyaltyDiv"  class="applicationSelectorDetail">
+        <a href="@Url.Action("Loyalty", "Application")"  >
+            <img src="@Url.Content("~/Content/Images/shortcuts/11memberclubmonthycontestTiny.png")" />
+        </a>
+    </div>
+
+      <div id="viewFeedbackDiv"  class="applicationSelectorDetail">
+        <a href="@Url.Action("Feedback", "Application")"  >
+            <img src="@Url.Content("~/Content/Images/shortcuts/13feedbackTiny.png")" />
+        </a>
+    </div>
+    
+    <div id="viewNextArrowDiv"  class="applicationSelectorDetailRightArrow">
+        <div class="fl" >
+            <a href="#"  >
+                <img id="nextArrow" src="@Url.Content("~/Content/arrow_right_blue.png")"  />
+            </a>
+        </div>
+    </div>
+
+<script type="text/javascript">
+    var selectedViewValue = 0;
+    jQuery(document).ready(function() {
+        selectedViewValue = @ViewBag.SelectedView
+        
+        jQuery("#viewProductDetailDiv").hide();
+        jQuery("#viewShoppingCartDiv").hide();
+        hideAllViews();
+        showViews(); 
+    });
+
+    jQuery("#viewLeftArrow").click(function () {
+        selectedViewValue -= 1;
+        
+        if (selectedViewValue<=0) {
+            selectedViewValue = 0;
+        }
+
+        showViews();
+    });
+    
+    jQuery("#nextArrow").click(function () {
+        selectedViewValue += 1;
+        if (selectedViewValue >= 6) {
+            selectedViewValue = 6;
+        }
+
+        showViews();
+    });
+    
+    
+    $("#btnCancel").click(function () {
+        $("#pAppName").text("");
+        $("#pEmail").text("");
+    });
+  
+    $("#btnSaveAndPublish").click(function () {
+      
+    });
+
+    function showViews() {
+        if (selectedViewValue == 0) {
+            hideAllViews();
+            jQuery("#viewIndexDiv").show();
+            jQuery("#viewUserProfileDiv").show();
+            jQuery("#viewRetailerIntroDiv").show();
+            jQuery("#viewPushNotificationDiv").show();
+            jQuery("#viewEshopDiv").show();
+        }
+        else if (selectedViewValue == 1) {
+            hideAllViews();
+            jQuery("#viewUserProfileDiv").show();
+            jQuery("#viewRetailerIntroDiv").show();
+            jQuery("#viewPushNotificationDiv").show();
+            jQuery("#viewEshopDiv").show();
+            jQuery("#viewProductDetailDiv").show();
+        }
+        else if (selectedViewValue == 2) {
+            hideAllViews();
+            jQuery("#viewRetailerIntroDiv").show();
+            jQuery("#viewPushNotificationDiv").show();
+            jQuery("#viewEshopDiv").show();
+            jQuery("#viewProductDetailDiv").show();
+            jQuery("#viewPaymentDiv").show();
+        }
+        else if (selectedViewValue == 3) {
+            hideAllViews();
+            jQuery("#viewPushNotificationDiv").show();
+            jQuery("#viewEshopDiv").show();
+            jQuery("#viewProductDetailDiv").show();
+            jQuery("#viewPaymentDiv").show();
+            jQuery("#viewTermsandConditionsDiv").show();
+        }
+        else if (selectedViewValue == 4) {
+            hideAllViews();
+            jQuery("#viewEshopDiv").show();
+            jQuery("#viewProductDetailDiv").show();
+            jQuery("#viewPaymentDiv").show();
+            jQuery("#viewTermsandConditionsDiv").show();
+            jQuery("#viewLoyaltyDiv").show();
+        }
+        else if (selectedViewValue >= 5) {
+            hideAllViews();
+            jQuery("#viewProductDetailDiv").show();
+            jQuery("#viewPaymentDiv").show();
+            jQuery("#viewTermsandConditionsDiv").show();
+            jQuery("#viewLoyaltyDiv").show();
+            jQuery("#viewFeedbackDiv").show();
+        }
+        //else if (selectedViewValue >= 6) {
+        //    hideAllViews();
+        //    jQuery("#viewPaymentDiv").show();
+        //    jQuery("#viewTermsandConditionsDiv").show();
+        //    jQuery("#viewLoyaltyDiv").show();
+        //    jQuery("#viewFeedbackDiv").show();
+        //}
+        
+      
+    }
+    
+    function hideAllViews() {
+        jQuery("#viewIndexDiv").hide();
+        jQuery("#viewUserProfileDiv").hide();
+        jQuery("#viewRetailerIntroDiv").hide();
+        jQuery("#viewPushNotificationDiv").hide();
+        jQuery("#viewEshopDiv").hide();
+        jQuery("#viewProductDetailDiv").hide();
+        jQuery("#viewPaymentDiv").hide();
+        jQuery("#viewLoyaltyDiv").hide();
+        jQuery("#viewTermsandConditionsDiv").hide();
+        jQuery("#viewFeedbackDiv").hide();
+    }
+   
+
+</script>

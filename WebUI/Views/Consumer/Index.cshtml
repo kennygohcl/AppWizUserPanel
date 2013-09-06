@@ -1,0 +1,69 @@
+﻿@{
+    ViewBag.Title = "Consumers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+
+<div id="tabs">     
+
+    <ul>
+        <li><a href="#tabsIdConsumers">@Mui.Consumers Profiles</a></li>
+        <li><a href="#tabsIdFeedbacks">@Mui.FeedBacks</a></li>
+    </ul>
+    
+    <div>
+        <div id="tabsIdConsumers">
+           <legend>@Mui.Search</legend>
+           <input type="text" id="search" />
+            <button type="button" id="sb" class="awe-btn ibtn">@Mui.Search</button>
+              <div class="fr">
+                @Html.ActionLink(Mui.ExportToExcel,"ExportConsumerProfile","Consumer")
+            </div>
+           <br/>
+            @(Html.Awe().Grid("ConsumerGrid")
+                  .Url(Url.Action("GetItems", "ConsumerGrid"))
+                  .Parent("search")
+                  .Persistence(Persistence.Session)
+                  .Columns(
+                      new Column { Name = "Name",Header = "Name",  PercentWidth = 20},
+                      new Column { Name = "Age",Header = "Age", PercentWidth = 4 },
+                      new Column { Name = "BirthDate" ,Header = "BOD", PercentWidth = 6},
+                      new Column { Name = "Gender", Header = "Gender", PercentWidth = 6 },
+                      new Column { Name = "Email",Header = "Email", PercentWidth = 15 },
+                      new Column { Name = "Phone",  Header = "Phone",PercentWidth = 8 },
+                      new Column { Name = "Address",  Header = "Address", PercentWidth = 20 },
+                      new Column { Name = "DateRegistered", Header = "Date Registered", PercentWidth = 10  }
+                      ))
+        </div>
+        <div id="tabsIdFeedbacks">
+                <legend>@Mui.Search</legend>
+           <input type="text" id="searchConsumerFeedback" />
+            <button type="button" id="sbConsumerFeedback" class="awe-btn ibtn">@Mui.Search</button>
+            <div class="fr">
+                @Html.ActionLink(Mui.ExportToExcel,"ExportConsumerFeedbacks","Consumer")
+            </div>
+            
+            <br/>
+            @Html.Awe().Form().Confirm(true).FormClass("BranchConfirm").Success("refreshConsumerFeedbackGrid").Url(Url.Action("Delete"))
+            @(Html.Awe().Grid("ConsumerFeedbackGrid")
+                  .Url(Url.Action("GetItems", "ConsumerFeedbackGrid"))
+                  .Parent("searchConsumerFeedback")
+                  .Persistence(Persistence.Session)
+                  .Columns(
+                      new Column { Name = "Name", PercentWidth = 25},
+                      new Column { Name = "Comments", PercentWidth = 60},
+                      new Column { Name = "DatePosted" },
+                      new Column { ClientFormat = ".Actions", Width = 80 }))
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+          $(function () {
+              $( "#tabs" ).tabs();
+          });
+      </script>

@@ -1,0 +1,30 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Transactions";
+}
+<h2>@Mui.Transactions</h2>
+<fieldset>
+    <legend>@Mui.Search</legend>
+    <input type="text" id="search" />
+    <button type="button" id="sb" class="awe-btn ibtn">@Mui.Search</button>
+    <div class="fr">
+         @Html.ActionLink(Mui.ExportToExcel,"ExportTransaction","Transaction")
+    </div>
+</fieldset>
+<br />
+<button class="awe-btn" onclick="@(Url.Awe().PopupFormAction().Url(Url.Action("create")).Success("refreshTransactionGrid").Height(300))">@Mui.Create</button>
+@Html.Awe().Form().FormClass("TransactionRestore").Success("refreshTransactionGrid").Url(Url.Action("Restore"))
+@Html.Awe().Form().Confirm(true).FormClass("BranchConfirm").Success("refreshTransactionGrid").Url(Url.Action("Delete"))
+@(Html.Awe().Grid("TransactionGrid")
+      .Url(Url.Action("GetItems", "TransactionGrid"))
+      .Parent("search")
+      .Persistence(Persistence.Session)
+      .Columns(
+          new Column { Name = "DateofTransaction",  Header = "Transaction Date" },
+          new Column { Name = "DiscountOfTotalPercent" , Header = "Discount of Total" },
+          new Column { Name = "FinalAmount" , Header = "Final Amount"},
+          new Column { Name = "TotalAmount", Header = "Total Amount" },
+          new Column { Name = "PaymentReference", Header = "Payment Reference" },
+          new Column { Name = "Status" },
+          new Column { ClientFormat = ".Actions", Width = 80 }))
+

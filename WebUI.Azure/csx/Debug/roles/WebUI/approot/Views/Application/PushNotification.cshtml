@@ -1,0 +1,202 @@
+﻿@model ApplicationInput
+@{
+    ViewBag.Title = "Push Notification";
+    Layout = "~/Views/Shared/_LayoutApp.cshtml";
+    ViewBag.SelectedView = 3;
+    ViewBag.ApplicationId = @Model.Id;
+}
+
+@section previewMobileSection {
+    @Html.Partial("Simulator/_PushNotification")
+}
+
+
+<link rel="stylesheet" media="all" type="text/css" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+<link href="@Url.Content("~/Content/jquery-ui-timepicker-addon.css")" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+		<script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
+<script src="@Url.Content("~/Scripts/jquery-ui-timepicker-addon.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery-ui-sliderAccess.js")" type="text/javascript"></script>
+
+<div id="pushNotification"  >
+               @Html.AntiForgeryToken()
+                    <br/><br/><br/>
+                    <div id="retailerInfo"  style="width: 100%;">
+                        <div class="cbt">
+                        </div>
+                        <div id="consumerList" style="width: 100%;">
+                        </div>
+                        <div class="cbt">
+                        </div>
+                         @Html.HiddenFor(o=>o.Id, new { id="hiddenId"})   
+                         @Html.EditorFor(o => o.VoucherMessage, new { @class = "retailerInfoInput" })
+                         <div class="cbt">
+                        </div>
+                         <div class="elabel">
+                                @Mui.SetTimeFrame
+                            </div>
+                        <div class="cbt">
+                        </div>
+                         <div class="elabel">
+                                @Mui.Start*:
+                            </div>
+                        @Html.Awe().DatePickerFor(o =>o.VourcherMessageStart).ChangeMonth(true).ChangeYear(true)
+                        <div class="cbt">
+                        </div>
+                          <div class="elabel">
+                                @Mui.End*:
+                            </div>
+                         @Html.Awe().DatePickerFor(o =>o.VourcherMessageEnd).ChangeMonth(true).ChangeYear(true)
+                         <div class="cbt">
+                         </div>
+                         <div class="fl">
+                            <div class="elabel">
+                                @Mui.Frequency:
+                            </div>
+                             <div style="width: 250px; float: right;">
+                                 <input id="txtVoucherMessageFrequency"  type="text" value="" name="txtVoucherMessageFrequency">
+                                 <button id="btnAddFrequency"class="button-orange btnAdvanceLarge marginTopBottom10">@Mui.Add @Mui.Frequency</button>
+                                 <div id="frequencyList" style="width: 100%;">
+                                </div>
+                             </div>
+                          </div>
+                         
+                          <div class="cbt">
+                          </div>
+                          
+                         <div class="elabel">
+                                @Mui.TriggerRadius:
+                            </div>
+                         @Html.Awe().AjaxDropdownFor(o => o.TriggerRadiusId)
+                            <div class="cbt">
+                            </div>
+                          @Html.EditorFor(o => o.ApiKey, new { @class = "retailerInfoInput" })
+                        <br/><br/>
+                         
+
+                        <div style="text-align: center;">
+                         <button id="btnSimulate"   class="button-orange btnAdvanceLarge marginTopBottom10">@Mui.Simulate</button>
+                         <button id="btnSaveAndPublish" class="button-orange btnAdvanceLarge marginTopBottom10">@Mui.Save</button>
+                         <button id="btnCancel"class="button-orange btnAdvanceLarge marginTopBottom10">@Mui.Cancel</button>
+                    
+                     </div>
+                  
+           </div>
+        </div>
+
+<script type="text/javascript" >
+    
+
+    jQuery(document).ready(function () {
+        jQuery('div').removeClass('efield');
+        jQuery('div').removeClass('einput');
+        jQuery('#VoucherMessage').addClass('einputRefined');
+        jQuery("#VoucherMessage").height(100);
+        jQuery("#VoucherMessage").width(250);
+        jQuery("#ApiKey").width(350);
+        jQuery("#ApiKey").addClass('fl');
+        jQuery("#VourcherMessageStart").addClass('fl');
+        jQuery(".awe-ajaxdropdown").addClass('fl');
+        jQuery(".awe-datepicker-field").addClass('fl');
+
+        
+        jQuery("#txtVoucherMessageFrequency").addClass('einputRefined');
+        loadPageConsumers('IndexNoHeader');
+        loadPageFrequencies('IndexNoHeader');
+    });
+    
+    function loadPageConsumers(action) {
+        jQuery.post("/Consumer/" + action, function (data) {
+            jQuery("#consumerList").html(data);
+
+        });
+    }
+    
+    function loadPageFrequencies(action) {
+        jQuery.post("/Frequency/" + action, function (data) {
+            jQuery("#frequencyList").html(data);
+        });
+    }
+    
+   
+    jQuery("#txtVoucherMessageFrequency").timepicker({
+        hourGrid: 4,
+        minuteGrid: 10,
+        timeFormat: 'hh:mm tt'
+    });
+    
+    jQuery("#btnAddFrequency").click(function () {
+        var txtVoucherMessageFrequency = $("#txtVoucherMessageFrequency").val();
+        var hiddenIdValue = $("#hiddenId").val();
+        var json = { "hiddenIdValue": hiddenIdValue, "txtVoucherMessageFrequency": txtVoucherMessageFrequency };
+        $.ajax({
+            type: "POST",
+            url: "/Frequency/SetFrequency",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify(json),
+            dataType: "json",
+            success: saveFreqPublishCompleted,
+            //error: savePublishItemFailed
+        });
+
+    });
+    
+    function saveFreqPublishCompleted(status) {
+        loadPageFrequencies('IndexNoHeader');
+    }
+    
+    jQuery("#btnSimulate").click(function () {
+        var apiKey = $("#ApiKey").val();
+        var regid = "APA91bFmQRU8-Q2fZqMYYwEBFnI4RirdJW7QJvmOgU-LG4WAPt5XUNVpqZ-JYSdshFBJaNgIr2PT8MpWJ6fXYO6_EE2IRE8l3Ru_II6JUUHI42KMlHT3dqkwX8ezL9N1cUUciKgBmhcRcUQWNTV428zsoPBYQxL3jTcl5OWsNbhXZrGO2nhnbgQ";
+        var messageTitle = "AppWiz Message";
+        var messageDetail = $("#VoucherMessage").val();
+        
+        var json = { "apiKey": apiKey, "messageDetail": messageDetail, "regid": regid, "messageTitle": messageTitle };
+        
+        $.ajax({
+            type: "POST",
+            url: "/Application/SendNotification",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify(json),
+            dataType: "json",
+            success: sendNotiPublishCompleted,
+            
+        });
+
+    });
+
+    function sendNotiPublishCompleted(results) {
+
+    }
+
+
+  jQuery("#btnSaveAndPublish").click(function () {
+      var hiddenIdValue = $("#hiddenId").val();
+      var voucherMessage = $("#VoucherMessage").val();
+      var start = $("#VourcherMessageStart").val();
+      var end = $("#VourcherMessageEnd").val();
+      var triggerRadiusId = $("#TriggerRadiusId").val();
+      var apiKey = $("#ApiKey").val();
+      
+      if (triggerRadiusId=="") {
+          triggerRadiusId = "0";
+      }
+      var json = { "hiddenIdValue": hiddenIdValue, "voucherMessage": voucherMessage, "start": start, "end": end, "triggerRadiusId": triggerRadiusId, "apiKey": apiKey };
+      
+      $.ajax({
+          type: "POST",
+          url: "/Application/SetPushNotification",
+          contentType: "application/json; charset=utf-8",
+          data: JSON.stringify(json),
+          dataType: "json",
+          success: savePublishCompleted,
+          //error: savePublishItemFailed
+      });
+
+    });
+
+    function savePublishCompleted(results) {
+     
+    }
+
+</script>

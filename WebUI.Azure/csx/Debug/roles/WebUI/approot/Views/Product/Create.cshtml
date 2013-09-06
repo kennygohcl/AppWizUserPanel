@@ -1,0 +1,19 @@
+﻿@model ProductInput
+
+
+<div class="productform">
+    @using (Html.BeginForm())
+    {  
+        @Html.EditorFor(o => o.Name)            
+        @Html.EditorFor(o => o.Description)
+        <div class="cbt">
+        </div>
+        <div class="elabel">
+            @Mui.Price * :
+        </div>
+        @Html.EditorFor(o => o.Price)
+        @Html.EditorFor(o => o.ProductCategoryId)
+       
+    }
+</div>
+

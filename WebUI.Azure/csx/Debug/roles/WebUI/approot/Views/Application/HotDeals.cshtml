@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "Application - Hot Deals";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+
+<div style="width: 980px; height: 700px; float: left;">
+       <div style="width: 700px; height: 700px; float: left;">
+           
+               <div style="width: 700px; height: 530px; top: 0; ">
+                   <div style="top: 0;">
+                       <div id="tabsPromotions" style="float:left; top: -200px; left: 190px; width: 235px; height: 330px; max-width:40%; max-height:40%;">    
+                            <ul>
+                                @foreach (var category in ViewBag.Categories)
+                                { 
+                                    <li><a href="#tabsId@(category.Description)" style="font-size: 8px;">@category.Description</a></li>
+                                }
+                            </ul>                           
+                                                    
+                            @foreach (var category in ViewBag.Categories)
+                              { 
+                                  <div id="tabsId@(category.Description)" style="width: 230px; height: 290px; float: left; position: relative;">
+                                      @{
+                                          string cc = category.Id.ToString();
+                                      }
+                                      
+                                     @Html.Hidden("selectedProductCategory"+cc, cc )
+                                      @(Html.Awe().AjaxList("PromotionsReadOnly").Prefix("pro"+cc)
+                                            .TableLayout(true).Parent("search", "search")
+                                            .Parent("selectedProductCategory"+cc, "productCategory"))
+ 
+                                  </div>
+                              }
+                         </div>
+
+                   </div>
+               </div>
+              
+
+       </div>
+    
+
+   </div>
+ 
+
+      <script type="text/javascript">
+       
+          jQuery(document).ready(function () {
+              jQuery( "#tabsPromotions" ).tabs();
+          });
+  
+      </script>
+            

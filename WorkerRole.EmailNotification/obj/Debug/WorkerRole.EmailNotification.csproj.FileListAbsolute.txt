@@ -1,0 +1,12 @@
+C:\SourceCodes\DFrontierAppWizard\WorkerRole.EmailNotification\bin\Debug\WorkerRole.EmailNotification.dll.config
+C:\SourceCodes\DFrontierAppWizard\WorkerRole.EmailNotification\bin\Debug\WorkerRole.EmailNotification.dll
+C:\SourceCodes\DFrontierAppWizard\WorkerRole.EmailNotification\bin\Debug\WorkerRole.EmailNotification.pdb
+C:\SourceCodes\DFrontierAppWizard\WorkerRole.EmailNotification\bin\Debug\Microsoft.CSharp.dll
+C:\SourceCodes\DFrontierAppWizard\WorkerRole.EmailNotification\bin\Debug\Microsoft.WindowsAzure.Diagnostics.dll
+C:\SourceCodes\DFrontierAppWizard\WorkerRole.EmailNotification\bin\Debug\Microsoft.WindowsAzure.ServiceRuntime.dll
+C:\SourceCodes\DFrontierAppWizard\WorkerRole.EmailNotification\bin\Debug\Microsoft.WindowsAzure.StorageClient.dll
+C:\SourceCodes\DFrontierAppWizard\WorkerRole.EmailNotification\bin\Debug\Microsoft.WindowsAzure.Diagnostics.xml
+C:\SourceCodes\DFrontierAppWizard\WorkerRole.EmailNotification\bin\Debug\Microsoft.WindowsAzure.ServiceRuntime.xml
+C:\SourceCodes\DFrontierAppWizard\WorkerRole.EmailNotification\obj\Debug\WorkerRole.EmailNotification.dll
+C:\SourceCodes\DFrontierAppWizard\WorkerRole.EmailNotification\obj\Debug\WorkerRole.EmailNotification.pdb
+C:\SourceCodes\DFrontierAppWizard\WorkerRole.EmailNotification\obj\Debug\WorkerRole.EmailNotification.csprojResolveAssemblyReference.cache

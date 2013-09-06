@@ -1,0 +1,12 @@
+C:\SourceCodes\DFrontierAppWizard\Service\bin\Release\DFrontier.AppWizard.Service.dll
+C:\SourceCodes\DFrontierAppWizard\Service\bin\Release\DFrontier.AppWizard.Service.pdb
+C:\SourceCodes\DFrontierAppWizard\Service\bin\Release\DFrontier.AppWizard.Core.dll
+C:\SourceCodes\DFrontierAppWizard\Service\bin\Release\Omu.Drawing.dll
+C:\SourceCodes\DFrontierAppWizard\Service\bin\Release\Omu.Encrypto.dll
+C:\SourceCodes\DFrontierAppWizard\Service\bin\Release\Omu.ValueInjecter.dll
+C:\SourceCodes\DFrontierAppWizard\Service\bin\Release\DFrontier.AppWizard.Core.pdb
+C:\SourceCodes\DFrontierAppWizard\Service\bin\Release\Omu.Drawing.pdb
+C:\SourceCodes\DFrontierAppWizard\Service\bin\Release\Omu.ValueInjecter.xml
+C:\SourceCodes\DFrontierAppWizard\Service\obj\Release\Service.csprojResolveAssemblyReference.cache
+C:\SourceCodes\DFrontierAppWizard\Service\obj\Release\DFrontier.AppWizard.Service.dll
+C:\SourceCodes\DFrontierAppWizard\Service\obj\Release\DFrontier.AppWizard.Service.pdb

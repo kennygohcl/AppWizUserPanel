@@ -1,0 +1,28 @@
+﻿
+@{
+        string cc = @ViewBag.CategoryId;
+
+    }
+    @Html.Hidden("selectedProductCategory"+ cc, cc )
+              
+    @(Html.Awe().AjaxList("Products")
+          .CssClass("productslist")
+          .Parent("prodSearch", "search")
+          .Parent("selectedProductCategory"+cc, "productCategory").Prefix("pro"+cc))
+
+    @Html.Awe().Form().FormClass("ProductRestore").Success("edit").Url(Url.Action("Restore"))
+    @Html.Awe().Form().Confirm(true).FormClass("ProductConfirm").Success("del").Url(Url.Action("Delete"))
+
+
+
+<script type="text/javascript">
+    
+  
+    function updateProduct(id) {
+        jQuery.post('@Url.Action("GetProduct")', { id: id }, edit);
+       
+    }
+    
+</script>
+
+

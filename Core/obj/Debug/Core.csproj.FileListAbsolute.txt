@@ -1,0 +1,15 @@
+C:\SourceCodes\ProDinner\Core\bin\Debug\Omu.ProDinner.Core.dll
+C:\SourceCodes\ProDinner\Core\bin\Debug\Omu.ProDinner.Core.pdb
+C:\SourceCodes\ProDinner\Core\obj\Debug\Core.csprojResolveAssemblyReference.cache
+C:\SourceCodes\ProDinner\Core\obj\Debug\Omu.ProDinner.Core.dll
+C:\SourceCodes\ProDinner\Core\obj\Debug\Omu.ProDinner.Core.pdb
+C:\SourceCodes\DFrontierAppWizard\Core\bin\Debug\dFrontierAppWizard.Core.dll
+C:\SourceCodes\DFrontierAppWizard\Core\bin\Debug\dFrontierAppWizard.Core.pdb
+C:\SourceCodes\DFrontierAppWizard\Core\obj\Debug\dFrontierAppWizard.Core.dll
+C:\SourceCodes\DFrontierAppWizard\Core\obj\Debug\dFrontierAppWizard.Core.pdb
+C:\SourceCodes\DFrontierAppWizard\Core\obj\Debug\Core.csprojResolveAssemblyReference.cache
+D:\Projects\DFrontierAppWizard1\DFrontierAppWizard\Core\bin\Debug\dFrontierAppWizard.Core.dll
+D:\Projects\DFrontierAppWizard1\DFrontierAppWizard\Core\bin\Debug\dFrontierAppWizard.Core.pdb
+D:\Projects\DFrontierAppWizard1\DFrontierAppWizard\Core\obj\Debug\Core.csprojResolveAssemblyReference.cache
+D:\Projects\DFrontierAppWizard1\DFrontierAppWizard\Core\obj\Debug\dFrontierAppWizard.Core.dll
+D:\Projects\DFrontierAppWizard1\DFrontierAppWizard\Core\obj\Debug\dFrontierAppWizard.Core.pdb

@@ -1,0 +1,2 @@
+C:\SourceCodes\DFrontierAppWizard\Azure.EmailNotification\bin\Debug\ServiceConfiguration.cscfg
+C:\SourceCodes\DFrontierAppWizard\Azure.EmailNotification\bin\Debug\ServiceDefinition.csdef

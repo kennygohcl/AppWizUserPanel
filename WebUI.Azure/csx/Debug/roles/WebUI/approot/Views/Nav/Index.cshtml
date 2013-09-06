@@ -1,0 +1,35 @@
+﻿<ul id="menu">
+     <li>@Html.ActionLink(Mui.Home, "Index", "Home")</li>    
+
+     @if(@User.Identity.IsAuthenticated)
+    {
+         
+        if(ViewBag.UserTypeId==1)
+        {
+            <li>@Html.ActionLink(Mui.Users, "Index", "User")</li>  
+            <li>@Html.ActionLink(Mui.Retailers, "Index", "Retailer")</li>  
+            <li>@Html.ActionLink(Mui.Advertisements, "Index", "Ad")</li>  
+            <li>@Html.ActionLink(Mui.AdminSettings, "Index", "AdminSetting")</li>  
+        }
+        else
+        {
+          if (ViewBag.HasBillingInfo == true)
+            {
+             <li>@Html.ActionLink(Mui.MobileApp, "Index", "Application")</li>
+            <li>@Html.ActionLink(Mui.Analytics, "Index", "Consumer")</li>  
+                <li>@Html.ActionLink(Mui.NewLeads, "Index", "Lead")</li>
+          <li>@Html.ActionLink(Mui.Transactions, "Index", "Transaction")</li>  
+            <li>@Html.ActionLink(Mui.MyProfile, "Index", "MyProfile")</li>  
+          }
+        }
+      
+       <li>@Html.Partial("login")</li>     
+    } 
+    else
+    {
+        <li>@Html.Partial("login")</li>@*   
+        <li>@Html.ActionLink(Mui.JoinNow, "JoinNow", "Account", new object(), null)</li>  *@      
+    }   
+            
+</ul>
+

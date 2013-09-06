@@ -1,0 +1,32 @@
+﻿@{
+   // Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Product Categories";
+}
+
+
+
+
+@*
+
+
+
+@Html.ActionLink(@Mui.MainScreen, "MainScreen","Application") >> @Html.ActionLink(@Mui.Products, "Index","Product") >> @Html.ActionLink(@Mui.Promotions, "Index","Promotion") 
+*@
+@*
+<h2>@Mui.ProductCategories</h2>*@
+<fieldset>
+    <legend>@Mui.Search</legend>
+    <input type="text" id="search" />
+    <button type="button" id="sb" class="awe-btn ibtn">@Mui.Search</button>
+</fieldset>
+<br />
+<button class="awe-btn" onclick="@(Url.Awe().PopupFormAction().Url(Url.Action("create")).Success("refreshProductCategoryGrid").Height(300))">@Mui.Create @Mui.Category</button>
+@Html.Awe().Form().FormClass("ProductCategoryRestore").Success("refreshProductCategoryGrid").Url(Url.Action("Restore"))
+@Html.Awe().Form().Confirm(true).FormClass("ProductCategoryConfirm").Success("refreshProductCategoryGrid").Url(Url.Action("Delete"))
+@(Html.Awe().Grid("ProductCategoryGrid")
+      .Url(Url.Action("GetItems", "ProductCategoryGrid"))
+      .Parent("search")
+      .Persistence(Persistence.Session)
+      .Columns(
+          new Column { Name = "Description", PercentWidth = 100},
+          new Column { ClientFormat = ".Actions", Width = 80 }))

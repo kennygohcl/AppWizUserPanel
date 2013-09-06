@@ -1,0 +1,24 @@
+﻿@model IEnumerable<MediaDocument>
+@foreach (var o in Model)
+{
+    <tr data-val="@o.Id" class="awe-li" id="mediaDocument@(o.Id)">
+        <td>@o.DocName
+        </td>
+        <td>@o.MediaType 
+        </td>
+        <td>@o.Module
+        </td>
+         <td>@o.DateCreated
+        </td>
+        <td>
+      
+        <td>
+            <button class="awe-btn" onclick="@(Url.Awe().PopupFormAction().Url(Url.Action("Edit", "MediaDocument", new { o.Id })).Success("edit").Height(300))">
+                <span class="ico-edit"></span>
+            </button>
+        </td>
+        <td>
+@Html.Partial("deletebtn", new DelBtn{ Id = o.Id, IsDeleted = o.IsDeleted, Controller = "MediaDocument" })
+        </td>
+    </tr>               
+}

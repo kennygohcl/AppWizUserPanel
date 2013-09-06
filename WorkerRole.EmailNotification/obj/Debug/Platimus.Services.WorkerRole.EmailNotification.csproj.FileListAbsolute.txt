@@ -1,0 +1,11 @@
+C:\Platimus\Platimus.Services\Platimus.Services.WorkerRole.EmailNotification\bin\Debug\Platimus.Services.WorkerRole.EmailNotification.dll.config
+C:\Platimus\Platimus.Services\Platimus.Services.WorkerRole.EmailNotification\bin\Debug\Platimus.Services.WorkerRole.EmailNotification.dll
+C:\Platimus\Platimus.Services\Platimus.Services.WorkerRole.EmailNotification\bin\Debug\Platimus.Services.WorkerRole.EmailNotification.pdb
+C:\Platimus\Platimus.Services\Platimus.Services.WorkerRole.EmailNotification\bin\Debug\Microsoft.AppFabricCAT.Samples.Azure.TransientFaultHandling.dll
+C:\Platimus\Platimus.Services\Platimus.Services.WorkerRole.EmailNotification\bin\Debug\Microsoft.WindowsAzure.Configuration.dll
+C:\Platimus\Platimus.Services\Platimus.Services.WorkerRole.EmailNotification\bin\Debug\Microsoft.WindowsAzure.Diagnostics.dll
+C:\Platimus\Platimus.Services\Platimus.Services.WorkerRole.EmailNotification\bin\Debug\Microsoft.WindowsAzure.StorageClient.dll
+C:\Platimus\Platimus.Services\Platimus.Services.WorkerRole.EmailNotification\bin\Debug\Microsoft.WindowsAzure.Diagnostics.xml
+C:\Platimus\Platimus.Services\Platimus.Services.WorkerRole.EmailNotification\obj\Debug\Platimus.Services.WorkerRole.EmailNotification.dll
+C:\Platimus\Platimus.Services\Platimus.Services.WorkerRole.EmailNotification\obj\Debug\Platimus.Services.WorkerRole.EmailNotification.pdb
+C:\Platimus\Platimus.Services\Platimus.Services.WorkerRole.EmailNotification\obj\Debug\Platimus.Services.WorkerRole.EmailNotification.csprojResolveAssemblyReference.cache

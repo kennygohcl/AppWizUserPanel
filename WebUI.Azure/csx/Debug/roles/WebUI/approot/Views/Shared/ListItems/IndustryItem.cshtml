@@ -1,0 +1,13 @@
+﻿@model IEnumerable<Industry>
+@foreach (var o in Model)
+{
+    <li class="awe-li industryitem awe-il" data-val="@o.Id">
+        <div>
+            <button class="awe-btn awe-movebtn productmove">
+                <span class="awe-icon"></span>
+            </button>
+            @o.Description
+        </div>
+        
+    </li>
+}

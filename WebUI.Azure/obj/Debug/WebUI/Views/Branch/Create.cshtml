@@ -1,0 +1,22 @@
+﻿@model BranchInput
+@using (Html.BeginForm())
+{    
+    @Html.EditorFor(o => o.BranchName) 
+    @Html.EditorFor(o => o.Address)      
+    @Html.EditorFor(o => o.ZipCode)     
+    @Html.EditorFor(o => o.CountryId)          
+    @Html.HiddenFor(o=>o.UserId , new { Value = ViewBag.UserId})
+}
+
+
+<script type="text/javascript">
+
+    jQuery(document).ready(function() {
+
+        jQuery('#BranchName').addClass('einputRefined');
+        jQuery('#Address').addClass('einputRefined');
+        jQuery('#ZipCode').addClass('einputRefined');
+        jQuery('#Address').width(400);
+    });
+        
+</script>

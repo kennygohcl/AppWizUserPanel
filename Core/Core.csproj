@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F668A08B-1888-468B-BA3F-9EE5513108CE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>dFrontierAppWizard.Core</RootNamespace>
+    <AssemblyName>dFrontierAppWizard.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Model\Ad.cs" />
+    <Compile Include="Model\Application.cs" />
+    <Compile Include="Model\Branch.cs" />
+    <Compile Include="Model\Consumer.cs" />
+    <Compile Include="Model\ConsumerBillingInformation.cs" />
+    <Compile Include="Model\ConsumerFeedback.cs" />
+    <Compile Include="Model\ConsumerLoyalty.cs" />
+    <Compile Include="Model\Frequency.cs" />
+    <Compile Include="Model\PushNotificationFrequency.cs" />
+    <Compile Include="Model\NotificationGrouping.cs" />
+    <Compile Include="Model\JasonReturn.cs" />
+    <Compile Include="Model\JsonData.cs" />
+    <Compile Include="Model\Notification.cs" />
+    <Compile Include="Model\PostData.cs" />
+    <Compile Include="Model\PushNotificationRegUser.cs" />
+    <Compile Include="Model\Result.cs" />
+    <Compile Include="Model\TriggerRadius.cs" />
+    <Compile Include="Model\MediaDocument.cs" />
+    <Compile Include="Model\Fonts.cs" />
+    <Compile Include="Model\FontSize.cs" />
+    <Compile Include="Model\ServiceUpdate.cs" />
+    <Compile Include="Model\Transaction.cs" />
+    <Compile Include="Model\Order.cs" />
+    <Compile Include="Model\Module.cs" />
+    <Compile Include="Model\PaymentGateway.cs" />
+    <Compile Include="Model\Industry.cs" />
+    <Compile Include="Model\Lead.cs" />
+    <Compile Include="Model\ProductCategory.cs" />
+    <Compile Include="Model\UserBillingInformation.cs" />
+    <Compile Include="Model\UserType.cs" />
+    <Compile Include="Model\Country.cs" />
+    <Compile Include="Model\DelEntity.cs" />
+    <Compile Include="Model\Promotion.cs" />
+    <Compile Include="Model\Feedback.cs" />
+    <Compile Include="Model\IDel.cs" />
+    <Compile Include="Model\Product.cs" />
+    <Compile Include="Model\Role.cs" />
+    <Compile Include="Model\User.cs" />
+    <Compile Include="AppWizardException.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Model\Entity.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\IDelRepo.cs" />
+    <Compile Include="Repository\IRepo.cs" />
+    <Compile Include="Repository\IUniRepo.cs" />
+    <Compile Include="Security\IFormsAuthentication.cs" />
+    <Compile Include="Service\IConsumerBillingInformationService.cs" />
+    <Compile Include="Service\IApplicationService.cs" />
+    <Compile Include="Service\IConsumerService.cs" />
+    <Compile Include="Service\IUserBillingInformationService.cs" />
+    <Compile Include="Service\ICrudService.cs" />
+    <Compile Include="Service\IFileManagerService.cs" />
+    <Compile Include="Service\IProductService.cs" />
+    <Compile Include="Service\IUserService.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

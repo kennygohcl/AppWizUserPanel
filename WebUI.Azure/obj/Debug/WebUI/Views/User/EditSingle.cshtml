@@ -1,0 +1,81 @@
+﻿@model UserCreateInput
+@{
+    Layout = "~/Views/Shared/_LayoutMyProfile.cshtml";
+}
+
+@section previewLeftSidebarSection {
+    @Html.Partial("SideBar/SideBarMyProfile")
+}
+
+
+<form method="POST" action='@Url.Action("EditSingle", "User")' >
+
+@Html.AntiForgeryToken()
+
+
+    <div id="createBilling"  style="text-align: center; width: 500px;">
+    
+            @Html.HiddenFor(o => o.Id, new { id = "hiddenUserId" })
+            <div class="cbt">
+            </div>
+            <div class="elabel">
+            </div>
+            @Html.EditorFor(o => o.Login, new { @class = "createBillingInput" })
+          
+         
+            <div class="elabel">Password</div> 
+          <div class="cbt">
+            </div>
+           <button class="awe-btn" onclick="@(Url.Awe().PopupFormAction().Url(Url.Action("ChangePassword", "User", new { @Model.Id })).Success("passchanged").Height(200))">
+               password</button>   
+         <div class="cbt">
+            </div>
+        @Html.EditorFor(o => o.Company, new { @class = "createBillingInput" })
+            <div class="cbt"/>
+          
+            @Html.EditorFor(o => o.Email, new { @class = "createBillingInput" })
+            <div class="cbt">
+            </div>
+             @Html.EditorFor(o => o.ConfirmEmail, new { @class = "createBillingInput" })
+            <div class="cbt">
+            </div>
+            @Html.EditorFor(o => o.Phone, new { @class = "createBillingInput" })
+            <div class="cbt"/>
+            @Html.EditorFor(o => o.Industries)
+            <div class="cbt">
+            </div>
+            @Html.EditorFor(o => o.Address, new { @class = "createBillingInput" })
+            <div class="cbt">
+            </div>
+        <br/>
+           
+            <div class="elabel">
+                &nbsp;</div>
+            <div class="cbt">
+            </div>
+      
+          <div style="text-align: center;">
+                <button id="btnSubmit" class="button-orange btnAdvance marginTopBottom10">@Mui.Submit</button>
+          </div>
+</div>
+
+</form>
+
+<script type="text/javascript">
+
+    jQuery(document).ready(function() {
+        jQuery('div').removeClass('einput');
+       
+        jQuery('#Login').addClass('einputRefined');
+        jQuery('#Password').addClass('einputRefined');
+        jQuery('#ConfirmPassword').addClass('einputRefined');
+        jQuery('#Company').addClass('einputRefined');
+        jQuery('#ConfirmEmail').addClass('einputRefined');
+        jQuery('#Email').addClass('einputRefined');
+        jQuery('#Phone').addClass('einputRefined');
+        jQuery('#Industries').addClass('einputRefined');
+        jQuery('#Address').addClass('einputRefined');
+      
+    });
+   
+</script>

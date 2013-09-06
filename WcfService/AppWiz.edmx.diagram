@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bf506ebc46c346ba9b50cc75bf4e3ece" Name="Diagram1">
+        <EntityTypeShape EntityType="dbDFrontierAppWizardModel.Branch" Width="1.5" PointX="3" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbDFrontierAppWizardModel.Country" Width="1.5" PointX="0.75" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbDFrontierAppWizardModel.Feedback" Width="1.5" PointX="5.25" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbDFrontierAppWizardModel.Industry" Width="1.5" PointX="3" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbDFrontierAppWizardModel.Lead" Width="1.5" PointX="7.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbDFrontierAppWizardModel.ProductCategory" Width="1.5" PointX="3" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbDFrontierAppWizardModel.Product" Width="1.5" PointX="5.25" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbDFrontierAppWizardModel.PromotionProduct" Width="1.5" PointX="7.5" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbDFrontierAppWizardModel.Promotion" Width="1.5" PointX="5.25" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbDFrontierAppWizardModel.ReatailerIndustry" Width="1.5" PointX="5.25" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbDFrontierAppWizardModel.Role" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbDFrontierAppWizardModel.UserBillingInformation" Width="1.5" PointX="9.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbDFrontierAppWizardModel.UserRole" Width="1.5" PointX="8.25" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbDFrontierAppWizardModel.User" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbDFrontierAppWizardModel.UserType" Width="1.5" PointX="0.75" PointY="6.625" IsExpanded="true" />
+        <AssociationConnector Association="dbDFrontierAppWizardModel.FK__chefs__countryid__182C9B23" ManuallyRouted="false" />
+        <AssociationConnector Association="dbDFrontierAppWizardModel.FK__dinners__chefid__1CF15040" ManuallyRouted="false" />
+        <AssociationConnector Association="dbDFrontierAppWizardModel.FK__dinners__country__1BFD2C07" ManuallyRouted="false" />
+        <AssociationConnector Association="dbDFrontierAppWizardModel.FK_Feedbacks_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="dbDFrontierAppWizardModel.FK_ReatailerIndustries_Industries" ManuallyRouted="false" />
+        <AssociationConnector Association="dbDFrontierAppWizardModel.FK_Products_ProductCategories" ManuallyRouted="false" />
+        <AssociationConnector Association="dbDFrontierAppWizardModel.FK__dinnermea__meali__21B6055D" ManuallyRouted="false" />
+        <AssociationConnector Association="dbDFrontierAppWizardModel.FK_Products_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="dbDFrontierAppWizardModel.FK__dinnermea__dinne__20C1E124" ManuallyRouted="false" />
+        <AssociationConnector Association="dbDFrontierAppWizardModel.FK_ReatailerIndustries_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="dbDFrontierAppWizardModel.FK__userroles__rolei__2B3F6F97" ManuallyRouted="false" />
+        <AssociationConnector Association="dbDFrontierAppWizardModel.FK__userroles__useri__2A4B4B5E" ManuallyRouted="false" />
+        <AssociationConnector Association="dbDFrontierAppWizardModel.FK_Users_UserTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="dbDFrontierAppWizardModel.FK_Users_UserTypes1" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

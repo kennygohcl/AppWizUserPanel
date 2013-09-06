@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Consumer>
+@foreach (var o in Model)
+{
+    <tr data-val="@o.Id" class="awe-li" id="consumer@(o.Id)">
+        <td>@o.Name
+        </td>
+        <td>@o.Age 
+        </td>
+        <td>@o.BirthDate 
+        </td>
+        <td>@o.Gender 
+        </td>
+        <td>@o.Email 
+        </td>
+        <td>@o.Phone
+        </td>
+        <td>@o.Address
+        </td>
+        <td>@o.DateRegistered
+        </td>
+     @*   <td>
+           $1$ <button class="awe-btn" onclick="@(Url.Awe().PopupFormAction().Url(Url.Action("Edit", "Lead", new { o.Id })).Success("edit").Height(300))">
+                <span class="ico-edit"></span>
+            </button>#1#
+        </td>
+        <td>
+          $1$  @Html.Partial("deletebtn", new DelBtn{ Id = o.Id, IsDeleted = o.IsDeleted, Controller = "Lead" })#1#
+        </td>*@
+    </tr>               
+}

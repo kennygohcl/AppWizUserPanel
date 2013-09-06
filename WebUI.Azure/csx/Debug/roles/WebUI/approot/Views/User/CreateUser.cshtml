@@ -1,0 +1,111 @@
+﻿@model UserCreateInput
+@{
+    ViewBag.Title = "Register Now";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@if (ViewBag.EmailDuplicate == "Yes")
+{
+<h1>Email Address already exists. Please Sign In instead.</h1>    
+    
+}
+
+
+<form method="POST" action='@Url.Action("CreateUser", "User")' >
+
+@Html.AntiForgeryToken()
+
+<div class="maindiv">
+
+    <div id="createBilling"  style="text-align: center; width: 500px;">
+    
+
+           @Html.ValidationSummary(true, @Mui.Registration_Failed)
+           
+            <div class="cbt">
+            </div>
+            <div class="elabel">
+            </div>
+            @Html.EditorFor(o => o.Login, new { @class = "createBillingInput" })
+          
+            <div class="cbt">
+            </div>
+            <br/>
+            @Html.EditorFor(o => o.Password, new { @class = "createBillingInput" })
+            <div class="cbt">
+            </div>
+          
+            @Html.EditorFor(o => o.ConfirmPassword, new { @class = "createBillingInput" })
+            <div class="cbt">
+            </div>
+          
+            @Html.EditorFor(o => o.Company, new { @class = "createBillingInput" })
+            <div class="cbt"/>
+          
+            @Html.EditorFor(o => o.Email, new { @class = "createBillingInput" })
+            <div class="cbt">
+            </div>
+             @Html.EditorFor(o => o.ConfirmEmail, new { @class = "createBillingInput" })
+            <div class="cbt">
+            </div>
+            @Html.EditorFor(o => o.Phone, new { @class = "createBillingInput" })
+            <div class="cbt"/>
+            @Html.EditorFor(o => o.Industries)
+            <div class="cbt">
+            </div>
+            @Html.EditorFor(o => o.Address, new { @class = "createBillingInput" })
+            <div class="cbt">
+            </div>
+        <br/>
+            <div style="text-align: center;">
+               <p>
+                    @Html.HiddenFor(o=>o.TermsOfService, new { Value = true})
+                   By clicking Sign Up, you agree to our @Html.Awe().PopupActionLink().LinkText(Mui.TermsAndConditions).Url(Url.Action("TermsAndConditions","Home")).Fullscreen(true).Modal(true)
+                   @*Terms of Service*@
+               </p>          
+
+            </div>
+            <div class="cbt">
+            </div>
+
+            <div id="rolesList">
+              @Html.HiddenFor(o => o.Roles, new { Value=1 })
+            </div>
+            <div class="cbt">
+            </div>
+           
+            <div class="elabel">
+                &nbsp;</div>
+            <div class="cbt">
+            </div>
+      
+          <div style="text-align: center;">
+                <button class="button-orange btnAdvance marginTopBottom10">@Mui.Submit</button>
+          </div>
+
+    
+</div>
+</div>
+<br/>
+<br/>
+</form>
+
+<script type="text/javascript">
+
+    jQuery(document).ready(function() {
+        jQuery('div').removeClass('einput');
+       
+        jQuery('#Login').addClass('einputRefined');
+        jQuery('#Password').addClass('einputRefined');
+        jQuery('#ConfirmPassword').addClass('einputRefined');
+        jQuery('#Company').addClass('einputRefined');
+        jQuery('#ConfirmEmail').addClass('einputRefined');
+        jQuery('#Email').addClass('einputRefined');
+        jQuery('#Phone').addClass('einputRefined');
+        jQuery('#Industries').addClass('einputRefined');
+        jQuery('#Address').addClass('einputRefined');
+      
+    });
+
+</script>

@@ -1,0 +1,427 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="dbDFrontierAppWizardModelStoreContainer" CdmEntityContainer="dbDFrontierAppWizardEntities">
+    <EntitySetMapping Name="Advertisements">
+      <EntityTypeMapping TypeName="dbDFrontierAppWizardModel.Advertisement">
+        <MappingFragment StoreEntitySet="Advertisements">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+          <ScalarProperty Name="WebSiteReference" ColumnName="WebSiteReference" />
+          <ScalarProperty Name="Banner" ColumnName="Banner" />
+          <ScalarProperty Name="DatePosted" ColumnName="DatePosted" />
+          <ScalarProperty Name="Start" ColumnName="Start" />
+          <ScalarProperty Name="End" ColumnName="End" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Applications">
+      <EntityTypeMapping TypeName="dbDFrontierAppWizardModel.Application">
+        <MappingFragment StoreEntitySet="Applications">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ApplicationName" ColumnName="ApplicationName" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="MediaTypeId" ColumnName="MediaTypeId" />
+          <ScalarProperty Name="MediaLink" ColumnName="MediaLink" />
+          <ScalarProperty Name="SocialMedia1Link" ColumnName="SocialMedia1Link" />
+          <ScalarProperty Name="SocialMedia1Image" ColumnName="SocialMedia1Image" />
+          <ScalarProperty Name="SocialMedia2Link" ColumnName="SocialMedia2Link" />
+          <ScalarProperty Name="SocialMedia2Image" ColumnName="SocialMedia2Image" />
+          <ScalarProperty Name="SocialMedia3Link" ColumnName="SocialMedia3Link" />
+          <ScalarProperty Name="SocialMedia3Image" ColumnName="SocialMedia3Image" />
+          <ScalarProperty Name="VoucherMessage" ColumnName="VoucherMessage" />
+          <ScalarProperty Name="VourcherMessageStart" ColumnName="VourcherMessageStart" />
+          <ScalarProperty Name="VourcherMessageEnd" ColumnName="VourcherMessageEnd" />
+          <ScalarProperty Name="VoucherMessageFrequency" ColumnName="VoucherMessageFrequency" />
+          <ScalarProperty Name="VourhcerMessageTriggerPoint" ColumnName="VourhcerMessageTriggerPoint" />
+          <ScalarProperty Name="TermsAndConditions" ColumnName="TermsAndConditions" />
+          <ScalarProperty Name="IsLoyaltyVisible" ColumnName="IsLoyaltyVisible" />
+          <ScalarProperty Name="LoyaltyTermsAndConditions" ColumnName="LoyaltyTermsAndConditions" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Branches">
+      <EntityTypeMapping TypeName="dbDFrontierAppWizardModel.Branch">
+        <MappingFragment StoreEntitySet="Branches">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="BranchName" ColumnName="BranchName" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ConsumerFeedBacks">
+      <EntityTypeMapping TypeName="dbDFrontierAppWizardModel.ConsumerFeedBack">
+        <MappingFragment StoreEntitySet="ConsumerFeedBacks">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ConsumerId" ColumnName="ConsumerId" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="DatePosted" ColumnName="DatePosted" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Consumers">
+      <EntityTypeMapping TypeName="dbDFrontierAppWizardModel.Consumer">
+        <MappingFragment StoreEntitySet="Consumers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Token" ColumnName="Token" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Countries">
+      <EntityTypeMapping TypeName="dbDFrontierAppWizardModel.Country">
+        <MappingFragment StoreEntitySet="Countries">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Feedbacks">
+      <EntityTypeMapping TypeName="dbDFrontierAppWizardModel.Feedback">
+        <MappingFragment StoreEntitySet="Feedbacks">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="DatePosted" ColumnName="DatePosted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Industries">
+      <EntityTypeMapping TypeName="dbDFrontierAppWizardModel.Industry">
+        <MappingFragment StoreEntitySet="Industries">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Leads">
+      <EntityTypeMapping TypeName="dbDFrontierAppWizardModel.Lead">
+        <MappingFragment StoreEntitySet="Leads">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="ReferredBy" ColumnName="ReferredBy" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="dbDFrontierAppWizardModel.Order">
+        <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ConsumerId" ColumnName="ConsumerId" />
+          <ScalarProperty Name="PromotionId" ColumnName="PromotionId" />
+          <ScalarProperty Name="DateOfOrder" ColumnName="DateOfOrder" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PaymentGateways">
+      <EntityTypeMapping TypeName="dbDFrontierAppWizardModel.PaymentGateway">
+        <MappingFragment StoreEntitySet="PaymentGateways">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ApiLogin" ColumnName="ApiLogin" />
+          <ScalarProperty Name="TransactionKey" ColumnName="TransactionKey" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductCategories">
+      <EntityTypeMapping TypeName="dbDFrontierAppWizardModel.ProductCategory">
+        <MappingFragment StoreEntitySet="ProductCategories">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="dbDFrontierAppWizardModel.Product">
+        <MappingFragment StoreEntitySet="Products">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ProductCategoryId" ColumnName="ProductCategoryId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Picture" ColumnName="Picture" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PromotionProducts">
+      <EntityTypeMapping TypeName="dbDFrontierAppWizardModel.PromotionProduct">
+        <MappingFragment StoreEntitySet="PromotionProducts">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="PromotionId" ColumnName="PromotionId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Promotions">
+      <EntityTypeMapping TypeName="dbDFrontierAppWizardModel.Promotion">
+        <MappingFragment StoreEntitySet="Promotions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Start" ColumnName="Start" />
+          <ScalarProperty Name="End" ColumnName="End" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Isdeleted" ColumnName="Isdeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="dbDFrontierAppWizardModel.Role">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysAgent_JobActivity">
+      <EntityTypeMapping TypeName="dbDFrontierAppWizardModel.sysAgent_JobActivity">
+        <MappingFragment StoreEntitySet="sysAgent_JobActivity">
+          <ScalarProperty Name="ActivityId" ColumnName="ActivityId" />
+          <ScalarProperty Name="JobId" ColumnName="JobId" />
+          <ScalarProperty Name="StartExecutionTime" ColumnName="StartExecutionTime" />
+          <ScalarProperty Name="StopExecutionTime" ColumnName="StopExecutionTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysAgent_JobDefinitions">
+      <EntityTypeMapping TypeName="dbDFrontierAppWizardModel.sysAgent_JobDefinitions">
+        <MappingFragment StoreEntitySet="sysAgent_JobDefinitions">
+          <ScalarProperty Name="JobId" ColumnName="JobId" />
+          <ScalarProperty Name="JobName" ColumnName="JobName" />
+          <ScalarProperty Name="SqlToExecute" ColumnName="SqlToExecute" />
+          <ScalarProperty Name="ConnectionStringToUse" ColumnName="ConnectionStringToUse" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysmail_account">
+      <EntityTypeMapping TypeName="dbDFrontierAppWizardModel.sysmail_account">
+        <MappingFragment StoreEntitySet="sysmail_account">
+          <ScalarProperty Name="account_id" ColumnName="account_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="email_address" ColumnName="email_address" />
+          <ScalarProperty Name="display_name" ColumnName="display_name" />
+          <ScalarProperty Name="replyto_address" ColumnName="replyto_address" />
+          <ScalarProperty Name="last_mod_datetime" ColumnName="last_mod_datetime" />
+          <ScalarProperty Name="last_mod_user" ColumnName="last_mod_user" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysmail_account_credential">
+      <EntityTypeMapping TypeName="dbDFrontierAppWizardModel.sysmail_account_credential">
+        <MappingFragment StoreEntitySet="sysmail_account_credential">
+          <ScalarProperty Name="credential_id" ColumnName="credential_id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="cyphertext" ColumnName="cyphertext" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysmail_mailitems">
+      <EntityTypeMapping TypeName="dbDFrontierAppWizardModel.sysmail_mailitems">
+        <MappingFragment StoreEntitySet="sysmail_mailitems">
+          <ScalarProperty Name="mailitem_id" ColumnName="mailitem_id" />
+          <ScalarProperty Name="profile_id" ColumnName="profile_id" />
+          <ScalarProperty Name="recipients" ColumnName="recipients" />
+          <ScalarProperty Name="copy_recipients" ColumnName="copy_recipients" />
+          <ScalarProperty Name="blind_copy_recipients" ColumnName="blind_copy_recipients" />
+          <ScalarProperty Name="subject" ColumnName="subject" />
+          <ScalarProperty Name="from_address" ColumnName="from_address" />
+          <ScalarProperty Name="reply_to" ColumnName="reply_to" />
+          <ScalarProperty Name="body" ColumnName="body" />
+          <ScalarProperty Name="body_format" ColumnName="body_format" />
+          <ScalarProperty Name="importance" ColumnName="importance" />
+          <ScalarProperty Name="sensitivity" ColumnName="sensitivity" />
+          <ScalarProperty Name="file_attachments" ColumnName="file_attachments" />
+          <ScalarProperty Name="attachment_encoding" ColumnName="attachment_encoding" />
+          <ScalarProperty Name="query" ColumnName="query" />
+          <ScalarProperty Name="execute_query_database" ColumnName="execute_query_database" />
+          <ScalarProperty Name="attach_query_result_as_file" ColumnName="attach_query_result_as_file" />
+          <ScalarProperty Name="query_result_header" ColumnName="query_result_header" />
+          <ScalarProperty Name="query_result_width" ColumnName="query_result_width" />
+          <ScalarProperty Name="query_result_separator" ColumnName="query_result_separator" />
+          <ScalarProperty Name="exclude_query_output" ColumnName="exclude_query_output" />
+          <ScalarProperty Name="append_query_error" ColumnName="append_query_error" />
+          <ScalarProperty Name="send_request_date" ColumnName="send_request_date" />
+          <ScalarProperty Name="send_request_user" ColumnName="send_request_user" />
+          <ScalarProperty Name="sent_account_id" ColumnName="sent_account_id" />
+          <ScalarProperty Name="sent_status" ColumnName="sent_status" />
+          <ScalarProperty Name="sent_date" ColumnName="sent_date" />
+          <ScalarProperty Name="last_mod_date" ColumnName="last_mod_date" />
+          <ScalarProperty Name="last_mod_user" ColumnName="last_mod_user" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysmail_principalprofile">
+      <EntityTypeMapping TypeName="dbDFrontierAppWizardModel.sysmail_principalprofile">
+        <MappingFragment StoreEntitySet="sysmail_principalprofile">
+          <ScalarProperty Name="profile_id" ColumnName="profile_id" />
+          <ScalarProperty Name="principal_sid" ColumnName="principal_sid" />
+          <ScalarProperty Name="is_default" ColumnName="is_default" />
+          <ScalarProperty Name="last_mod_datetime" ColumnName="last_mod_datetime" />
+          <ScalarProperty Name="last_mod_user" ColumnName="last_mod_user" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysmail_profile">
+      <EntityTypeMapping TypeName="dbDFrontierAppWizardModel.sysmail_profile">
+        <MappingFragment StoreEntitySet="sysmail_profile">
+          <ScalarProperty Name="profile_id" ColumnName="profile_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="last_mod_datetime" ColumnName="last_mod_datetime" />
+          <ScalarProperty Name="last_mod_user" ColumnName="last_mod_user" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysmail_profileaccount">
+      <EntityTypeMapping TypeName="dbDFrontierAppWizardModel.sysmail_profileaccount">
+        <MappingFragment StoreEntitySet="sysmail_profileaccount">
+          <ScalarProperty Name="profile_id" ColumnName="profile_id" />
+          <ScalarProperty Name="account_id" ColumnName="account_id" />
+          <ScalarProperty Name="sequence_number" ColumnName="sequence_number" />
+          <ScalarProperty Name="last_mod_datetime" ColumnName="last_mod_datetime" />
+          <ScalarProperty Name="last_mod_user" ColumnName="last_mod_user" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysmail_server">
+      <EntityTypeMapping TypeName="dbDFrontierAppWizardModel.sysmail_server">
+        <MappingFragment StoreEntitySet="sysmail_server">
+          <ScalarProperty Name="account_id" ColumnName="account_id" />
+          <ScalarProperty Name="servertype" ColumnName="servertype" />
+          <ScalarProperty Name="servername" ColumnName="servername" />
+          <ScalarProperty Name="port" ColumnName="port" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="credential_id" ColumnName="credential_id" />
+          <ScalarProperty Name="use_default_credentials" ColumnName="use_default_credentials" />
+          <ScalarProperty Name="enable_ssl" ColumnName="enable_ssl" />
+          <ScalarProperty Name="flags" ColumnName="flags" />
+          <ScalarProperty Name="last_mod_datetime" ColumnName="last_mod_datetime" />
+          <ScalarProperty Name="last_mod_user" ColumnName="last_mod_user" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysmail_servertype">
+      <EntityTypeMapping TypeName="dbDFrontierAppWizardModel.sysmail_servertype">
+        <MappingFragment StoreEntitySet="sysmail_servertype">
+          <ScalarProperty Name="servertype" ColumnName="servertype" />
+          <ScalarProperty Name="is_incoming" ColumnName="is_incoming" />
+          <ScalarProperty Name="is_outgoing" ColumnName="is_outgoing" />
+          <ScalarProperty Name="last_mod_datetime" ColumnName="last_mod_datetime" />
+          <ScalarProperty Name="last_mod_user" ColumnName="last_mod_user" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Transactions">
+      <EntityTypeMapping TypeName="dbDFrontierAppWizardModel.Transaction">
+        <MappingFragment StoreEntitySet="Transactions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="PaymentModeId" ColumnName="PaymentModeId" />
+          <ScalarProperty Name="DateofTransaction" ColumnName="DateofTransaction" />
+          <ScalarProperty Name="PaymentRefence" ColumnName="PaymentRefence" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+          <ScalarProperty Name="DiscountOfTotalPercent" ColumnName="DiscountOfTotalPercent" />
+          <ScalarProperty Name="FinalAmount" ColumnName="FinalAmount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserBillingInformations">
+      <EntityTypeMapping TypeName="dbDFrontierAppWizardModel.UserBillingInformation">
+        <MappingFragment StoreEntitySet="UserBillingInformations">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="BillingAddress" ColumnName="BillingAddress" />
+          <ScalarProperty Name="BillingZipCode" ColumnName="BillingZipCode" />
+          <ScalarProperty Name="BillingContactNumber" ColumnName="BillingContactNumber" />
+          <ScalarProperty Name="BillingContactEmail" ColumnName="BillingContactEmail" />
+          <ScalarProperty Name="CreditCardNumber" ColumnName="CreditCardNumber" />
+          <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserIndustries">
+      <EntityTypeMapping TypeName="dbDFrontierAppWizardModel.UserIndustry">
+        <MappingFragment StoreEntitySet="UserIndustries">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="IndustryId" ColumnName="IndustryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserRoles">
+      <EntityTypeMapping TypeName="dbDFrontierAppWizardModel.UserRole">
+        <MappingFragment StoreEntitySet="UserRoles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="dbDFrontierAppWizardModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+          <ScalarProperty Name="Company" ColumnName="Company" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserTypes">
+      <EntityTypeMapping TypeName="dbDFrontierAppWizardModel.UserType">
+        <MappingFragment StoreEntitySet="UserTypes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="CleanUp" FunctionName="dbDFrontierAppWizardModel.Store.CleanUp" />
+    <FunctionImportMapping FunctionImportName="sp_send_dbmail" FunctionName="dbDFrontierAppWizardModel.Store.sp_send_dbmail" />
+    <FunctionImportMapping FunctionImportName="sysmail_add_account_sp" FunctionName="dbDFrontierAppWizardModel.Store.sysmail_add_account_sp" />
+    <FunctionImportMapping FunctionImportName="sysmail_add_principalprofile_sp" FunctionName="dbDFrontierAppWizardModel.Store.sysmail_add_principalprofile_sp" />
+    <FunctionImportMapping FunctionImportName="sysmail_add_profile_sp" FunctionName="dbDFrontierAppWizardModel.Store.sysmail_add_profile_sp" />
+    <FunctionImportMapping FunctionImportName="sysmail_add_profileaccount_sp" FunctionName="dbDFrontierAppWizardModel.Store.sysmail_add_profileaccount_sp" />
+    <FunctionImportMapping FunctionImportName="sysmail_create_user_credential_sp" FunctionName="dbDFrontierAppWizardModel.Store.sysmail_create_user_credential_sp" />
+    <FunctionImportMapping FunctionImportName="sysmail_verify_account_sp" FunctionName="dbDFrontierAppWizardModel.Store.sysmail_verify_account_sp" />
+    <FunctionImportMapping FunctionImportName="sysmail_verify_accountparams_sp" FunctionName="dbDFrontierAppWizardModel.Store.sysmail_verify_accountparams_sp" />
+    <FunctionImportMapping FunctionImportName="sysmail_verify_principal_sp" FunctionName="dbDFrontierAppWizardModel.Store.sysmail_verify_principal_sp" />
+    <FunctionImportMapping FunctionImportName="sysmail_verify_profile_sp" FunctionName="dbDFrontierAppWizardModel.Store.sysmail_verify_profile_sp" />
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,9 @@
+﻿@model Branch
+<div class="awe-il">
+    <button class="awe-btn" onclick="@(Url.Awe().PopupFormAction().Url(Url.Action("Edit", "Branch", new { Model.Id })).Success("refreshBranchGrid").Height(300))">
+        <span class="ico-edit"></span>
+    </button>
+</div>&nbsp;
+<div class="awe-il">
+@Html.Partial("deletebtn", new DelBtn { Id = Model.Id, IsDeleted = Model.IsDeleted, Controller = "Branch" })
+</div>

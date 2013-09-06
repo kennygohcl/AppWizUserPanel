@@ -1,0 +1,13 @@
+﻿@model IEnumerable<Application>
+@foreach (var o in Model)
+{
+    <li class="awe-li productitem awe-il" data-val="@o.Id">
+        <div>
+            <button class="awe-btn awe-movebtn productmove">
+                <span class="awe-icon"></span>
+            </button>
+            @o.ApplicationName
+        </div>
+        <img   src='@Url.Content("~/pictures/Products/" + (string.IsNullOrEmpty(o.MediaLink) ? "0.jpg" : o.MediaLink))' class="thumb"  alt='picture' />
+    </li>
+}

@@ -1,0 +1,57 @@
+﻿@{
+    ViewBag.Title = "Retailers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+
+
+
+
+<div id="tabs">     
+
+    <ul>
+        <li><a href="#tabsIdRetailers">@Mui.Retailers</a></li>
+        <li><a href="#tabsIdReports">@Mui.Reports</a></li>
+    </ul>
+    
+    <div>
+        <div id="tabsIdRetailers">
+            <fieldset><legend>@Mui.Search</legend>
+            <input type="text" id="search"/>
+            </fieldset>
+            <br/>
+
+            @{
+                string cc = "2";
+            }
+            @Html.Hidden("selectedUserTypeId", cc )
+            @Html.Awe().AjaxList("Retailers").TableLayout(true).Parent("search","search").Parent("selectedUserTypeId","userTypeId")
+
+
+        </div>
+        <div id="tabsIdReports">
+           @*<legend>@Mui.Search</legend>
+           <input type="text" id="searchConsumerFeedback" />
+           <button type="button" id="sbConsumerFeedback" class="awe-btn ibtn">@Mui.Search</button>
+            <br/>
+            @Html.Awe().Form().Confirm(true).FormClass("BranchConfirm").Success("refreshConsumerFeedbackGrid").Url(Url.Action("Delete"))
+            @(Html.Awe().Grid("ConsumerFeedbackGrid")
+                  .Url(Url.Action("GetItems", "ConsumerFeedbackGrid"))
+                  .Parent("searchConsumerFeedback")
+                  .Persistence(Persistence.Session)
+                  .Columns(
+                      new Column { Name = "Comments", PercentWidth = 80},
+                      new Column { Name = "DatePosted" },
+                      new Column { ClientFormat = ".Actions", Width = 80 }))*@
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+          $(function () {
+              $( "#tabs" ).tabs();
+          });
+      </script>

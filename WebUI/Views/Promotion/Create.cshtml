@@ -1,0 +1,73 @@
+﻿@model PromotionInput 
+
+<div class="bro">
+    @using (Html.BeginForm())
+    {    
+         @Html.HiddenFor(o=>o.Start, new { id="hiddenStart"})  
+         @Html.HiddenFor(o=>o.End, new { id="hiddenEnd"})  
+        <div class="inputarea">
+            @Html.EditorFor(o => o.Description)
+        </div>
+        <br/>
+        <div class="inputarea">
+            @Html.EditorFor(o => o.Products)
+            <div class="elabel">
+                @Mui.OriginalPrice*:
+            </div>
+            @Html.EditorFor(o=>o.OriginalPrice)
+            @Html.EditorFor(o=>o.DiscountPercentage)
+            <div class="elabel">
+                @Mui.Price*:
+            </div>
+            @Html.EditorFor(o=>o.Price)
+            @Html.EditorFor(o => o.Start)
+            @Html.EditorFor(o => o.End)
+           
+        </div>
+        
+       
+    }
+</div>
+
+<script type="text/javascript">
+          $(function () {
+              $('#Description').height(400);
+              $('#Description').width(400);
+           
+              var d = new Date();
+              var currDate = d.getDate();
+              var currMonth = d.getMonth() + 1; //Months are zero based
+              var currYear = d.getFullYear();
+
+              if (jQuery('#hiddenStart').val == null || jQuery('#hiddenStart').val == "") {
+                  jQuery('#Start').val(currMonth + "/" + currDate + "/" + currYear);
+              }
+              if (jQuery('#hiddenEnd').val == null || jQuery('#hiddenEnd').val == "") {
+                  jQuery('#End').val(currMonth + "/" + currDate + "/" + currYear);
+              }
+
+              jQuery('#OriginalPrice').attr('readonly', true);
+              jQuery('#Price').attr('readonly', true);
+              computePrice();
+         
+          });
+          
+          function computePrice() {
+              if (jQuery('#DiscountPercentage').val() > 0) {
+                  var discountPrice = (jQuery('#DiscountPercentage').val() / 100) * jQuery('#OriginalPrice').val();
+                  jQuery('#Price').val(jQuery('#OriginalPrice').val() - discountPrice);
+              }
+              else {
+                  jQuery('#Price').val(jQuery('#OriginalPrice').val());
+              }
+          }
+          
+          jQuery("#DiscountPercentage").change(function () {
+              computePrice();
+          });
+    
+          jQuery("#DiscountPercentage").keydown(function (e) {
+              computePrice();
+          });
+
+</script>

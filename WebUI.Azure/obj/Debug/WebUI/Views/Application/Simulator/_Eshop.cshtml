@@ -1,0 +1,234 @@
+﻿<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+<div id="eshopMobile" class="mobile" >
+        @*<img id="pMobile" src="@Url.Content("~/Content/1login.png")" />*@
+      <div id="eshopPageMobile">
+      @*<img src="@Url.Content("~/Content/1login.png")" style="padding: 30px; float: left;"  />*@
+        <div id="tabsMainScreen" class="tabs-bottom" style="height:100%" > 
+            <ul style="margin-bottom:0px; z-index:10">
+                @foreach (var module in ViewBag.Modules)
+                { 
+                    <li><a href="#tabsId@(module.Code)" style="font-size: 8px; font-weight: bold; ">@module.Description</a></li>
+                }
+            </ul>    
+            @foreach (var module in ViewBag.Modules)
+            { 
+                <div id="tabsId@(module.Code)" style="height:95%;padding:0px;z-index:0;display:none">
+                    @if (module.Code == "LocMarketing")
+                    {
+                        Html.RenderPartial("RetailerIntro");
+                    }
+                    else if (module.Code == "EShopping")
+                    {
+                       <div id="subTabsEshopping" style="height:98%" >
+                            <ul>
+                                @foreach (var category in ViewBag.Categories)
+                                { 
+                                    <li><a href="#subTabsEshopping@(category.Description)" style="font-size: 9px; font-weight: bold; ">@category.Description</a></li>
+                                }
+                            </ul>                           
+                                                    
+                            @foreach (var category in ViewBag.Categories)
+                            { 
+                                <div id="subTabsEshopping@(category.Description)" >
+                                    @{
+                                string cc = category.Id.ToString();
+                                    }
+                                      
+                                    @Html.Hidden("selectedProductCategory" + cc, cc)
+                                    @(Html.Awe().AjaxList("PromotionsReadOnly").Prefix("pro" + cc)
+                                            .TableLayout(true).Parent("search", "search")
+                                            .Parent("selectedProductCategory" + cc, "productCategory"))
+ 
+                                </div>
+                            }
+                        </div>
+                    }
+                    else if (module.Code == "Loyalty")
+                    {
+                        Html.RenderPartial("LoyaltyTab");
+                    }
+                    else if (module.Code == "Feedback")
+                    {
+                        Html.RenderPartial("FeedbackTab");
+                    }
+                    else if (module.Code == "Profile")
+                    {
+                        Html.RenderPartial("ProfileTab");
+                    }
+                </div>
+                                    
+            }
+     </div>      
+                
+     </div>
+</div>
+<style>
+    /* force a height so the tabs don't jump as content height changes */
+    #tabs .tabs-spacer {
+        float: left;
+        height: 200px;
+    }
+
+    .tabs-bottom .ui-tabs-nav {
+        clear: left;
+        padding: 0 .2em .2em .2em;
+    }
+
+        .tabs-bottom .ui-tabs-nav li {
+            top: auto;
+            bottom: 0;
+            margin: 0 .2em 1px 0;
+            border-bottom: 0;
+            border-top: 0;
+        }
+
+            .tabs-bottom .ui-tabs-nav li.ui-tabs-active {
+                margin-top: -1px;
+                padding-top: 1px;
+            }
+</style>      
+
+<script type="text/javascript">
+
+    var jQuery = $.noConflict(true);
+    jQuery(document).ready(function () {
+
+        jQuery("#tabsMainScreen").tabs();
+        jQuery(".tabs-bottom .ui-tabs-nav, .tabs-bottom .ui-tabs-nav > *")
+      .removeClass("ui-corner-all ui-corner-top")
+      .addClass("ui-corner-bottom");
+        // move the nav to the bottom
+        jQuery(".tabs-bottom .ui-tabs-nav").appendTo(".tabs-bottom");
+
+        // fix the classes
+
+
+        jQuery("#subTabsEshopping").tabs();
+
+        jQuery("#tabsMainScreen").tabs("option", "active", 1);
+
+
+    });
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+@*<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+
+      <img src="@Url.Content("~/Content/1login.png")" style="padding: 30px; float: left;"  />
+     <div id="tabsMainScreen" class="tabs-bottom" style="float:left; top:-620px; left: 60px; width: 315px; height: 470px;  ">    
+        <ul>
+            @foreach (var module in ViewBag.Modules)
+            { 
+                <li><a href="#tabsId@(module.Code)" style="font-size: 8px; font-weight: bold; ">@module.Description</a></li>
+            }
+        </ul>                       
+                                                    
+        @foreach (var module in ViewBag.Modules)
+        { 
+            <div id="tabsId@(module.Code)" style="width: 315px; height: 420px; float: left; left:5px;">
+                @if (module.Code == "LocMarketing")
+                {
+                    Html.RenderPartial("RetailerIntro");
+                }
+                else if (module.Code == "EShopping")
+                {
+                   <div id="subTabsEshopping" style="float:left; left:-20px; top:0px;  width: 305px; height: 420px; " >
+                        <ul>
+                            @foreach (var category in ViewBag.Categories)
+                            { 
+                                <li><a href="#subTabsEshopping@(category.Description)" style="font-size: 9px; font-weight: bold; ">@category.Description</a></li>
+                            }
+                        </ul>                           
+                                                    
+                        @foreach (var category in ViewBag.Categories)
+                        { 
+                            <div id="subTabsEshopping@(category.Description)" style="width: 295px; height: 380px; float: left; position: relative;">
+                                @{
+                            string cc = category.Id.ToString();
+                                }
+                                      
+                                @Html.Hidden("selectedProductCategory" + cc, cc)
+                                @(Html.Awe().AjaxList("PromotionsReadOnly").Prefix("pro" + cc)
+                                        .TableLayout(true).Parent("search", "search")
+                                        .Parent("selectedProductCategory" + cc, "productCategory"))
+ 
+                            </div>
+                        }
+                    </div>
+                }
+                else if (module.Code == "Loyalty")
+                {
+                    Html.RenderPartial("LoyaltyTab");
+                }
+                else if (module.Code == "Feedback")
+                {
+                    Html.RenderPartial("FeedbackTab");
+                }
+                else if (module.Code == "Profile")
+                {
+                    Html.RenderPartial("ProfileTab");
+                }
+            </div>
+                                    
+        }
+     </div>                
+
+<style>
+ 
+/* force a height so the tabs don't jump as content height changes */
+#tabs .tabs-spacer { float: left; height: 200px; }
+.tabs-bottom .ui-tabs-nav { clear: left; padding: 0 .2em .2em .2em; }
+.tabs-bottom .ui-tabs-nav li { top: auto; bottom: 0; margin: 0 .2em 1px 0; border-bottom: auto; border-top: 0; }
+.tabs-bottom .ui-tabs-nav li.ui-tabs-active { margin-top: -1px; padding-top: 1px; }
+
+</style>      
+
+<script type="text/javascript">
+
+    var jQuery = $.noConflict(true);
+   jQuery(document).ready(function () {
+       
+       jQuery("#tabsMainScreen").tabs();
+       jQuery(".tabs-bottom .ui-tabs-nav, .tabs-bottom .ui-tabs-nav > *")
+     .removeClass("ui-corner-all ui-corner-top")
+     .addClass("ui-corner-bottom");
+       // move the nav to the bottom
+       jQuery(".tabs-bottom .ui-tabs-nav").appendTo(".tabs-bottom");
+       
+       // fix the classes
+      
+
+       jQuery("#subTabsEshopping").tabs();
+       
+       jQuery("#tabsMainScreen").tabs("option", "active", 1);
+
+       
+    });
+    
+
+
+</script>*@
+
+
+
+
+
+
+
+

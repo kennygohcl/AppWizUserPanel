@@ -1,0 +1,22 @@
+﻿@model IEnumerable<Ad>
+@foreach (var o in Model)
+{
+    <tr data-val="@o.Id" class="awe-li" id="branch@(o.Id)">
+        <td>@o.Application.ApplicationName
+        </td>
+        <td>@o.Banner 
+        </td>
+        <td>@o.Start
+        </td>
+         <td>@o.End
+        </td>
+        <td>
+            <button class="awe-btn" onclick="@(Url.Awe().PopupFormAction().Url(Url.Action("Edit", "Ad", new { o.Id })).Success("edit").Height(300))">
+                <span class="ico-edit"></span>
+            </button>
+        </td>
+        <td>
+            @Html.Partial("deletebtn", new DelBtn{ Id = o.Id, IsDeleted = o.IsDeleted, Controller = "Ad" })
+        </td>
+    </tr>               
+}

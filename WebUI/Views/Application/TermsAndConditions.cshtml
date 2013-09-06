@@ -1,0 +1,43 @@
+﻿@model ApplicationInput
+@{
+    Layout = "~/Views/Shared/_LayoutApp.cshtml";
+    ViewBag.Title = "Terms and Conditions";
+    ViewBag.SelectedView = 8;
+}     
+
+@section previewMobileSection {
+    @Html.Partial("Simulator/_TermsAndConditions")
+}
+
+
+        <div style="width: 250px; height: 700px; float: left;">
+            @Html.AntiForgeryToken()
+            <br/>
+            
+            <div id="termsAndConditions"  style="width: 600px; height: 700px; ">
+                <h2 style="text-align: center;">Terms and Conditions</h2>
+                @*<textarea rows="30" style="width: 600px;overflow: auto;" ></textarea>*@
+                <br/>
+                @Html.TextAreaFor(o => o.TermsAndConditions)
+                @Html.CheckBoxFor(o => o.IsTermandConditionsAgreed, new { @class = "registerInputCheckbox" })  @Mui.IHaveReadTheTermsAndConditions
+               <br/><br/>
+                <div style="text-align: center;">
+                    <button class="button-orange btnAdvanceLarge marginTopBottom10">@Mui.Simulate</button>
+                    <button class="button-orange btnAdvanceLarge marginTopBottom10">@Mui.Save</button>
+                    <button class="button-orange btnAdvanceLarge marginTopBottom10">@Mui.Cancel</button>
+                </div>
+            </div>
+            
+        </div>
+
+
+
+
+<script type="text/javascript">
+
+    jQuery(document).ready(function() {
+
+        jQuery('#TermsAndConditions').width(600);
+        jQuery('#TermsAndConditions').heigth(600);
+    });
+</script>

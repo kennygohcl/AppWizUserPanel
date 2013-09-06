@@ -1,0 +1,8 @@
+﻿@model IEnumerable<Frequency>
+@foreach (var o in Model)
+{
+    <tr data-val="@o.Id" class="awe-li" id="frequency@(o.Id)">
+        <td>@o.Description
+        </td>
+    </tr>               
+}

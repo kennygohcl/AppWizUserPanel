@@ -1,0 +1,23 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Payment Gateways";
+}
+<h2>@Mui.PaymentGateWay</h2>
+<fieldset>
+    <legend>@Mui.Search</legend>
+    <input type="text" id="search" />
+    <button type="button" id="sb" class="awe-btn ibtn">@Mui.Search</button>
+</fieldset>
+<br />
+<button class="awe-btn" onclick="@(Url.Awe().PopupFormAction().Url(Url.Action("create")).Success("refreshPaymentGatewayGrid").Height(300))">@Mui.Create</button>
+@Html.Awe().Form().FormClass("LeadRestore").Success("refreshPaymentGatewayGrid").Url(Url.Action("Restore"))
+@Html.Awe().Form().Confirm(true).FormClass("BranchConfirm").Success("refreshPaymentGatewayGrid").Url(Url.Action("Delete"))
+@(Html.Awe().Grid("PaymentGatewayGrid")
+      .Url(Url.Action("GetItems", "PaymentGatewayGrid"))
+      .Parent("search")
+      .Persistence(Persistence.Session)
+      .Columns(
+          new Column { Name = "ApiLogin", PercentWidth = 30},
+          new Column { Name = "TransactionKey" },
+          new Column { Name = "Type", PercentWidth = 15 },
+          new Column { ClientFormat = ".Actions", Width = 80 }))

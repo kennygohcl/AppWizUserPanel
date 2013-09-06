@@ -1,0 +1,8 @@
+﻿@model PaymentGatewayInput
+@using (Html.BeginForm())
+{    
+    @Html.EditorFor(o => o.ApiLogin) 
+    @Html.EditorFor(o => o.TransactionKey)         
+    @Html.EditorFor(o => o.Type)      
+    @Html.HiddenFor(o=>o.UserId , new { Value = ViewBag.UserId})
+}

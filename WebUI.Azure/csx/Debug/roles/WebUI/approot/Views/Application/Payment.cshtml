@@ -1,0 +1,11 @@
+﻿@model ApplicationInput
+@{
+    Layout = "~/Views/Shared/_LayoutApp.cshtml";
+    ViewBag.Title = "Payment";
+    ViewBag.SelectedView = 6;
+}
+    
+@section previewMobileSection {
+    @Html.Partial("Simulator/_Payment")
+}
+

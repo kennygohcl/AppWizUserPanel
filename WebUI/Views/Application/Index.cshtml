@@ -1,0 +1,762 @@
+@model ApplicationInput
+@{
+    Layout = "~/Views/Shared/_LayoutApp.cshtml";
+    ViewBag.Title = "Application";
+    ViewBag.SelectedView = 0;
+}
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.js")" type="text/javascript"></script>
+<script src="@Url.Content("http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js")" type="text/javascript"></script>
+<link href="@Url.Content("~/Content/colorpicker.css")?v=3" rel="stylesheet" type="text/css" />
+<script src="@Url.Content("~/Scripts/colorpicker.js")"></script>
+
+
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
+<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+<link href="@Url.Content("~/Content/jquery-ui-1.10.0.custom.min.css")" rel="stylesheet" type="text/css" />
+<script src="@Url.Content("~/Scripts/jquery-ui-1.10.0.custom.min.js")" type="text/javascript"></script>
+
+@section previewMobileSection {
+    @Html.Partial("Simulator/_LoginBackground")
+}
+                      
+<div style="width: 100%;">
+    <br/>
+    @Html.HiddenFor(o => o.Id, new { id = "hiddenApplicationId" })
+    @Html.HiddenFor(o=>o.AppLogo, new { id="hiddenAppLogo"})   
+    @Html.HiddenFor(o=>o.AppVideo, new { id="hiddenAppVideo"})   
+    <div class="tabular customize">
+        <div class="efield">
+            <div class="elabel">
+                Choose media type to display:
+            </div>
+            <div>
+                <input id="txtMedia" type="text" class="einputRefined searchtxt" readonly="true">
+            </div>
+        </div>
+        <div class="efield" style="display:none">
+            <div class="elabel">
+                Choose media type to display:
+            </div>
+            <div>
+                
+                <table style="padding:0px;margin:0px">
+                    <tr>
+                        <td>
+
+                            @Html.RadioButtonFor(o => o.AppStartUpMediaType, "Image") Image :
+                        </td>
+                        <td>
+                            @Html.Awe().AjaxDropdownFor(o => o.AppLogoId).Parameter("appId", @Model.Id)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+
+                            @Html.RadioButtonFor(o => o.AppStartUpMediaType, "Video")  Video :
+                        </td>
+                        <td>
+
+                            @Html.Awe().AjaxDropdownFor(o => o.AppVideoId).Parameter("appId", @Model.Id)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align:center"></td>
+
+                    </tr>
+                
+                </table>
+            </div>
+        </div>
+        @Html.EditorFor(o => o.ApplicationName) 
+        <div class="btnpanel" style="text-align:left;padding-left:270px">
+        <button id="btnSimulate" class="button-orange btnAdvanceLarge marginTopBottom10">@Mui.Simulate</button>
+                    <button id="btnSaveAndPublish" class="button-orange btnAdvanceLarge marginTopBottom10">@Mui.Save</button>
+                    <button id="btnCancel" class="button-orange btnAdvanceLarge marginTopBottom10">@Mui.Cancel</button>
+        </div>
+    </div>
+    <div id="divMediaLib" class="MediaLib" style="display:none">
+
+        @using (Html.BeginForm("UploadFilesMainAppLogoOrVideo", "Application", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        { 
+                            <input type="file" name="file" style="width:200px" >
+                             <input type="submit" name="Submit" id="Submit" value="Upload" style="float:right;margin-right:5px;padding:0px" />
+                            <hr />
+                            <div class="header">Image</div>
+                                <div id="divImageItem" class="left">
+
+                                </div>
+                                <div class="header">Video</div>
+                                <div id="divVideoItem" class="right">
+
+                                </div>
+                            <div>&nbsp;</div>
+                             
+                        }
+
+    </div>
+    
+    
+
+    <table>
+
+    <tr style="display:none">
+        <td>
+            @Html.EditorFor(o => o.AppBackGroundColor) 
+        </td>
+    </tr>
+     <tr style="display:none">
+            <td>
+                @Html.EditorFor(o => o.AppMainTitleColor)  
+            </td>
+        </tr>
+        <tr style="display:none">
+            <td>
+                @Html.EditorFor(o => o.AppMainTitleFont)
+
+            </td>
+        </tr>
+        <tr style="display:none">
+            <td>
+                @Html.EditorFor(o => o.AppMainTitleFontSize, new { id = "AppMainTitleFontSize" })
+            </td>
+        </tr>
+        
+       
+    </table>
+</div>
+<a id="advancedSettingsLink">Advanced Settings</a>
+<div id="advancedSettingsData" style=" width: 100%;">
+    <table style="width: 100%;">
+         <tr>
+                <td>
+                       @Html.EditorFor(o => o.TabBackgroundColor)
+                </td>
+                <td>
+                    
+                </td>
+            </tr> 
+        <tr>
+            <td>
+                @Html.EditorFor(o => o.TabFont)
+            </td>
+            <td>
+                @Html.EditorFor(o => o.TabFontSize) 
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.EditorFor(o => o.TabFontColor)
+            </td>
+            <td>
+                @Html.EditorFor(o => o.AppHeaderFontSize)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.EditorFor(o => o.AppHeaderFont) 
+            </td>
+            <td>
+                @Html.EditorFor(o => o.AppDataFont)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.EditorFor(o => o.AppDataFontSize)
+            </td>
+            <td>
+                @Html.EditorFor(o => o.AppButtonColor)  
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.EditorFor(o => o.AppButtonFont)
+            </td>
+            <td>
+                @Html.EditorFor(o => o.AppButtonFontSize)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.EditorFor(o => o.AppTextBoxColor)
+            </td>
+            <td>
+                @Html.EditorFor(o => o.AppTextBoxFontSize)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.EditorFor(o => o.AppTextBoxFont) 
+            </td>
+            <td>
+                      
+            </td>
+        </tr>
+    </table>
+       
+
+     
+        </div>
+       
+ 
+<script type="text/javascript">
+
+    jQuery(document).ready(function () {
+        
+        jQuery('#advancedSettingsData').hide();
+        jQuery('#advancedSettingsLink').hide();
+        //jQuery('div').removeClass('efield');
+        // jQuery('div').removeClass('einput');
+        jQuery(".awe-ajaxdropdown").addClass('fl');
+        jQuery("#pAppName").text(jQuery("#ApplicationName").val());
+        jQuery('div').removeClass('einput');
+   
+        jQuery('#ApplicationName').addClass('einputRefined');
+        jQuery('#AppBackGroundColor').addClass('einputRefined');
+        jQuery('#AppMainTitleFont').addClass('einputRefined');
+        jQuery('#AppMainTitleFontSize').addClass('einputRefined');
+        
+
+        jQuery('#TabBackgroundColor').addClass('einputRefined');
+        jQuery('#TabFont').addClass('einputRefined');
+        jQuery('#TabFontSize').addClass('einputRefined');
+        jQuery('#TabFontColor').addClass('einputRefined');
+        jQuery('#AppHeaderFontSize').addClass('einputRefined');
+        jQuery('#AppHeaderFont').addClass('einputRefined');
+        jQuery('#AppDataFont').addClass('einputRefined');
+        jQuery('#AppDataFontSize').addClass('einputRefined');
+        jQuery('#AppButtonColor').addClass('einputRefined');
+        jQuery('#AppButtonFont').addClass('einputRefined');
+        jQuery('#AppButtonFontSize').addClass('einputRefined');
+        jQuery('#AppTextBoxColor').addClass('einputRefined');
+        jQuery('#AppTextBoxFontSize').addClass('einputRefined');
+        jQuery('#AppTextBoxFont').addClass('einputRefined');
+        jQuery('#AppMainTitleColor').addClass('einputRefined');
+
+        if (jQuery('#ApplicationName').val().length) {
+            jQuery('#pAppName').text(jQuery('#ApplicationName').val());
+            
+        }
+
+        loadMediaCustomize();
+        loadMedia();
+	
+        if (jQuery('#AppBackGroundColor').val().length) {
+            jQuery('#AppBackGroundColor').css('backgroundColor', '#' + $('#AppBackGroundColor').val());
+            jQuery('#loginPageMobile').css('backgroundColor', '#' + $('#AppBackGroundColor').val());
+            
+        }
+        
+        if (jQuery('#TabFontColor').val().length) {
+            jQuery('#TabFontColor').css('backgroundColor', '#' + $('#TabFontColor').val());
+        }
+        if (jQuery('#TabBackgroundColor').val().length) {
+            jQuery('#TabBackgroundColor').css('backgroundColor', '#' + $('#TabBackgroundColor').val());
+        }
+        
+        if (jQuery('#AppMainTitleColor').val().length) {
+            jQuery('#AppMainTitleColor').css('backgroundColor', '#' + $('#AppMainTitleColor').val());
+            jQuery('#pAppName').css('color', '#' + $('#AppMainTitleColor').val());
+        }
+        
+        if (jQuery('#AppTextBoxColor').val().length) {
+            jQuery('#AppTextBoxColor').css('backgroundColor', '#' + $('#AppTextBoxColor').val());
+        }
+        
+        if (jQuery('#AppButtonColor').val().length) {
+            jQuery('#AppButtonColor').css('backgroundColor', '#' + $('#AppButtonColor').val());
+        }
+
+        $("#txtMedia").click(function () { showMediaLib();});
+       
+    });
+
+    jQuery("#advancedSettingsLink").click(function () {
+        jQuery('#advancedSettingsData').show();
+    });
+
+
+    jQuery("#AppBackGroundColor").change(function () {
+        jQuery('#loginPageMobile').css('backgroundColor', '#' + $('#AppBackGroundColor').val());
+  });
+    
+    
+    jQuery("#btnCancel").click(function () {
+        location.reload();
+    });
+    
+    function showMediaLib() {
+
+
+        var $div = $('#txtMedia');
+        var left = $div.offset().left;
+        var top = $div.offset().top;
+        var w = $(window).scrollTop();
+        $("#divMediaLib").dialog({ position: [left, top + 31 - w] })
+        $("#divMediaLib").dialog("open");
+            
+    }
+
+    function deleteMedia(id,name) {
+
+        var json = {
+            "id": id
+
+        };
+
+        $.ajax({
+            type: "POST",
+            url: "/Application/RemoveFilesMainAppLogoOrVideo",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify(json),
+            dataType: "json",
+            cache: false,
+            success: function (results) {
+                $("#divItem" + id).hide("slow", function () {
+                    $("#divItem" + id).remove();
+                });
+
+                if ($("#txtMedia").val() == name) {
+                    $("#txtMedia").val("");
+                }
+
+                if ($("#AppLogoId").val() == id) {
+                    $("#AppLogoId").val("0");
+                }
+
+                if ($("#AppVideoId").val() == id) {
+                    $("#AppVideoId").val("0");
+                }
+            },
+            beforeSend: function () {
+                $("#divItem" + id + " > .aRemove").html("<img src='../content/ajax-loader.gif' />");
+            }
+
+            //error: savePublishItemFailed
+        });
+
+
+    }
+
+    function bindMedia(mediaType,logoId,videoId,name){
+        if (mediaType == "IMAGE") {
+            $("#AppVideoId").val("");
+            $("#AppLogoId").val(logoId);
+            //$('input[name="AppStartUpMediaType"][value="Video"]').each(function () { $(this).removeAttr("checked") });
+            $('input[name="AppStartUpMediaType"][value="Image"]').prop({ "checked": "checked" });
+        } else {
+            $("#AppVideoId").val(videoId);
+            $("#AppLogoId").val("");
+            //$('input[name="AppStartUpMediaType"][value="Image"]').each(function () { $(this).removeAttr("checked") });
+            $('input[name="AppStartUpMediaType"][value="Video"]').prop({ "checked": "checked" });
+            
+        }
+
+        $("#txtMedia").val(name);
+        $("#divMediaLib").dialog("close");
+    }
+
+    function loadMediaCustomize()
+    {
+        jQuery.ajax({
+            type: "POST",
+            url: "/AppLogoIdAjaxDropDown/GetItems",
+            contentType: "application/x-www-form-urlencoded",
+            data: { "v": "17", "appId": "1" },
+            dataType: "json",
+            cache: false,
+            success: function (results) {
+
+                var obj = results;
+                var item = "";
+                for (var c = 0; c < obj.length; c++) {
+
+                    item += "<div id='divItem" + obj[c].V + "' class='divItem' style='clear:both'>";
+                    
+                    if (obj[c].V != "") {
+                        item += "<a class='aItem' href='javascript:bindMedia(\"IMAGE\",\"" + obj[c].V + "\",\"\",\"" + obj[c].T + "\")' style='display:block;'>" + obj[c].T + "</a>";
+                        item += "<a class='aRemove' href='javascript:deleteMedia(\"" + obj[c].V + "\",\"" + obj[c].T + "\")' style='display:block;'>" + "[remove]" + "</a>";
+                    } else {
+                        item += "<a class='aItem' href='javascript:bindMedia(\"IMAGE\",\"" + "0" + "\",\"\",\"" + "(Empty)" + "\")' style='display:block;'>" + "(Empty)" + "</a>";
+                    }
+                    item += "<div style='clear:both'></div>";
+                    item += "</div>";
+
+                }
+
+                $("#divImageItem").html(item);
+
+            },
+
+        });
+
+        jQuery.ajax({
+            type: "POST",
+            url: "/AppVideoIdAjaxDropDown/GetItems",
+            contentType: "application/x-www-form-urlencoded",
+            data: { "v": "17", "appId": "1" },
+            dataType: "json",
+            cache: false,
+            success: function (results) {
+
+                var obj = results;
+                var item = "";
+                for (var c = 0; c < obj.length; c++) {
+                    item += "<div id='divItem" + obj[c].V + "' class='divItem' style='clear:both'>";
+                    
+                    if (obj[c].V != "") {
+                        item += "<a class='aItem' href='javascript:bindMedia(\"VIDEO\",\"\",\"" + obj[c].V + "\",\"" + obj[c].T + "\")' style='display:block;'>" + obj[c].T + "</a>";
+                        item += "<a class='aRemove' href='javascript:deleteMedia(\"" + obj[c].V + "\",\"" + obj[c].T + "\")' style='display:block;'>" + "[remove]" + "</a>";
+                    } else {
+                        item += "<a class='aItem' href='javascript:bindMedia(\"VIDEO\",\"\",\"" + "0" + "\",\"" + "(Empty)" + "\")' style='display:block;'>" + "(Empty)" + "</a>";
+                    }
+                    item += "<div style='clear:both'></div>";
+                    item += "</div>";
+                }
+
+                $("#divVideoItem").html(item);
+            },
+
+        });
+
+        $("#divMediaLib").dialog({
+            title:'Media',
+            autoOpen: false,
+            height: 400,
+            width: 350,
+            modal: true,
+            closeOnEscape: true,
+            close: function() {
+               
+            }
+        });
+
+        $(document).on('click', '.ui-widget-overlay', function () {
+            var dialogAria = $(this).next().attr('aria-describedby');
+            $('#' + dialogAria).dialog("close");
+        });
+        
+    }
+
+    function loadMedia() {
+        $("#txtMedia").val("");
+        var checkedradio = jQuery('[name="AppStartUpMediaType"]:radio:checked').val();
+        if (checkedradio == 'Image') {
+
+            jQuery("#appLogoLeft").show();
+            jQuery("#appVideoLeft").hide();
+
+            var id = jQuery("#AppLogoId ").val();
+            var json = {
+                "id": id
+            };
+            jQuery.ajax({
+                type: "POST",
+                url: "/Application/GetMediaNameById",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(json),
+                dataType: "json",
+                cache: false,
+                success: function (results) {
+                    
+                    var obj = JSON.stringify(results);
+                    var value = obj.split(":");
+                    var finalValue = value[1].substring(1, value[1].length - 2);
+                    jQuery("#appLogoLeft").show();
+                    jQuery("#appLogoLeft").attr("src", "../pictures/Retailers/" + finalValue);
+                    jQuery("#appVideoLeft").hide();
+                    $("#txtMedia").val(finalValue);
+                },
+
+            });
+
+        } else {
+            jQuery("#appLogoLeft").hide();
+            jQuery("#appVideoLeft").show();
+
+            var idVideo = jQuery("#AppVideoId ").val();
+
+            var json1 = {
+                "id": idVideo
+            };
+            jQuery.ajax({
+                type: "POST",
+                url: "/Application/GetMediaNameById",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(json1),
+                dataType: "json",
+                cache: false,
+                success: function (results) {
+                    var obj = JSON.stringify(results);
+                    var value = obj.split(":");
+                    var finalValue = value[1].substring(1, value[1].length - 2);
+
+                    var srcVideo = "small.mp4";
+                    if (finalValue.substring(finalValue.length - 3) == 'mp4') {
+                        srcVideo = finalValue;
+                    }
+                    jQuery("#appVideoLeft").attr("src", "../pictures/retailers/" + srcVideo);
+                    $("#txtMedia").val(srcVideo);
+                },
+                //error: savePublishItemFailed
+            });
+        }
+    }
+
+    jQuery("#btnSimulate").click(function () {
+
+        loadMedia();
+        
+        if (jQuery('#ApplicationName').val().length>0) {
+            jQuery('#pAppName').text(jQuery('#ApplicationName').val());
+           
+        }
+
+        if (jQuery('#AppBackGroundColor').val().length > 0) {
+            jQuery('#AppBackGroundColor').css('backgroundColor', '#' + $('#AppBackGroundColor').val());
+            jQuery('#loginPageMobile').css('backgroundColor', '#' + $('#AppBackGroundColor').val());
+        }
+
+        if (jQuery('#TabFontColor').val().length > 0) {
+            jQuery('#TabFontColor').css('backgroundColor', '#' + $('#TabFontColor').val());
+        }
+        if (jQuery('#TabBackgroundColor').val().length > 0) {
+            jQuery('#TabBackgroundColor').css('backgroundColor', '#' + $('#TabBackgroundColor').val());
+        }
+
+        if (jQuery('#AppMainTitleColor').val().length > 0) {
+            jQuery('#AppMainTitleColor').css('backgroundColor', '#' + $('#AppMainTitleColor').val());
+            jQuery('#pAppName').css('color', '#' + $('#AppMainTitleColor').val());
+        }
+
+        if (jQuery('#AppTextBoxColor').val().length > 0) {
+            jQuery('#AppTextBoxColor').css('backgroundColor', '#' + $('#AppTextBoxColor').val());
+        }
+
+        if (jQuery('#AppButtonColor').val().length > 0) {
+            jQuery('#AppButtonColor').css('backgroundColor', '#' + $('#AppButtonColor').val());
+        }
+
+    });
+    
+
+    jQuery("#btnSaveAndPublish").click(function () {
+        var  newName = $("#ApplicationName").val();
+        var hiddenApplicationId = $("#hiddenApplicationId").val();
+        var appBackGroundColor = $("#AppBackGroundColor").val();
+        var appMainTitleFont = $("#AppMainTitleFont").val();
+        var appMainTitleFontSize = $("#AppMainTitleFontSize").val();
+        var tabFont = $("#TabFont").val();
+        var tabFontSize = $("#TabFontSize").val();
+        var tabFontColor = $("#TabFontColor").val();
+        var appHeaderFontSize = $("#AppHeaderFontSize").val();
+        var appHeaderFont = $("#AppHeaderFont").val();
+        var appDataFont = $("#AppDataFont").val();
+        var appDataFontSize = $("#AppDataFontSize").val();
+        var tabBackgroundColor = $("#TabBackgroundColor").val();
+        var appMainTitleColor = $("#AppMainTitleColor").val();
+        var appButtonFont = $("#AppButtonFont").val();
+        var appButtonColor = $("#AppButtonColor").val();
+        var appButtonFontSize = $("#AppButtonFontSize").val();
+        var appTextBoxColor = $("#AppTextBoxColor").val();
+        var appTextBoxFontSize = $("#AppTextBoxFontSize").val();
+        var appTextBoxFont = $("#AppTextBoxFont").val();
+        var appStartUpMediaType = $("#AppStartUpMediaType").val();
+        var appLogoId = $("#AppLogoId").val();
+        if (appLogoId=="") {
+            appLogoId = "0";
+        }
+        var appVideoId = $("#AppVideoId").val();
+        if (appVideoId == "") {
+            appVideoId = "0";
+        }
+        var json = {
+            "hiddenApplicationId": hiddenApplicationId, "newAppName": newName,
+            "appBackGroundColor": appBackGroundColor, "appMainTitleFont": appMainTitleFont,
+            "appMainTitleFontSize": appMainTitleFontSize, "tabFont": tabFont,
+            "tabFontSize": tabFontSize, "tabFontColor": tabFontColor,
+            "appHeaderFontSize": appHeaderFontSize,
+            "appDataFont": appDataFont, "appHeaderFont": appHeaderFont,
+            "appDataFontSize": appDataFontSize, "tabBackgroundColor": tabBackgroundColor,
+            "appMainTitleColor": appMainTitleColor,
+            "appButtonFont": appButtonFont, "appButtonColor": appButtonColor,
+            "appButtonFontSize": appButtonFontSize, "appTextBoxColor": appTextBoxColor, 
+            "appTextBoxFontSize": appTextBoxFontSize, "appTextBoxFont": appTextBoxFont,
+            "appStartUpMediaType": appStartUpMediaType, "appLogoId": appLogoId,
+            "appVideoId": appVideoId
+        };
+      
+      
+        $.ajax({
+            type: "POST",
+            url: "/Application/SetApplicationName",
+            contentType: "application/json; charset=utf-8",
+            data:  JSON.stringify(json),
+            dataType: "json" ,
+            success: function (results) {
+                location.reload();
+            }
+
+            //error: savePublishItemFailed
+        });
+      
+  });
+    
+    function savePublishCompleted(results) {
+      
+        location.reload();
+    }
+    function saveApplicationName(action) {
+        jQuery.post("/Application/" + action, function (data) {
+            $("#ApplicationName").html(data);
+        });
+    }
+  
+    var widt = false;
+    $('#colorpickerholder').ColorPicker({ flat: true });
+    $('#colorpickerholder2').ColorPicker({
+        flat: true,
+        color: '#EFEFEF',
+        onSubmit: function (hsb, hex, rgb) {
+            $('#colorselector div').css('backgroundColor', '#' + hex);
+        }
+    });
+    $('#colorselector').on('click', function () {
+        $('#colorpickerholder2').stop().animate({ height: widt ? 0 : 173 }, 500);
+        widt = !widt;
+    });
+    
+    $('#AppBackGroundColor').ColorPicker({
+        onSubmit: function (hsb, hex, rgb, el, parent) {
+            $(el).val(hex);
+            $(el).ColorPickerHide();
+           // $(this).ColorPickerSetColor(this.value);
+            
+          //  if ($('#AppBackGroundColor').val().length > 0) {
+                $('#AppBackGroundColor').css('backgroundColor', '#' + $('#AppBackGroundColor').val());
+           // }
+        },
+        onBeforeShow: function () {
+            $(this).ColorPickerSetColor(this.value);
+        }
+    }).on('keyup', function () {
+        $(this).ColorPickerSetColor(this.value);
+        if (this.value.length > 0) {
+            $('#AppBackGroundColor').css('backgroundColor', '#' + this.value);
+        }
+       
+    });
+
+
+    $('#TabBackgroundColor').ColorPicker({
+        onSubmit: function (hsb, hex, rgb, el, parent) {
+            $(el).val(hex);
+            $(el).ColorPickerHide();
+            //$(this).ColorPickerSetColor(this.value);
+           // if ($('#TabBackgroundColor').val().length > 0) {
+                $('#TabBackgroundColor').css('backgroundColor', '#' + $('#TabBackgroundColor').val());
+            //}
+        },
+        onBeforeShow: function () {
+            $(this).ColorPickerSetColor(this.value);
+        }
+    }).on('keyup', function () {
+        $(this).ColorPickerSetColor(this.value);
+        if (this.value.length > 0) {
+            $('#TabBackgroundColor').css('backgroundColor', '#' + this.value);
+        }
+    });
+    
+    $('#TabFontColor').ColorPicker({
+        onSubmit: function (hsb, hex, rgb, el, parent) {
+            $(el).val(hex);
+            $(el).ColorPickerHide();
+           // $(this).ColorPickerSetColor(this.value);
+           // if ($('#TabFontColor').val().length > 0) {
+                $('#TabFontColor').css('backgroundColor', '#' + $('#TabFontColor').val());
+           // }
+        },
+        onBeforeShow: function () {
+            $(this).ColorPickerSetColor(this.value);
+        }
+    }).on('keyup', function () {
+        $(this).ColorPickerSetColor(this.value);
+        if (this.value.length > 0) {
+            $('#TabFontColor').css('backgroundColor', '#' + this.value);
+        }
+      
+    });
+    
+    $('#AppMainTitleColor').ColorPicker({
+        onSubmit: function (hsb, hex, rgb, el, parent) {
+            $(el).val(hex);
+            $(el).ColorPickerHide();
+            // $(this).ColorPickerSetColor(this.value);
+            // if ($('#TabFontColor').val().length > 0) {
+            $('#AppMainTitleColor').css('backgroundColor', '#' + $('#AppMainTitleColor').val());
+            jQuery('#pAppName').css('color', '#' + $('#AppMainTitleColor').val());
+            // }
+        },
+        onBeforeShow: function () {
+            $(this).ColorPickerSetColor(this.value);
+        }
+    }).on('keyup', function () {
+        $(this).ColorPickerSetColor(this.value);
+        if (this.value.length > 0) {
+            $('#AppMainTitleColor').css('backgroundColor', '#' + this.value);
+        }
+
+    });
+
+    $('#AppTextBoxColor').ColorPicker({
+        onSubmit: function (hsb, hex, rgb, el, parent) {
+            $(el).val(hex);
+            $(el).ColorPickerHide();
+            $('#AppTextBoxColor').css('backgroundColor', '#' + $('#AppTextBoxColor').val());
+        },
+        onBeforeShow: function () {
+            $(this).ColorPickerSetColor(this.value);
+        }
+    }).on('keyup', function () {
+        $(this).ColorPickerSetColor(this.value);
+        if (this.value.length > 0) {
+            $('#AppTextBoxColor').css('backgroundColor', '#' + this.value);
+        }
+
+    });
+
+    $('#AppButtonColor ').ColorPicker({
+        onSubmit: function (hsb, hex, rgb, el, parent) {
+            $(el).val(hex);
+            $(el).ColorPickerHide();
+            $('#AppButtonColor ').css('backgroundColor', '#' + $('#AppButtonColor ').val());
+        },
+        onBeforeShow: function () {
+            $(this).ColorPickerSetColor(this.value);
+        }
+    }).on('keyup', function () {
+        $(this).ColorPickerSetColor(this.value);
+        if (this.value.length > 0) {
+            $('#AppButtonColor').css('backgroundColor', '#' + this.value);
+        }
+
+    });
+
+    $('#colorselector2').ColorPicker({
+        color: '#EFEFEF',
+        onShow: function (colpkr) {
+            $(colpkr).fadeIn(500);
+            return false;
+        },
+        onHide: function (colpkr) {
+            $(colpkr).fadeOut(500);
+            return false;
+        },
+        onChange: function (hsb, hex, rgb) {
+            $('#colorselector2 div').css('backgroundColor', '#' + hex);
+        }
+    });
+  
+
+</script>

@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Product>
+
+   <link href="@Url.Content("~")Content/themes/@Html.Action("GetTheme", "ChangeTheme")/AwesomeMvc.css" rel="stylesheet" type="text/css" id="aweStyle" />
+
+@foreach (var o in Model)
+{
+    <li id='product@(o.Id)cat@(ViewBag.CategoryId)' class="awe-li product awe-il" data-val="@o.Id">
+        <div>@o.Name
+            <div class="fr">
+                @Html.Partial("deletebtn", new DelBtn { Id = o.Id, IsDeleted = o.IsDeleted, Controller = "Product" })
+            </div>
+        </div>
+        <div>
+            <div class="fl">
+                <img  src='@Url.Content("~/pictures/Products/" + (string.IsNullOrEmpty(o.Picture) ? "0.jpg" : o.Picture))' class="thumb"  alt='picture' /></div>
+            <div style="float: left;">
+                <div style="float: left; width: 200px; height: 80px;">
+                    @if(o.Description.Length>150)
+                    {
+                         @o.Description.Substring(0,150)
+                    }
+                    else
+                    {
+                        @o.Description
+                    }
+                   
+                </div>
+                   <div style="float: right; width: 70px;" >
+                   <label id='productPrice@(o.Id)cat@(ViewBag.CategoryId)' style="float:right; font-size: 15px; color:darkred; font-weight: bold;" >
+                        @{ 
+                            @o.Price
+                        }
+                   </label>
+            </div>
+
+            </div>
+            <br class="cbt" />
+        </div>
+        <div class="cbt" style="margin-top: 0.5em;">
+            <div class='cool fl' style="padding: 5px;">
+                <button class="awe-btn" onclick="@(Url.Awe().PopupAction().Url(Url.Action("ChangePicture", "Product", new { o.Id })).Width(650).Height(650).RemoveOnClose(false))" style="padding:0.1em 0.3em">@Mui.change_picture</button>
+                 <button class="awe-btn" onclick="@(Url.Awe().PopupAction().Url(Url.Action("CreatePromotion", "Promotion", new { description = o.Description, origPrice = o.Price, productId= o.Id })).Width(650).Height(650).RemoveOnClose(true))" style="padding:0.1em 0.3em">@Mui.AddHotDeal</button>
+            
+            
+            </div>
+            <div class="fr"  style="padding: 5px;">
+                <button class="awe-btn" onclick="@(Url.Awe().PopupFormAction().Url(Url.Action("Edit", "Product", new { o.Id })).Success("edit").Height(450))" style="padding:0.1em 0.3em">
+                    <span class="ico-edit"></span>
+                </button>
+            </div>
+        </div>
+    </li>
+}
+
+

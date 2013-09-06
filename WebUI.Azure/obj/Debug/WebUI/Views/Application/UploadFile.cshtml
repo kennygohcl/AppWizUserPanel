@@ -1,0 +1,51 @@
+﻿@model UploadFileModel
+
+@{
+    ViewBag.Title = "UploadFile";
+}
+
+<h2>UploadFile</h2>
+
+@using (Html.BeginForm("UploadFile", "Application", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+	@Html.ValidationSummary(true, "Unable to upload file. Please correct the errors and try again.")
+
+	<div id="fileinputs" >
+
+		@Html.ValidationMessageFor(m => m.File)
+		@*hide the actual file input cause we can't change it's style*@
+		@Html.TextBoxFor(m => m.File, new { type = "file", style = "display:none" })
+
+		@*this is what we display instead of the file input*@
+		<input type="button" id="fake-upload-button" value="Browse"  />
+		<span id="fake-file-name" >No file chosen</span>
+
+		@*submit button*@
+		<input type="submit" class="upload-button" value="Upload File"  />
+
+	</div>
+}
+
+@section scripts
+{
+	<script type="text/javascript">
+		
+	    jQuery(function () {
+
+	        //fire the actual file input click
+	        jQuery("#fake-upload-button").click(function () {
+	            jQuery("#File").click();
+	        });
+
+	        //display the chosen file name to the user
+	        jQuery("#File").bind('change', function () {
+	            //we don't want the C:\fakepath to show
+	            var displayFileName = this.value.replace("C:\\fakepath\\", "");
+	            jQuery("#fake-file-name").text(displayFileName);
+	        });
+
+	    });
+
+	</script>
+}

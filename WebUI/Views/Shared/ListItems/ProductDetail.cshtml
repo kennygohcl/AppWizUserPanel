@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Product>
+@foreach (var o in Model)
+{
+    <li id='product@(o.Id)' class="awe-li product awe-il" data-val="@o.Id">
+        <div>@o.Name
+            <div class="fr">
+                @Html.Partial("deletebtn", new DelBtn { Id = o.Id, IsDeleted = o.IsDeleted, Controller = "Product" })
+            </div>
+        </div>
+        <div>
+            <div class="fl">
+                <img  src='@Url.Content("~/pictures/Products/" + (string.IsNullOrEmpty(o.Picture) ? "0.jpg" : o.Picture))' class="thumb"  alt='picture' /></div>
+            <div class="comments">@Mui.Price: @o.Price</div>
+            <div class="comments">@o.Description</div>
+            <br class="cbt" />
+        </div>
+        <div class="cbt" style="margin-top: 0.5em;">
+            <div class='cool fl'>
+                <button class="awe-btn" onclick="@(Url.Awe().PopupAction().Url(Url.Action("ChangePicture", "Product", new { o.Id })).Height(650).Width(650).RemoveOnClose(false))" style="padding:0.1em 0.3em">@Mui.change_picture</button>
+            </div>
+         @*   <div class='notcool fl'>                
+                <button class="awe-btn" onclick="location.href='@Url.Action("ochangepicture", "Product", new { o.Id })'">@Mui.change_picture</button>
+            </div>*@
+            <div class="fr">
+                <button class="awe-btn" onclick="@(Url.Awe().PopupFormAction().Url(Url.Action("Edit", "Product", new { o.Id })).Success("edit"))" style="padding:0.1em 0.3em">
+                    <span class="ico-edit"></span>
+                </button>
+            </div>
+        </div>
+    </li>
+}

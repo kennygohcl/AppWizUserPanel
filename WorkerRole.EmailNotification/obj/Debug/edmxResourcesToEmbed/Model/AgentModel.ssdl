@@ -1,0 +1,224 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SqlAzureAgentModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="SqlAzureAgentModelStoreContainer">
+    <EntitySet Name="sysmail_account" EntityType="SqlAzureAgentModel.Store.sysmail_account" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="sysmail_account_credential" EntityType="SqlAzureAgentModel.Store.sysmail_account_credential" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="sysmail_mailitems" EntityType="SqlAzureAgentModel.Store.sysmail_mailitems" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="sysmail_principalprofile" EntityType="SqlAzureAgentModel.Store.sysmail_principalprofile" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="sysmail_profile" EntityType="SqlAzureAgentModel.Store.sysmail_profile" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="sysmail_profileaccount" EntityType="SqlAzureAgentModel.Store.sysmail_profileaccount" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="sysmail_server" EntityType="SqlAzureAgentModel.Store.sysmail_server" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="sysmail_servertype" EntityType="SqlAzureAgentModel.Store.sysmail_servertype" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="vwJobsToExecute" EntityType="SqlAzureAgentModel.Store.vwJobsToExecute" store:Type="Views" store:Schema="dbo" store:Name="vwJobsToExecute">
+      <DefiningQuery>SELECT 
+      [vwJobsToExecute].[JobId] AS [JobId], 
+      [vwJobsToExecute].[SqlToExecute] AS [SqlToExecute], 
+      [vwJobsToExecute].[ConnectionStringToUse] AS [ConnectionStringToUse]
+      FROM [dbo].[vwJobsToExecute] AS [vwJobsToExecute]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__sysmail_p__accou__55009F39" Association="SqlAzureAgentModel.Store.FK__sysmail_p__accou__55009F39">
+      <End Role="sysmail_account" EntitySet="sysmail_account" />
+      <End Role="sysmail_profileaccount" EntitySet="sysmail_profileaccount" />
+    </AssociationSet>
+    <AssociationSet Name="FK__sysmail_p__profi__540C7B00" Association="SqlAzureAgentModel.Store.FK__sysmail_p__profi__540C7B00">
+      <End Role="sysmail_profile" EntitySet="sysmail_profile" />
+      <End Role="sysmail_principalprofile" EntitySet="sysmail_principalprofile" />
+    </AssociationSet>
+    <AssociationSet Name="FK__sysmail_s__accou__55F4C372" Association="SqlAzureAgentModel.Store.FK__sysmail_s__accou__55F4C372">
+      <End Role="sysmail_account" EntitySet="sysmail_account" />
+      <End Role="sysmail_server" EntitySet="sysmail_server" />
+    </AssociationSet>
+    <AssociationSet Name="FK__sysmail_s__serve__56E8E7AB" Association="SqlAzureAgentModel.Store.FK__sysmail_s__serve__56E8E7AB">
+      <End Role="sysmail_servertype" EntitySet="sysmail_servertype" />
+      <End Role="sysmail_server" EntitySet="sysmail_server" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="sysmail_account">
+    <Key>
+      <PropertyRef Name="account_id" />
+    </Key>
+    <Property Name="account_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="description" Type="nvarchar" MaxLength="256" />
+    <Property Name="email_address" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="display_name" Type="nvarchar" MaxLength="128" />
+    <Property Name="replyto_address" Type="nvarchar" MaxLength="128" />
+    <Property Name="last_mod_datetime" Type="datetime" Nullable="false" />
+    <Property Name="last_mod_user" Type="nvarchar" Nullable="false" MaxLength="128" />
+  </EntityType>
+  <EntityType Name="sysmail_account_credential">
+    <Key>
+      <PropertyRef Name="credential_id" />
+    </Key>
+    <Property Name="credential_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="nvarchar" MaxLength="256" />
+    <Property Name="cyphertext" Type="nvarchar" MaxLength="256" />
+  </EntityType>
+  <EntityType Name="sysmail_mailitems">
+    <Key>
+      <PropertyRef Name="mailitem_id" />
+    </Key>
+    <Property Name="mailitem_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="profile_id" Type="int" Nullable="false" />
+    <Property Name="recipients" Type="varchar(max)" />
+    <Property Name="copy_recipients" Type="varchar(max)" />
+    <Property Name="blind_copy_recipients" Type="varchar(max)" />
+    <Property Name="subject" Type="nvarchar" MaxLength="255" />
+    <Property Name="from_address" Type="varchar(max)" />
+    <Property Name="reply_to" Type="varchar(max)" />
+    <Property Name="body" Type="nvarchar(max)" />
+    <Property Name="body_format" Type="varchar" MaxLength="20" />
+    <Property Name="importance" Type="varchar" MaxLength="6" />
+    <Property Name="sensitivity" Type="varchar" MaxLength="12" />
+    <Property Name="file_attachments" Type="nvarchar(max)" />
+    <Property Name="attachment_encoding" Type="varchar" MaxLength="20" />
+    <Property Name="query" Type="nvarchar(max)" />
+    <Property Name="execute_query_database" Type="nvarchar" MaxLength="128" />
+    <Property Name="attach_query_result_as_file" Type="bit" />
+    <Property Name="query_result_header" Type="bit" />
+    <Property Name="query_result_width" Type="int" />
+    <Property Name="query_result_separator" Type="char" MaxLength="1" />
+    <Property Name="exclude_query_output" Type="bit" />
+    <Property Name="append_query_error" Type="bit" />
+    <Property Name="send_request_date" Type="datetime" Nullable="false" />
+    <Property Name="send_request_user" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="sent_account_id" Type="int" />
+    <Property Name="sent_status" Type="tinyint" />
+    <Property Name="sent_date" Type="datetime" />
+    <Property Name="last_mod_date" Type="datetime" Nullable="false" />
+    <Property Name="last_mod_user" Type="nvarchar" Nullable="false" MaxLength="128" />
+  </EntityType>
+  <EntityType Name="sysmail_principalprofile">
+    <Key>
+      <PropertyRef Name="profile_id" />
+      <PropertyRef Name="principal_sid" />
+    </Key>
+    <Property Name="profile_id" Type="int" Nullable="false" />
+    <Property Name="principal_sid" Type="varbinary" Nullable="false" MaxLength="85" />
+    <Property Name="is_default" Type="bit" Nullable="false" />
+    <Property Name="last_mod_datetime" Type="datetime" Nullable="false" />
+    <Property Name="last_mod_user" Type="nvarchar" Nullable="false" MaxLength="128" />
+  </EntityType>
+  <EntityType Name="sysmail_profile">
+    <Key>
+      <PropertyRef Name="profile_id" />
+    </Key>
+    <Property Name="profile_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="description" Type="nvarchar" MaxLength="256" />
+    <Property Name="last_mod_datetime" Type="datetime" Nullable="false" />
+    <Property Name="last_mod_user" Type="nvarchar" Nullable="false" MaxLength="128" />
+  </EntityType>
+  <EntityType Name="sysmail_profileaccount">
+    <Key>
+      <PropertyRef Name="profile_id" />
+      <PropertyRef Name="account_id" />
+    </Key>
+    <Property Name="profile_id" Type="int" Nullable="false" />
+    <Property Name="account_id" Type="int" Nullable="false" />
+    <Property Name="sequence_number" Type="int" />
+    <Property Name="last_mod_datetime" Type="datetime" Nullable="false" />
+    <Property Name="last_mod_user" Type="nvarchar" Nullable="false" MaxLength="128" />
+  </EntityType>
+  <EntityType Name="sysmail_server">
+    <Key>
+      <PropertyRef Name="account_id" />
+      <PropertyRef Name="servertype" />
+    </Key>
+    <Property Name="account_id" Type="int" Nullable="false" />
+    <Property Name="servertype" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="servername" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="port" Type="int" Nullable="false" />
+    <Property Name="username" Type="nvarchar" MaxLength="128" />
+    <Property Name="credential_id" Type="int" />
+    <Property Name="use_default_credentials" Type="bit" Nullable="false" />
+    <Property Name="enable_ssl" Type="bit" Nullable="false" />
+    <Property Name="flags" Type="int" Nullable="false" />
+    <Property Name="last_mod_datetime" Type="datetime" Nullable="false" />
+    <Property Name="last_mod_user" Type="nvarchar" Nullable="false" MaxLength="128" />
+  </EntityType>
+  <EntityType Name="sysmail_servertype">
+    <Key>
+      <PropertyRef Name="servertype" />
+    </Key>
+    <Property Name="servertype" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="is_incoming" Type="bit" Nullable="false" />
+    <Property Name="is_outgoing" Type="bit" Nullable="false" />
+    <Property Name="last_mod_datetime" Type="datetime" Nullable="false" />
+    <Property Name="last_mod_user" Type="nvarchar" Nullable="false" MaxLength="128" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'LoadDevDB.dbo.vwJobsToExecute' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="vwJobsToExecute">
+    <Key>
+      <PropertyRef Name="JobId" />
+      <PropertyRef Name="SqlToExecute" />
+    </Key>
+    <Property Name="JobId" Type="int" Nullable="false" />
+    <Property Name="SqlToExecute" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="ConnectionStringToUse" Type="nvarchar" MaxLength="512" />
+  </EntityType>
+  <Association Name="FK__sysmail_p__accou__55009F39">
+    <End Role="sysmail_account" Type="SqlAzureAgentModel.Store.sysmail_account" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="sysmail_profileaccount" Type="SqlAzureAgentModel.Store.sysmail_profileaccount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sysmail_account">
+        <PropertyRef Name="account_id" />
+      </Principal>
+      <Dependent Role="sysmail_profileaccount">
+        <PropertyRef Name="account_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__sysmail_p__profi__540C7B00">
+    <End Role="sysmail_profile" Type="SqlAzureAgentModel.Store.sysmail_profile" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="sysmail_principalprofile" Type="SqlAzureAgentModel.Store.sysmail_principalprofile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sysmail_profile">
+        <PropertyRef Name="profile_id" />
+      </Principal>
+      <Dependent Role="sysmail_principalprofile">
+        <PropertyRef Name="profile_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__sysmail_s__accou__55F4C372">
+    <End Role="sysmail_account" Type="SqlAzureAgentModel.Store.sysmail_account" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="sysmail_server" Type="SqlAzureAgentModel.Store.sysmail_server" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sysmail_account">
+        <PropertyRef Name="account_id" />
+      </Principal>
+      <Dependent Role="sysmail_server">
+        <PropertyRef Name="account_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__sysmail_s__serve__56E8E7AB">
+    <End Role="sysmail_servertype" Type="SqlAzureAgentModel.Store.sysmail_servertype" Multiplicity="1" />
+    <End Role="sysmail_server" Type="SqlAzureAgentModel.Store.sysmail_server" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sysmail_servertype">
+        <PropertyRef Name="servertype" />
+      </Principal>
+      <Dependent Role="sysmail_server">
+        <PropertyRef Name="servertype" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="CleanUp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="StartJob" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="JobId" Type="int" Mode="In" />
+    <Parameter Name="ActivityId" Type="uniqueidentifier" Mode="InOut" />
+  </Function>
+  <Function Name="StopJob" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ActivityId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+</Schema>

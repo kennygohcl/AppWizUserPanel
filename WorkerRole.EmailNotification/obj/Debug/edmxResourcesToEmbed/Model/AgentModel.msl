@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SqlAzureAgentModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="vwJobsToExecutes">
+      <EntityTypeMapping TypeName="SqlAzureAgentModel.vwJobsToExecute">
+        <MappingFragment StoreEntitySet="vwJobsToExecute">
+          <ScalarProperty Name="JobId" ColumnName="JobId" />
+          <ScalarProperty Name="SqlToExecute" ColumnName="SqlToExecute" />
+          <ScalarProperty Name="ConnectionStringToUse" ColumnName="ConnectionStringToUse" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="CleanUp" FunctionName="SqlAzureAgentModel.Store.CleanUp" />
+    <FunctionImportMapping FunctionImportName="StopJob" FunctionName="SqlAzureAgentModel.Store.StopJob" />
+    <FunctionImportMapping FunctionImportName="StartJob" FunctionName="SqlAzureAgentModel.Store.StartJob" />
+    <EntitySetMapping Name="sysmail_mailitems">
+      <EntityTypeMapping TypeName="SqlAzureAgentModel.sysmail_mailitems">
+        <MappingFragment StoreEntitySet="sysmail_mailitems">
+          <ScalarProperty Name="last_mod_user" ColumnName="last_mod_user" />
+          <ScalarProperty Name="last_mod_date" ColumnName="last_mod_date" />
+          <ScalarProperty Name="sent_date" ColumnName="sent_date" />
+          <ScalarProperty Name="sent_status" ColumnName="sent_status" />
+          <ScalarProperty Name="sent_account_id" ColumnName="sent_account_id" />
+          <ScalarProperty Name="send_request_user" ColumnName="send_request_user" />
+          <ScalarProperty Name="send_request_date" ColumnName="send_request_date" />
+          <ScalarProperty Name="append_query_error" ColumnName="append_query_error" />
+          <ScalarProperty Name="exclude_query_output" ColumnName="exclude_query_output" />
+          <ScalarProperty Name="query_result_separator" ColumnName="query_result_separator" />
+          <ScalarProperty Name="query_result_width" ColumnName="query_result_width" />
+          <ScalarProperty Name="query_result_header" ColumnName="query_result_header" />
+          <ScalarProperty Name="attach_query_result_as_file" ColumnName="attach_query_result_as_file" />
+          <ScalarProperty Name="execute_query_database" ColumnName="execute_query_database" />
+          <ScalarProperty Name="query" ColumnName="query" />
+          <ScalarProperty Name="attachment_encoding" ColumnName="attachment_encoding" />
+          <ScalarProperty Name="file_attachments" ColumnName="file_attachments" />
+          <ScalarProperty Name="sensitivity" ColumnName="sensitivity" />
+          <ScalarProperty Name="importance" ColumnName="importance" />
+          <ScalarProperty Name="body_format" ColumnName="body_format" />
+          <ScalarProperty Name="body" ColumnName="body" />
+          <ScalarProperty Name="reply_to" ColumnName="reply_to" />
+          <ScalarProperty Name="from_address" ColumnName="from_address" />
+          <ScalarProperty Name="subject" ColumnName="subject" />
+          <ScalarProperty Name="blind_copy_recipients" ColumnName="blind_copy_recipients" />
+          <ScalarProperty Name="copy_recipients" ColumnName="copy_recipients" />
+          <ScalarProperty Name="recipients" ColumnName="recipients" />
+          <ScalarProperty Name="profile_id" ColumnName="profile_id" />
+          <ScalarProperty Name="mailitem_id" ColumnName="mailitem_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysmail_account">
+      <EntityTypeMapping TypeName="SqlAzureAgentModel.sysmail_account">
+        <MappingFragment StoreEntitySet="sysmail_account">
+          <ScalarProperty Name="last_mod_user" ColumnName="last_mod_user" />
+          <ScalarProperty Name="last_mod_datetime" ColumnName="last_mod_datetime" />
+          <ScalarProperty Name="replyto_address" ColumnName="replyto_address" />
+          <ScalarProperty Name="display_name" ColumnName="display_name" />
+          <ScalarProperty Name="email_address" ColumnName="email_address" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="account_id" ColumnName="account_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysmail_profile">
+      <EntityTypeMapping TypeName="SqlAzureAgentModel.sysmail_profile">
+        <MappingFragment StoreEntitySet="sysmail_profile">
+          <ScalarProperty Name="last_mod_user" ColumnName="last_mod_user" />
+          <ScalarProperty Name="last_mod_datetime" ColumnName="last_mod_datetime" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="profile_id" ColumnName="profile_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysmail_profileaccount">
+      <EntityTypeMapping TypeName="SqlAzureAgentModel.sysmail_profileaccount">
+        <MappingFragment StoreEntitySet="sysmail_profileaccount">
+          <ScalarProperty Name="last_mod_user" ColumnName="last_mod_user" />
+          <ScalarProperty Name="last_mod_datetime" ColumnName="last_mod_datetime" />
+          <ScalarProperty Name="sequence_number" ColumnName="sequence_number" />
+          <ScalarProperty Name="account_id" ColumnName="account_id" />
+          <ScalarProperty Name="profile_id" ColumnName="profile_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysmail_account_credential">
+      <EntityTypeMapping TypeName="SqlAzureAgentModel.sysmail_account_credential">
+        <MappingFragment StoreEntitySet="sysmail_account_credential">
+          <ScalarProperty Name="cyphertext" ColumnName="cyphertext" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="credential_id" ColumnName="credential_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysmail_principalprofile">
+      <EntityTypeMapping TypeName="SqlAzureAgentModel.sysmail_principalprofile">
+        <MappingFragment StoreEntitySet="sysmail_principalprofile">
+          <ScalarProperty Name="last_mod_user" ColumnName="last_mod_user" />
+          <ScalarProperty Name="last_mod_datetime" ColumnName="last_mod_datetime" />
+          <ScalarProperty Name="is_default" ColumnName="is_default" />
+          <ScalarProperty Name="principal_sid" ColumnName="principal_sid" />
+          <ScalarProperty Name="profile_id" ColumnName="profile_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysmail_server">
+      <EntityTypeMapping TypeName="SqlAzureAgentModel.sysmail_server">
+        <MappingFragment StoreEntitySet="sysmail_server">
+          <ScalarProperty Name="last_mod_user" ColumnName="last_mod_user" />
+          <ScalarProperty Name="last_mod_datetime" ColumnName="last_mod_datetime" />
+          <ScalarProperty Name="flags" ColumnName="flags" />
+          <ScalarProperty Name="enable_ssl" ColumnName="enable_ssl" />
+          <ScalarProperty Name="use_default_credentials" ColumnName="use_default_credentials" />
+          <ScalarProperty Name="credential_id" ColumnName="credential_id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="port" ColumnName="port" />
+          <ScalarProperty Name="servername" ColumnName="servername" />
+          <ScalarProperty Name="servertype" ColumnName="servertype" />
+          <ScalarProperty Name="account_id" ColumnName="account_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysmail_servertype">
+      <EntityTypeMapping TypeName="SqlAzureAgentModel.sysmail_servertype">
+        <MappingFragment StoreEntitySet="sysmail_servertype">
+          <ScalarProperty Name="last_mod_user" ColumnName="last_mod_user" />
+          <ScalarProperty Name="last_mod_datetime" ColumnName="last_mod_datetime" />
+          <ScalarProperty Name="is_outgoing" ColumnName="is_outgoing" />
+          <ScalarProperty Name="is_incoming" ColumnName="is_incoming" />
+          <ScalarProperty Name="servertype" ColumnName="servertype" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

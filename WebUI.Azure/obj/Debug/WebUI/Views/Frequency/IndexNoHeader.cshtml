@@ -1,0 +1,17 @@
+﻿@{
+    string xx = @ViewBag.ApplicationId.ToString();
+}
+
+
+<div>
+     @Html.Hidden("searchFilter",xx )
+</div>
+ 
+@(Html.Awe().Grid("FrequencyGrid")
+      .Url(Url.Action("GetItemsNotDeleted", "FrequencyGrid"))
+      .Parent("searchFilter", "parentSearch")
+      .Persistence(Persistence.Session)
+      .Width(450)
+      .Columns(
+          new Column { Name = "Description", PercentWidth = 100}
+          ))

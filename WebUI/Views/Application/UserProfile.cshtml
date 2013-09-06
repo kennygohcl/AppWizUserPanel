@@ -1,0 +1,50 @@
+﻿@model ApplicationInput
+@{
+    ViewBag.Title = "Application - UserProfile";
+    Layout = "~/Views/Shared/_LayoutApp.cshtml";
+    ViewBag.SelectedView = 1;
+}
+
+<script src="@Url.Content("http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js")" type="text/javascript"></script>
+ @Html.HiddenFor(o => o.ApplicationName, new { id = "hiddenApplicationName" })
+@section previewMobileSection {
+    @Html.Partial("Simulator/_UserProfileBackground")
+}
+
+<script type="text/javascript">
+    
+    jQuery(document).ready(function () {
+        jQuery("#pAppNameUserProfile").text(jQuery("#hiddenApplicationName").val());
+    });
+    
+    $("#btnSimulate").click(function () {
+        
+        /*    $("#pAge").text($("#Age").val());
+       
+
+        var checkedradio = $('[name="Gender"]:radio:checked').val();
+        if (checkedradio == 'M') {
+            $("#pGender").text("Male");
+        } else {
+            $("#pGender").text("FeMale");
+        }
+       
+        $("#pDateofBirth").text($("#BirthDate").val());
+        $("#pPhoneNumber").text($("#Phone").val());
+        $("#pEmail").text($("#Email").val());
+        $("#pAddress").text($("#Location").val());*/
+    });
+    
+    $("#btnCancel").click(function () {
+        $("#pAppName").text("");
+        $("#pEmail").text("");
+    });
+  
+    $("#btnSaveAndPublish").click(function () {
+      
+    });   
+
+</script>
+
+
+

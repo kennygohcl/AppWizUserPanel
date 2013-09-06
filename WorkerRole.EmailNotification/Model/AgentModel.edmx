@@ -1,0 +1,623 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SqlAzureAgentModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="SqlAzureAgentModelStoreContainer">
+          <EntitySet Name="sysmail_account" EntityType="SqlAzureAgentModel.Store.sysmail_account" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="sysmail_account_credential" EntityType="SqlAzureAgentModel.Store.sysmail_account_credential" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="sysmail_mailitems" EntityType="SqlAzureAgentModel.Store.sysmail_mailitems" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="sysmail_principalprofile" EntityType="SqlAzureAgentModel.Store.sysmail_principalprofile" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="sysmail_profile" EntityType="SqlAzureAgentModel.Store.sysmail_profile" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="sysmail_profileaccount" EntityType="SqlAzureAgentModel.Store.sysmail_profileaccount" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="sysmail_server" EntityType="SqlAzureAgentModel.Store.sysmail_server" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="sysmail_servertype" EntityType="SqlAzureAgentModel.Store.sysmail_servertype" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="vwJobsToExecute" EntityType="SqlAzureAgentModel.Store.vwJobsToExecute" store:Type="Views" store:Schema="dbo" store:Name="vwJobsToExecute">
+            <DefiningQuery>SELECT 
+      [vwJobsToExecute].[JobId] AS [JobId], 
+      [vwJobsToExecute].[SqlToExecute] AS [SqlToExecute], 
+      [vwJobsToExecute].[ConnectionStringToUse] AS [ConnectionStringToUse]
+      FROM [dbo].[vwJobsToExecute] AS [vwJobsToExecute]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__sysmail_p__accou__55009F39" Association="SqlAzureAgentModel.Store.FK__sysmail_p__accou__55009F39">
+            <End Role="sysmail_account" EntitySet="sysmail_account" />
+            <End Role="sysmail_profileaccount" EntitySet="sysmail_profileaccount" />
+          </AssociationSet>
+          <AssociationSet Name="FK__sysmail_p__profi__540C7B00" Association="SqlAzureAgentModel.Store.FK__sysmail_p__profi__540C7B00">
+            <End Role="sysmail_profile" EntitySet="sysmail_profile" />
+            <End Role="sysmail_principalprofile" EntitySet="sysmail_principalprofile" />
+          </AssociationSet>
+          <AssociationSet Name="FK__sysmail_s__accou__55F4C372" Association="SqlAzureAgentModel.Store.FK__sysmail_s__accou__55F4C372">
+            <End Role="sysmail_account" EntitySet="sysmail_account" />
+            <End Role="sysmail_server" EntitySet="sysmail_server" />
+          </AssociationSet>
+          <AssociationSet Name="FK__sysmail_s__serve__56E8E7AB" Association="SqlAzureAgentModel.Store.FK__sysmail_s__serve__56E8E7AB">
+            <End Role="sysmail_servertype" EntitySet="sysmail_servertype" />
+            <End Role="sysmail_server" EntitySet="sysmail_server" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="sysmail_account">
+          <Key>
+            <PropertyRef Name="account_id" />
+          </Key>
+          <Property Name="account_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="description" Type="nvarchar" MaxLength="256" />
+          <Property Name="email_address" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="display_name" Type="nvarchar" MaxLength="128" />
+          <Property Name="replyto_address" Type="nvarchar" MaxLength="128" />
+          <Property Name="last_mod_datetime" Type="datetime" Nullable="false" />
+          <Property Name="last_mod_user" Type="nvarchar" Nullable="false" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="sysmail_account_credential">
+          <Key>
+            <PropertyRef Name="credential_id" />
+          </Key>
+          <Property Name="credential_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="nvarchar" MaxLength="256" />
+          <Property Name="cyphertext" Type="nvarchar" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="sysmail_mailitems">
+          <Key>
+            <PropertyRef Name="mailitem_id" />
+          </Key>
+          <Property Name="mailitem_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="profile_id" Type="int" Nullable="false" />
+          <Property Name="recipients" Type="varchar(max)" />
+          <Property Name="copy_recipients" Type="varchar(max)" />
+          <Property Name="blind_copy_recipients" Type="varchar(max)" />
+          <Property Name="subject" Type="nvarchar" MaxLength="255" />
+          <Property Name="from_address" Type="varchar(max)" />
+          <Property Name="reply_to" Type="varchar(max)" />
+          <Property Name="body" Type="nvarchar(max)" />
+          <Property Name="body_format" Type="varchar" MaxLength="20" />
+          <Property Name="importance" Type="varchar" MaxLength="6" />
+          <Property Name="sensitivity" Type="varchar" MaxLength="12" />
+          <Property Name="file_attachments" Type="nvarchar(max)" />
+          <Property Name="attachment_encoding" Type="varchar" MaxLength="20" />
+          <Property Name="query" Type="nvarchar(max)" />
+          <Property Name="execute_query_database" Type="nvarchar" MaxLength="128" />
+          <Property Name="attach_query_result_as_file" Type="bit" />
+          <Property Name="query_result_header" Type="bit" />
+          <Property Name="query_result_width" Type="int" />
+          <Property Name="query_result_separator" Type="char" MaxLength="1" />
+          <Property Name="exclude_query_output" Type="bit" />
+          <Property Name="append_query_error" Type="bit" />
+          <Property Name="send_request_date" Type="datetime" Nullable="false" />
+          <Property Name="send_request_user" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="sent_account_id" Type="int" />
+          <Property Name="sent_status" Type="tinyint" />
+          <Property Name="sent_date" Type="datetime" />
+          <Property Name="last_mod_date" Type="datetime" Nullable="false" />
+          <Property Name="last_mod_user" Type="nvarchar" Nullable="false" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="sysmail_principalprofile">
+          <Key>
+            <PropertyRef Name="profile_id" />
+            <PropertyRef Name="principal_sid" />
+          </Key>
+          <Property Name="profile_id" Type="int" Nullable="false" />
+          <Property Name="principal_sid" Type="varbinary" Nullable="false" MaxLength="85" />
+          <Property Name="is_default" Type="bit" Nullable="false" />
+          <Property Name="last_mod_datetime" Type="datetime" Nullable="false" />
+          <Property Name="last_mod_user" Type="nvarchar" Nullable="false" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="sysmail_profile">
+          <Key>
+            <PropertyRef Name="profile_id" />
+          </Key>
+          <Property Name="profile_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="description" Type="nvarchar" MaxLength="256" />
+          <Property Name="last_mod_datetime" Type="datetime" Nullable="false" />
+          <Property Name="last_mod_user" Type="nvarchar" Nullable="false" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="sysmail_profileaccount">
+          <Key>
+            <PropertyRef Name="profile_id" />
+            <PropertyRef Name="account_id" />
+          </Key>
+          <Property Name="profile_id" Type="int" Nullable="false" />
+          <Property Name="account_id" Type="int" Nullable="false" />
+          <Property Name="sequence_number" Type="int" />
+          <Property Name="last_mod_datetime" Type="datetime" Nullable="false" />
+          <Property Name="last_mod_user" Type="nvarchar" Nullable="false" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="sysmail_server">
+          <Key>
+            <PropertyRef Name="account_id" />
+            <PropertyRef Name="servertype" />
+          </Key>
+          <Property Name="account_id" Type="int" Nullable="false" />
+          <Property Name="servertype" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="servername" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="port" Type="int" Nullable="false" />
+          <Property Name="username" Type="nvarchar" MaxLength="128" />
+          <Property Name="credential_id" Type="int" />
+          <Property Name="use_default_credentials" Type="bit" Nullable="false" />
+          <Property Name="enable_ssl" Type="bit" Nullable="false" />
+          <Property Name="flags" Type="int" Nullable="false" />
+          <Property Name="last_mod_datetime" Type="datetime" Nullable="false" />
+          <Property Name="last_mod_user" Type="nvarchar" Nullable="false" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="sysmail_servertype">
+          <Key>
+            <PropertyRef Name="servertype" />
+          </Key>
+          <Property Name="servertype" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="is_incoming" Type="bit" Nullable="false" />
+          <Property Name="is_outgoing" Type="bit" Nullable="false" />
+          <Property Name="last_mod_datetime" Type="datetime" Nullable="false" />
+          <Property Name="last_mod_user" Type="nvarchar" Nullable="false" MaxLength="128" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'LoadDevDB.dbo.vwJobsToExecute' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="vwJobsToExecute">
+          <Key>
+            <PropertyRef Name="JobId" />
+            <PropertyRef Name="SqlToExecute" />
+          </Key>
+          <Property Name="JobId" Type="int" Nullable="false" />
+          <Property Name="SqlToExecute" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="ConnectionStringToUse" Type="nvarchar" MaxLength="512" />
+        </EntityType>
+        <Association Name="FK__sysmail_p__accou__55009F39">
+          <End Role="sysmail_account" Type="SqlAzureAgentModel.Store.sysmail_account" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="sysmail_profileaccount" Type="SqlAzureAgentModel.Store.sysmail_profileaccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sysmail_account">
+              <PropertyRef Name="account_id" />
+            </Principal>
+            <Dependent Role="sysmail_profileaccount">
+              <PropertyRef Name="account_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__sysmail_p__profi__540C7B00">
+          <End Role="sysmail_profile" Type="SqlAzureAgentModel.Store.sysmail_profile" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="sysmail_principalprofile" Type="SqlAzureAgentModel.Store.sysmail_principalprofile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sysmail_profile">
+              <PropertyRef Name="profile_id" />
+            </Principal>
+            <Dependent Role="sysmail_principalprofile">
+              <PropertyRef Name="profile_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__sysmail_s__accou__55F4C372">
+          <End Role="sysmail_account" Type="SqlAzureAgentModel.Store.sysmail_account" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="sysmail_server" Type="SqlAzureAgentModel.Store.sysmail_server" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sysmail_account">
+              <PropertyRef Name="account_id" />
+            </Principal>
+            <Dependent Role="sysmail_server">
+              <PropertyRef Name="account_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__sysmail_s__serve__56E8E7AB">
+          <End Role="sysmail_servertype" Type="SqlAzureAgentModel.Store.sysmail_servertype" Multiplicity="1" />
+          <End Role="sysmail_server" Type="SqlAzureAgentModel.Store.sysmail_server" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sysmail_servertype">
+              <PropertyRef Name="servertype" />
+            </Principal>
+            <Dependent Role="sysmail_server">
+              <PropertyRef Name="servertype" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="CleanUp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="StartJob" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="JobId" Type="int" Mode="In" />
+          <Parameter Name="ActivityId" Type="uniqueidentifier" Mode="InOut" />
+        </Function>
+        <Function Name="StopJob" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ActivityId" Type="uniqueidentifier" Mode="In" />
+        </Function>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SqlAzureAgentModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="vwJobsToExecutes" EntityType="SqlAzureAgentModel.vwJobsToExecute" />
+          <FunctionImport Name="CleanUp" />
+          <FunctionImport Name="StopJob">
+          <Parameter Name="ActivityId" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="StartJob">
+            <Parameter Name="JobId" Mode="In" Type="Int32" />
+            <Parameter Name="ActivityId" Mode="InOut" Type="Guid" />
+          </FunctionImport>
+          <EntitySet Name="sysmail_mailitems" EntityType="SqlAzureAgentModel.sysmail_mailitems" />
+          <EntitySet Name="sysmail_account" EntityType="SqlAzureAgentModel.sysmail_account" />
+          <EntitySet Name="sysmail_profile" EntityType="SqlAzureAgentModel.sysmail_profile" />
+          <EntitySet Name="sysmail_profileaccount" EntityType="SqlAzureAgentModel.sysmail_profileaccount" />
+          <AssociationSet Name="FK__sysmail_p__accou__55009F39" Association="SqlAzureAgentModel.FK__sysmail_p__accou__55009F39">
+            <End Role="sysmail_account" EntitySet="sysmail_account" />
+            <End Role="sysmail_profileaccount" EntitySet="sysmail_profileaccount" />
+          </AssociationSet>
+          <EntitySet Name="sysmail_account_credential" EntityType="SqlAzureAgentModel.sysmail_account_credential" />
+          <EntitySet Name="sysmail_principalprofile" EntityType="SqlAzureAgentModel.sysmail_principalprofile" />
+          <EntitySet Name="sysmail_server" EntityType="SqlAzureAgentModel.sysmail_server" />
+          <EntitySet Name="sysmail_servertype" EntityType="SqlAzureAgentModel.sysmail_servertype" />
+          <AssociationSet Name="FK__sysmail_s__accou__55F4C372" Association="SqlAzureAgentModel.FK__sysmail_s__accou__55F4C372">
+            <End Role="sysmail_account" EntitySet="sysmail_account" />
+            <End Role="sysmail_server" EntitySet="sysmail_server" />
+          </AssociationSet>
+          <AssociationSet Name="FK__sysmail_p__profi__540C7B00" Association="SqlAzureAgentModel.FK__sysmail_p__profi__540C7B00">
+            <End Role="sysmail_profile" EntitySet="sysmail_profile" />
+            <End Role="sysmail_principalprofile" EntitySet="sysmail_principalprofile" />
+          </AssociationSet>
+          <AssociationSet Name="FK__sysmail_s__serve__56E8E7AB" Association="SqlAzureAgentModel.FK__sysmail_s__serve__56E8E7AB">
+            <End Role="sysmail_servertype" EntitySet="sysmail_servertype" />
+            <End Role="sysmail_server" EntitySet="sysmail_server" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="vwJobsToExecute">
+          <Key>
+            <PropertyRef Name="JobId" />
+            <PropertyRef Name="SqlToExecute" />
+          </Key>
+          <Property Name="JobId" Type="Int32" Nullable="false" />
+          <Property Name="SqlToExecute" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="ConnectionStringToUse" Type="String" MaxLength="512" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="sysmail_mailitems">
+          <Key>
+            <PropertyRef Name="mailitem_id" />
+          </Key>
+          <Property Type="Int32" Name="mailitem_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="profile_id" Nullable="false" />
+          <Property Type="String" Name="recipients" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="copy_recipients" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="blind_copy_recipients" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="subject" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="from_address" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="reply_to" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="body" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="body_format" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="importance" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="sensitivity" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="file_attachments" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="attachment_encoding" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="query" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="execute_query_database" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="attach_query_result_as_file" />
+          <Property Type="Boolean" Name="query_result_header" />
+          <Property Type="Int32" Name="query_result_width" />
+          <Property Type="String" Name="query_result_separator" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="Boolean" Name="exclude_query_output" />
+          <Property Type="Boolean" Name="append_query_error" />
+          <Property Type="DateTime" Name="send_request_date" Nullable="false" Precision="3" />
+          <Property Type="String" Name="send_request_user" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="sent_account_id" />
+          <Property Type="Byte" Name="sent_status" />
+          <Property Type="DateTime" Name="sent_date" Precision="3" />
+          <Property Type="DateTime" Name="last_mod_date" Nullable="false" Precision="3" />
+          <Property Type="String" Name="last_mod_user" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="sysmail_account">
+          <Key>
+            <PropertyRef Name="account_id" />
+          </Key>
+          <Property Type="Int32" Name="account_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="name" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="description" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="email_address" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="display_name" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="replyto_address" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="last_mod_datetime" Nullable="false" Precision="3" />
+          <Property Type="String" Name="last_mod_user" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="sysmail_profileaccount" Relationship="SqlAzureAgentModel.FK__sysmail_p__accou__55009F39" FromRole="sysmail_account" ToRole="sysmail_profileaccount" />
+          <NavigationProperty Name="sysmail_server" Relationship="SqlAzureAgentModel.FK__sysmail_s__accou__55F4C372" FromRole="sysmail_account" ToRole="sysmail_server" />
+        </EntityType>
+        <EntityType Name="sysmail_profile">
+          <Key>
+            <PropertyRef Name="profile_id" />
+          </Key>
+          <Property Type="Int32" Name="profile_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="name" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="description" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="last_mod_datetime" Nullable="false" Precision="3" />
+          <Property Type="String" Name="last_mod_user" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="sysmail_principalprofile" Relationship="SqlAzureAgentModel.FK__sysmail_p__profi__540C7B00" FromRole="sysmail_profile" ToRole="sysmail_principalprofile" />
+        </EntityType>
+        <EntityType Name="sysmail_profileaccount">
+          <Key>
+            <PropertyRef Name="profile_id" />
+            <PropertyRef Name="account_id" />
+          </Key>
+          <Property Type="Int32" Name="profile_id" Nullable="false" />
+          <Property Type="Int32" Name="account_id" Nullable="false" />
+          <Property Type="Int32" Name="sequence_number" />
+          <Property Type="DateTime" Name="last_mod_datetime" Nullable="false" Precision="3" />
+          <Property Type="String" Name="last_mod_user" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="sysmail_account" Relationship="SqlAzureAgentModel.FK__sysmail_p__accou__55009F39" FromRole="sysmail_profileaccount" ToRole="sysmail_account" />
+        </EntityType>
+        <Association Name="FK__sysmail_p__accou__55009F39">
+          <End Type="SqlAzureAgentModel.sysmail_account" Role="sysmail_account" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="SqlAzureAgentModel.sysmail_profileaccount" Role="sysmail_profileaccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sysmail_account">
+              <PropertyRef Name="account_id" />
+            </Principal>
+            <Dependent Role="sysmail_profileaccount">
+              <PropertyRef Name="account_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="sysmail_account_credential">
+          <Key>
+            <PropertyRef Name="credential_id" />
+          </Key>
+          <Property Type="Int32" Name="credential_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="username" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="cyphertext" MaxLength="256" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="sysmail_principalprofile">
+          <Key>
+            <PropertyRef Name="profile_id" />
+            <PropertyRef Name="principal_sid" />
+          </Key>
+          <Property Type="Int32" Name="profile_id" Nullable="false" />
+          <Property Type="Binary" Name="principal_sid" Nullable="false" MaxLength="85" FixedLength="false" />
+          <Property Type="Boolean" Name="is_default" Nullable="false" />
+          <Property Type="DateTime" Name="last_mod_datetime" Nullable="false" Precision="3" />
+          <Property Type="String" Name="last_mod_user" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="sysmail_profile" Relationship="SqlAzureAgentModel.FK__sysmail_p__profi__540C7B00" FromRole="sysmail_principalprofile" ToRole="sysmail_profile" />
+        </EntityType>
+        <EntityType Name="sysmail_server">
+          <Key>
+            <PropertyRef Name="account_id" />
+            <PropertyRef Name="servertype" />
+          </Key>
+          <Property Type="Int32" Name="account_id" Nullable="false" />
+          <Property Type="String" Name="servertype" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="servername" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="port" Nullable="false" />
+          <Property Type="String" Name="username" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="credential_id" />
+          <Property Type="Boolean" Name="use_default_credentials" Nullable="false" />
+          <Property Type="Boolean" Name="enable_ssl" Nullable="false" />
+          <Property Type="Int32" Name="flags" Nullable="false" />
+          <Property Type="DateTime" Name="last_mod_datetime" Nullable="false" Precision="3" />
+          <Property Type="String" Name="last_mod_user" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="sysmail_account" Relationship="SqlAzureAgentModel.FK__sysmail_s__accou__55F4C372" FromRole="sysmail_server" ToRole="sysmail_account" />
+          <NavigationProperty Name="sysmail_servertype" Relationship="SqlAzureAgentModel.FK__sysmail_s__serve__56E8E7AB" FromRole="sysmail_server" ToRole="sysmail_servertype" />
+        </EntityType>
+        <EntityType Name="sysmail_servertype">
+          <Key>
+            <PropertyRef Name="servertype" />
+          </Key>
+          <Property Type="String" Name="servertype" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="is_incoming" Nullable="false" />
+          <Property Type="Boolean" Name="is_outgoing" Nullable="false" />
+          <Property Type="DateTime" Name="last_mod_datetime" Nullable="false" Precision="3" />
+          <Property Type="String" Name="last_mod_user" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="sysmail_server" Relationship="SqlAzureAgentModel.FK__sysmail_s__serve__56E8E7AB" FromRole="sysmail_servertype" ToRole="sysmail_server" />
+        </EntityType>
+        <Association Name="FK__sysmail_s__accou__55F4C372">
+          <End Type="SqlAzureAgentModel.sysmail_account" Role="sysmail_account" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="SqlAzureAgentModel.sysmail_server" Role="sysmail_server" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sysmail_account">
+              <PropertyRef Name="account_id" />
+            </Principal>
+            <Dependent Role="sysmail_server">
+              <PropertyRef Name="account_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__sysmail_p__profi__540C7B00">
+          <End Type="SqlAzureAgentModel.sysmail_profile" Role="sysmail_profile" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="SqlAzureAgentModel.sysmail_principalprofile" Role="sysmail_principalprofile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sysmail_profile">
+              <PropertyRef Name="profile_id" />
+            </Principal>
+            <Dependent Role="sysmail_principalprofile">
+              <PropertyRef Name="profile_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__sysmail_s__serve__56E8E7AB">
+          <End Type="SqlAzureAgentModel.sysmail_servertype" Role="sysmail_servertype" Multiplicity="1" />
+          <End Type="SqlAzureAgentModel.sysmail_server" Role="sysmail_server" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sysmail_servertype">
+              <PropertyRef Name="servertype" />
+            </Principal>
+            <Dependent Role="sysmail_server">
+              <PropertyRef Name="servertype" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SqlAzureAgentModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="vwJobsToExecutes"><EntityTypeMapping TypeName="SqlAzureAgentModel.vwJobsToExecute"><MappingFragment StoreEntitySet="vwJobsToExecute">
+            <ScalarProperty Name="JobId" ColumnName="JobId" />
+            <ScalarProperty Name="SqlToExecute" ColumnName="SqlToExecute" />
+            <ScalarProperty Name="ConnectionStringToUse" ColumnName="ConnectionStringToUse" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="CleanUp" FunctionName="SqlAzureAgentModel.Store.CleanUp" />
+          <FunctionImportMapping FunctionImportName="StopJob" FunctionName="SqlAzureAgentModel.Store.StopJob" />
+          <FunctionImportMapping FunctionImportName="StartJob" FunctionName="SqlAzureAgentModel.Store.StartJob" />
+          <EntitySetMapping Name="sysmail_mailitems">
+            <EntityTypeMapping TypeName="SqlAzureAgentModel.sysmail_mailitems">
+              <MappingFragment StoreEntitySet="sysmail_mailitems">
+                <ScalarProperty Name="last_mod_user" ColumnName="last_mod_user" />
+                <ScalarProperty Name="last_mod_date" ColumnName="last_mod_date" />
+                <ScalarProperty Name="sent_date" ColumnName="sent_date" />
+                <ScalarProperty Name="sent_status" ColumnName="sent_status" />
+                <ScalarProperty Name="sent_account_id" ColumnName="sent_account_id" />
+                <ScalarProperty Name="send_request_user" ColumnName="send_request_user" />
+                <ScalarProperty Name="send_request_date" ColumnName="send_request_date" />
+                <ScalarProperty Name="append_query_error" ColumnName="append_query_error" />
+                <ScalarProperty Name="exclude_query_output" ColumnName="exclude_query_output" />
+                <ScalarProperty Name="query_result_separator" ColumnName="query_result_separator" />
+                <ScalarProperty Name="query_result_width" ColumnName="query_result_width" />
+                <ScalarProperty Name="query_result_header" ColumnName="query_result_header" />
+                <ScalarProperty Name="attach_query_result_as_file" ColumnName="attach_query_result_as_file" />
+                <ScalarProperty Name="execute_query_database" ColumnName="execute_query_database" />
+                <ScalarProperty Name="query" ColumnName="query" />
+                <ScalarProperty Name="attachment_encoding" ColumnName="attachment_encoding" />
+                <ScalarProperty Name="file_attachments" ColumnName="file_attachments" />
+                <ScalarProperty Name="sensitivity" ColumnName="sensitivity" />
+                <ScalarProperty Name="importance" ColumnName="importance" />
+                <ScalarProperty Name="body_format" ColumnName="body_format" />
+                <ScalarProperty Name="body" ColumnName="body" />
+                <ScalarProperty Name="reply_to" ColumnName="reply_to" />
+                <ScalarProperty Name="from_address" ColumnName="from_address" />
+                <ScalarProperty Name="subject" ColumnName="subject" />
+                <ScalarProperty Name="blind_copy_recipients" ColumnName="blind_copy_recipients" />
+                <ScalarProperty Name="copy_recipients" ColumnName="copy_recipients" />
+                <ScalarProperty Name="recipients" ColumnName="recipients" />
+                <ScalarProperty Name="profile_id" ColumnName="profile_id" />
+                <ScalarProperty Name="mailitem_id" ColumnName="mailitem_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysmail_account">
+            <EntityTypeMapping TypeName="SqlAzureAgentModel.sysmail_account">
+              <MappingFragment StoreEntitySet="sysmail_account">
+                <ScalarProperty Name="last_mod_user" ColumnName="last_mod_user" />
+                <ScalarProperty Name="last_mod_datetime" ColumnName="last_mod_datetime" />
+                <ScalarProperty Name="replyto_address" ColumnName="replyto_address" />
+                <ScalarProperty Name="display_name" ColumnName="display_name" />
+                <ScalarProperty Name="email_address" ColumnName="email_address" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="account_id" ColumnName="account_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysmail_profile">
+            <EntityTypeMapping TypeName="SqlAzureAgentModel.sysmail_profile">
+              <MappingFragment StoreEntitySet="sysmail_profile">
+                <ScalarProperty Name="last_mod_user" ColumnName="last_mod_user" />
+                <ScalarProperty Name="last_mod_datetime" ColumnName="last_mod_datetime" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="profile_id" ColumnName="profile_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysmail_profileaccount">
+            <EntityTypeMapping TypeName="SqlAzureAgentModel.sysmail_profileaccount">
+              <MappingFragment StoreEntitySet="sysmail_profileaccount">
+                <ScalarProperty Name="last_mod_user" ColumnName="last_mod_user" />
+                <ScalarProperty Name="last_mod_datetime" ColumnName="last_mod_datetime" />
+                <ScalarProperty Name="sequence_number" ColumnName="sequence_number" />
+                <ScalarProperty Name="account_id" ColumnName="account_id" />
+                <ScalarProperty Name="profile_id" ColumnName="profile_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysmail_account_credential">
+            <EntityTypeMapping TypeName="SqlAzureAgentModel.sysmail_account_credential">
+              <MappingFragment StoreEntitySet="sysmail_account_credential">
+                <ScalarProperty Name="cyphertext" ColumnName="cyphertext" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="credential_id" ColumnName="credential_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysmail_principalprofile">
+            <EntityTypeMapping TypeName="SqlAzureAgentModel.sysmail_principalprofile">
+              <MappingFragment StoreEntitySet="sysmail_principalprofile">
+                <ScalarProperty Name="last_mod_user" ColumnName="last_mod_user" />
+                <ScalarProperty Name="last_mod_datetime" ColumnName="last_mod_datetime" />
+                <ScalarProperty Name="is_default" ColumnName="is_default" />
+                <ScalarProperty Name="principal_sid" ColumnName="principal_sid" />
+                <ScalarProperty Name="profile_id" ColumnName="profile_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysmail_server">
+            <EntityTypeMapping TypeName="SqlAzureAgentModel.sysmail_server">
+              <MappingFragment StoreEntitySet="sysmail_server">
+                <ScalarProperty Name="last_mod_user" ColumnName="last_mod_user" />
+                <ScalarProperty Name="last_mod_datetime" ColumnName="last_mod_datetime" />
+                <ScalarProperty Name="flags" ColumnName="flags" />
+                <ScalarProperty Name="enable_ssl" ColumnName="enable_ssl" />
+                <ScalarProperty Name="use_default_credentials" ColumnName="use_default_credentials" />
+                <ScalarProperty Name="credential_id" ColumnName="credential_id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="port" ColumnName="port" />
+                <ScalarProperty Name="servername" ColumnName="servername" />
+                <ScalarProperty Name="servertype" ColumnName="servertype" />
+                <ScalarProperty Name="account_id" ColumnName="account_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysmail_servertype">
+            <EntityTypeMapping TypeName="SqlAzureAgentModel.sysmail_servertype">
+              <MappingFragment StoreEntitySet="sysmail_servertype">
+                <ScalarProperty Name="last_mod_user" ColumnName="last_mod_user" />
+                <ScalarProperty Name="last_mod_datetime" ColumnName="last_mod_datetime" />
+                <ScalarProperty Name="is_outgoing" ColumnName="is_outgoing" />
+                <ScalarProperty Name="is_incoming" ColumnName="is_incoming" />
+                <ScalarProperty Name="servertype" ColumnName="servertype" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="AgentModel">
+        <EntityTypeShape EntityType="SqlAzureAgentModel.vwJobsToExecute" Width="2.25" PointX="0.5" PointY="1.375" Height="1.59568359375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SqlAzureAgentModel.sysmail_mailitems" Width="3.25" PointX="3" PointY="1.5" />
+        <EntityTypeShape EntityType="SqlAzureAgentModel.sysmail_account" Width="1.5" PointX="6.625" PointY="1.625" />
+        <EntityTypeShape EntityType="SqlAzureAgentModel.sysmail_profile" Width="1.5" PointX="11.25" PointY="1.625" />
+        <EntityTypeShape EntityType="SqlAzureAgentModel.sysmail_profileaccount" Width="1.5" PointX="8.875" PointY="1.625" />
+        <AssociationConnector Association="SqlAzureAgentModel.FK__sysmail_p__accou__55009F39" />
+        <EntityTypeShape EntityType="SqlAzureAgentModel.sysmail_account_credential" Width="2.625" PointX="8.875" PointY="4.875" />
+        <EntityTypeShape EntityType="SqlAzureAgentModel.sysmail_principalprofile" Width="1.5" PointX="9.75" PointY="8" />
+        <EntityTypeShape EntityType="SqlAzureAgentModel.sysmail_server" Width="1.5" PointX="6.375" PointY="8.75" />
+        <EntityTypeShape EntityType="SqlAzureAgentModel.sysmail_servertype" Width="1.5" PointX="8.75" PointY="10.875" />
+        <AssociationConnector Association="SqlAzureAgentModel.FK__sysmail_s__accou__55F4C372" />
+        <AssociationConnector Association="SqlAzureAgentModel.FK__sysmail_p__profi__540C7B00" />
+        <AssociationConnector Association="SqlAzureAgentModel.FK__sysmail_s__serve__56E8E7AB" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

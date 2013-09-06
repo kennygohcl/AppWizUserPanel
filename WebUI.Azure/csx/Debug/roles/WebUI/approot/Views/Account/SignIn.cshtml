@@ -1,0 +1,60 @@
+﻿@model SignInInput
+@{
+    ViewBag.Title = "SignIn";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br/>
+<br/>
+<div id="loginForm" class="centeredBoxBlue">
+  @*  
+    <h2>Sign In</h2>
+    <div class="explain">
+        <p>Welcome, please login.</p>
+    </div>*@
+    
+    <div style="margin:auto;width:400px;">
+        @using (Html.BeginForm()) { 
+
+            @Html.EditorFor(o => o.Login, new { @class = "registerInput" })
+            <div class="cbt">
+            </div>
+            @Html.EditorFor(o => o.Password, new { @class = "registerInput" })
+            <div class="cbt">
+            </div>
+                <br/>
+                <div class="elabel">&nbsp;</div>
+                @Html.CheckBoxFor(o => o.Remember, new { @class = "registerInputCheckbox" })@Mui.Remember
+             
+            <div class="cbt">
+            </div>
+            
+            <div class="cbt">
+            </div>
+            <div class="efield"><div class="elabel">&nbsp;</div>
+                <button class="button-orange btnAdvance marginTopBottom10">@Mui.LogIn</button>
+               <input class="button-orange btnAdvance marginTopBottom10" style="width: 80px;" type="button" title="Register" value="Register" onclick="location.href='@Url.Action("CreateUser", "User")'" />
+    
+            </div>    
+        }
+        
+        <br class="cbt" />
+        <br />
+        @Html.ValidationSummary(true)
+    </div>
+       
+   
+</div>
+
+
+
+<script type="text/javascript">
+
+    jQuery(document).ready(function() {
+        jQuery('div').removeClass('einput');
+
+        jQuery('#Login').addClass('einputRefined');
+        jQuery('#Password').addClass('einputRefined');
+    });
+</script>
+
+

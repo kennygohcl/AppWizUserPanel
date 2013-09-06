@@ -1,0 +1,10 @@
+﻿@model AdCreateInput
+@using (Html.BeginForm())
+{    
+  @Html.EditorFor(o => o.ApplicationId) 
+    @Html.EditorFor(o => o.WebSiteReference)         
+    @Html.EditorFor(o => o.Banner)       
+    @Html.EditorFor(o => o.Start)  
+    @Html.EditorFor(o => o.End)  
+        
+}

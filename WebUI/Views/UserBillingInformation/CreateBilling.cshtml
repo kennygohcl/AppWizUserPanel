@@ -1,0 +1,151 @@
+﻿@model UserBillingInformationInput
+@{
+    ViewBag.Title = "Billing Information";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+ @*   <link href="@Url.Content("~/Content/reset.css")" rel="stylesheet" type="text/css" />*@
+
+@if (ViewBag.EmailDuplicate == "Yes")
+{
+<h1>Email Address already exists. Please Sign In instead.</h1>    
+    
+}
+
+
+<div style="width: 400px; height: 400px; float: left;">
+        
+    <div class="centerImage" >
+        <img src='@Url.Content("~\\Content\\30daysmoneybackguarantee.jpg")' />
+    </div>
+    
+</div>
+
+
+<form method="POST" action='@Url.Action("CreateBilling", "UserBillingInformation")' >
+
+        @Html.AntiForgeryToken()
+
+        <div class="maindiv">
+         
+            <div id="createBilling" class="fr" style="width: 500px; ">
+                
+                @{
+                    if (ViewBag.errMessages!=null)
+                    {
+                        string displayError =  ViewBag.errMessages;
+                        @Html.ValidationSummary(true, @Mui.BillingInformationFailed);
+                        @Html.Display(displayError);
+                    }
+                }
+
+                <div class="cbt">
+                </div>
+               
+                @Html.EditorFor(o => o.FirstName, new { @class = "createBillingInput" })
+                <div class="cbt">
+                </div>
+                @Html.EditorFor(o => o.LastName, new { @class = "createBillingInput" })
+                <div class="cbt">
+                </div>
+                @Html.EditorFor(o => o.BillingContactEmail, new { @class = "createBillingInput" })
+                <div class="cbt">
+                </div>
+
+                @Html.EditorFor(o => o.BillingAddress, new { @class = "createBillingInput" })
+                <div class="cbt">
+                </div>
+                
+                  @Html.EditorFor(o => o.City, new { @class = "createBillingInput" })
+                <div class="cbt">
+                </div>
+                
+                  @Html.EditorFor(o => o.Country, new { @class = "createBillingInput" })
+                <div class="cbt">
+                </div>
+          
+                @Html.EditorFor(o => o.BillingZipCode, new { @class = "createBillingInput" })
+                <div class="cbt">
+                </div>
+
+                @Html.EditorFor(o => o.BillingContactNumber, new { @class = "createBillingInput" })
+                <div class="cbt">
+                </div>
+                @Html.EditorFor(o => o.CreditCardNumber, new { @class = "createBillingInput" })
+                <div class="fr">
+                    <img src='@Url.Content("~\\Content\\paymentoptions1.png")'  />
+                </div>
+                <div class="cbt">
+                </div>
+                @Html.EditorFor(o => o.CardCode, new { @class = "createBillingInput" })
+                <div class="cbt">
+                </div>
+
+                @Html.EditorFor(o => o.ExpiryDate, new { @class = "createBillingInput" })
+                <div class="cbt">
+                </div>
+                @Html.HiddenFor(o=>o.UserId , new { Value = ViewBag.UserId})
+                <div class="elabel">&nbsp;</div>
+                <div class="cbt">
+                </div>
+                 
+                <div class="fl">
+                    <div class="elabel">
+                        @Mui.Subscription*:
+                    </div>
+                    <div style="width: 250px; float: right;">
+                        @Html.RadioButtonFor(o => o.Subscription, "100$/Month") 100$/Month
+                        <br/>
+                        @Html.RadioButtonFor(o => o.Subscription, "600$/Semi-Annual") 600$/Semi-Annual
+                        <br/>
+                        @Html.RadioButtonFor(o => o.Subscription, "1200$/Annual") 1200$/Annual
+                    </div>
+                </div>
+                <div class="cbt">
+                </div>
+                <div class="elabel">&nbsp;</div>
+                <div class="cbt">
+                </div>
+                
+                @* <div class="fr">
+                            <button class="button-orange btnAdvance marginTopBottom10">@Mui.Cancel</button>
+                     </div>*@
+                <div style="text-align: center;">
+                    <button class="button-orange btnAdvance marginTopBottom10">@Mui.Submit</button>
+                   
+                    @*    <button class=" button-glossy green">@Mui.Submit</button>*@
+                </div>
+         
+            </div>
+        </div>
+
+        <br/>
+        <br/>
+    </form>
+
+
+
+<script type="text/javascript">
+
+
+    jQuery(document).ready(function () {
+        jQuery('div').removeClass('einput');
+        jQuery('#CardCode').width(50);
+        jQuery('#ExpiryDate').width(100);
+        jQuery('#FirstName').addClass('einputRefined');
+        jQuery('#LastName').addClass('einputRefined');
+        jQuery('#BillingContactEmail').addClass('einputRefined');
+        jQuery('#BillingAddress').addClass('einputRefined');
+        jQuery('#BillingZipCode').addClass('einputRefined');
+        jQuery('#BillingContactNumber').addClass('einputRefined');
+        jQuery('#CreditCardNumber').addClass('einputRefined');
+        jQuery('#CardCode').addClass('einputRefined');
+        jQuery('#ExpiryDate').addClass('einputRefined');
+        jQuery('#UserId').addClass('einputRefined');
+      
+  
+    });
+
+</script>
+          
+         

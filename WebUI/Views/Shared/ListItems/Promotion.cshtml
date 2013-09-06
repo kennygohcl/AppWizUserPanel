@@ -1,0 +1,105 @@
+﻿@model IEnumerable<Promotion>
+
+<ul  class="awe-ajaxlist promotionslist awe-srl" >
+    @foreach (var o in Model)
+    {
+        <li id='promotionMain@(o.Id)categ@(ViewBag.CategoryId)' class="awe-li promotion" data-val="@o.Id">
+            <div class="fr">    
+                @Html.Partial("deletebtn", new DelBtn { Id = o.Id, IsDeleted = o.IsDeleted, Controller = "Promotion" })
+            </div>
+        
+            <br class="cbt" />
+            @foreach (var m in o.Products)
+            {
+                <div  style="float: left; width: 100px;">
+                    <img src='@Url.Content("~/pictures/Products/s" + (m.Picture ?? "0.jpg"))' class="sthumb" alt='@m.Name' />
+                </div>
+        
+      
+        
+                <div class="fr">
+                    <div style="float: left; width: 200px;" >
+                        @o.Description
+                    </div>
+                    <div style="float: left; width: 100px;" >
+                
+                        <div class="priceLabel">Discount</div>
+                        <label id='promotionDiscountPercentage@(o.Id)categ@(ViewBag.CategoryId)' class="pricelayout" >
+                            @{ 
+                                @o.DiscountPercentage
+                            }
+                        </label>
+                    </div>
+                    <div style="float: left; width: 100px;" >
+                        <div class="priceLabel">Price</div>
+                        <label id='promotionPrice@(o.Id)categ@(ViewBag.CategoryId)' class="pricelayout" >
+                            @{ 
+                                @o.Price
+                            }
+                        </label>
+                    </div>
+           
+                    <br class="cbt" />    
+                    <div class="fr">
+                        <button class="awe-btn" onclick="@(Url.Awe().PopupFormAction()
+                                                               .Url(Url.Action("Edit","Promotion", new{o.Id}))
+                                                               .Success("editPromotion").Modal(true)
+                                                               .Width(500).Height(500))">
+                            <span class=" ico-edit"></span>
+                        </button>
+                    </div>    
+                    <div class="fl" style="margin-right: 1em;">
+          
+                        @{
+                            // Difference in days, hours, and minutes.
+                            TimeSpan ts = @o.End - DateTime.Now;
+                            // Difference in days.
+                            int differenceInDays = ts.Days;
+                            int differenceInHours = ts.Hours;
+                            ViewBag.differenceInDays = differenceInDays;
+                            ViewBag.differenceInHours = differenceInHours;
+                   
+                        }
+
+                        @{
+                            string value = string.Format("{0} day(s) {1} hour(s) left", ViewBag.differenceInDays, ViewBag.differenceInHours);
+                            if (ViewBag.differenceInDays > 0)
+                            {
+                                ViewBag.TimeRemaining = value;
+                            }
+                            else
+                            {
+                                if (ViewBag.differenceInHours>0)
+                                {
+                                    value = string.Format("{0} hours(s) left", differenceInHours < 0 ? 0 : differenceInHours);
+                                    ViewBag.TimeRemaining = value;
+                                }
+                                else
+                                {
+                                    ViewBag.TimeRemaining = "Promo expired";
+                                }
+                            }
+                            <span>
+                                @ViewBag.TimeRemaining
+                            </span>
+                        }
+                    </div> 
+                    <br class="cbt" />  
+                </div>
+        
+            }
+  
+        </li>
+    }
+</ul>
+    
+
+<script type="text/javascript">
+   
+    function editPromotion() {
+        location.reload();
+    }
+</script>
+
+
+

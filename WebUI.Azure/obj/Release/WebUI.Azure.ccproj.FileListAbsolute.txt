@@ -1,0 +1,2 @@
+C:\SourceCodes\DFrontierAppWizard\WebUI.Azure\bin\Release\ServiceConfiguration.cscfg
+C:\SourceCodes\DFrontierAppWizard\WebUI.Azure\bin\Release\ServiceDefinition.csdef

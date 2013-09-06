@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "JoinNow";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@*
+<div style="margin-left: 150px">
+
+
+    @*<div>
+        <h1 class="fl">
+            Join by selecting any of the following options</h1>
+        <div class="JoinNowBoxImagesClose">
+            <a href="@Url.Action("Logon", "FBAccount")"  >
+                <img src="@Url.Content("~/Content/fb-signin.png")"   alt="Login-Facebook" /></a>
+        </div>
+      
+    </div>* @
+    <div class="JoinNowBoxImages">
+        <h1 class="fl">
+            Create your AppWizard Account</h1>
+        <div class="JoinNowBoxImagesClose">
+            <a href="@Url.Action("Create", "User")" >
+                <img src="@Url.Content("~/Content/AppWizard.png")"   alt="Login-AppWizard" height="50px" width="120px" /></a>
+        </div>
+    </div>
+</div>*@
+<div style="margin-left: 150px">
+     <div class="JoinNowBoxImages">
+        <h1 class="fl"></h1>
+           <a href="@Url.Action("Create", "User")">
+               <img src="@Url.Content("~/Content/fb-signin.png")"   alt="Login-Facebook" />
+           </a>
+     </div>
+    <div class="JoinNowBoxImages">
+    
+        @*    <h1 class="fl">
+                Create your AppWizard Account
+            </h1>*@
+            <a href="@Url.Action("CreateUser", "User")" >
+                <img src="@Url.Content("~/Content/AppWizard.png")"   alt="Login-AppWizard" height="50px" width="120px" />
+            </a>
+    </div>
+ </div>

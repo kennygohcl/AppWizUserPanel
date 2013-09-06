@@ -1,0 +1,528 @@
+﻿@using System.Web.Optimization
+@model ApplicationInput
+@{
+    ViewBag.Title = "Application - Retailer Info";
+    Layout = "~/Views/Shared/_LayoutApp.cshtml";
+    ViewBag.SelectedView = 2;
+  
+}
+
+
+
+@*<link href="@Url.Content("~/Content/jquery.fileupload-ui.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Content/jquery.Jcrop.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/AwesomeMvc.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.fileupload.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.fileupload-ui.js")" type="text/javascript"></script>
+<script src='@Url.Content("~/Scripts/jquery.Jcrop.min.js")' type="text/javascript" ></script>
+<script src='@Url.Content("~/Scripts/ckeditor/ckeditor.js")' type="text/javascript" ></script>
+  <script type="text/javascript" src="@Url.Content("~/Scripts/ckeditor/adapters/jquery.js")"></script>
+ <script src="@Url.Content("~/Scripts/Site.js")?v=2" type="text/javascript"></script>*@
+<link href="@Url.Content("~/Content/styledropdown.css")" rel="stylesheet" type="text/css" />
+<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css' />
+<noscript>
+    <link href="@Url.Content("~/Content/noJS.css")" rel="stylesheet" type="text/css" />
+</noscript>
+<link href="@Url.Content("~/Content/Common.css")?v=3" rel="stylesheet" type="text/css" />
+
+@Html.AntiForgeryToken()
+
+@section previewMobileSection {
+    @Html.Partial("Simulator/_RetailerIntroBackground")
+}
+<br />
+
+@* style=" float: left; width: 100%; height: 650px; overflow-y: auto; max-width:100%; max-height:750px;"*@
+<div id="jScrollbar_mask" style="float: left; width: 100%; overflow-y: auto; max-width: 100%; max-height: 750px;">
+    <div style="float: left; width: 100%;">
+
+        <div class="fl">
+
+            <h2 class="fl">@Mui.ImageOrVideo</h2>
+             <div class="cbt" />
+           
+            @using (Html.BeginForm("UploadFiles", "Application", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            { 
+                <input type="file" name="file" />
+                <input class="awe-btn" type="submit" name="Submit" id="Submit" value="Upload" />
+            }
+
+            <br />
+           @* <div style="width: 250px; float: right;">*@
+                @Html.HiddenFor(o => o.Id, new { id = "hiddenId" })
+                @Html.HiddenFor(o => o.MediaLinkImage, new { id = "hiddenMediaLinkImage" })
+                @Html.HiddenFor(o => o.MediaLinkVideo, new { id = "hiddenMediaLinkVideo" })
+                <h2 class="fl">Choose which one to diplay   </h2>
+
+                <table style="width: 500px;">
+                    <tr>
+                        <td style="width: 20%">
+                            @Html.RadioButtonFor(o => o.MediaTypeId, "Image") Image 
+                        </td>
+                        <td style="width: 80%">
+                            @Html.Awe().AjaxDropdownFor(o => o.MediaLinkImageId).Parameter("appId", @Model.Id)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 20%">
+                            @Html.RadioButtonFor(o => o.MediaTypeId, "Video") Video
+                        </td>
+                        <td style="width: 80%">
+                            @Html.Awe().AjaxDropdownFor(o => o.MediaLinkVideoId).Parameter("appId", @Model.Id)
+                        </td>
+                    </tr>
+                </table>
+            @*</div>*@
+        </div>
+
+
+    </div>
+    <div class="cbt" />
+    <div class="cbt" />
+    <br />
+    <div id="ApplicationRetailerInfo" style="float: left; width: 100%;">
+        <h2 class="fl">Social Network Links</h2>
+        <div class="cbt" />
+        <div style="float: left; width: 500px;">
+            <img src="@Url.Content("~/Content/social/facebook.png")" style="float: left; width: 45px; height: 45px;"/>@Html.EditorFor(o => o.SocialMedia1Link)
+        </div>
+        <div class="cbt">
+        </div>
+        <div style="float: left; width: 500px;display:none">
+            <img src="@Url.Content("~/Content/social/twitter.png")"  style="float: left;width: 45px; height: 45px;   " />
+            @Html.EditorFor(o => o.SocialMedia2Link)
+        </div>
+
+        <div class="cbt">
+        </div>
+        <div style="float: left; width: 500px;;display:none">
+            <img src="@Url.Content("~/Content/social/in.png")"  style="float: left;width: 40px; height: 40px; margin-right: 5px;  "   />@Html.EditorFor(o => o.SocialMedia3Link)
+        </div>
+
+    </div>
+
+    <div class="cbt" />
+    <h2 class="fl">Location</h2>
+    <div class="cbt" />
+    <div style="float: left; width: 525px;">
+        <button class="awe-btn" style="width: 120px; height: 40px; float:right;" onclick="@(Url.Awe().PopupFormAction().Url(Url.Action("create", "Branch")).Success("createBranch").Height(450))">@Mui.Create @Mui.Address</button>
+        <div class="wrapper-demo" style="float: left;">
+            <div id="dd" class="wrapper-dropdown-3" tabindex="1">
+                <span>Addresses</span>
+                <ul class="dropdown">
+                    @foreach (var br in ViewBag.Branches)
+                    {
+                        <li><a href="#">@br.Address </a></li>
+                    }
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <div class="cbt">
+    </div>
+    <br />
+    <br />
+    <div style="text-align: center;">
+        <br />
+        <br />
+        <button id="btnSimulate" class="button-orange btnAdvanceLarge marginTopBottom10">@Mui.Simulate</button>
+        <button id="btnSaveAndPublish" class="button-orange btnAdvanceLarge marginTopBottom10">@Mui.Save</button>
+        <button id="btnCancel" class="button-orange btnAdvanceLarge marginTopBottom10">@Mui.Cancel</button>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    function updateProduct(id) {
+        $.post('@Url.Action("GetApplication")', { id: id }, edit);
+    }
+
+
+</script>
+
+
+@*
+<script type="text/javascript" src="@Url.Content("~/Scripts/jquery.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/Scripts/jquery-ui.js")"></script>
+<script type="text/javascript">
+
+    var jQuery = $.noConflict(true);
+    
+     jQuery(document).ready(function () {
+         // simple jScrollbar plugin call
+         
+         jQuery('.jScrollbar1').width(jQuery("#contentRightBottomPanel").width());
+         jQuery('.jScrollbar1').height(jQuery("#contentRightBottomPanel").height());
+         jQuery('.jScrollbar1').jScrollbar();
+         // more complex jScrollbar plugin call
+         jQuery('.jScrollbar1').jScrollbar({
+             scrollStep: 25,
+             position: 'left',
+             showOnHover: true
+         });
+     });
+
+</script>
+*@
+
+
+
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<!-- load jQuery 1.9.1 -->
+@*<script type="text/javascript" src="@Url.Content("~/Scripts/jquery-1.9.1.min.js")"></script>*@
+<script type="text/javascript">
+
+
+
+    // var jQuery = $.noConflict(true);
+    jQuery(document).ready(function () {
+
+
+        jQuery(".elabel").hide();
+        jQuery('div').removeClass('efield');
+        jQuery('div').removeClass('einput');
+
+        jQuery("#SocialMedia1Link").addClass("einputRefined");
+        jQuery("#SocialMedia2Link").addClass("einputRefined");
+        jQuery("#SocialMedia3Link").addClass("einputRefined");
+        jQuery(".awe-ajaxdropdown").addClass('fl');
+        jQuery("#SocialMedia1Link").width(450);
+        jQuery("#SocialMedia2Link").width(450);
+        jQuery("#SocialMedia3Link").width(450);
+        jQuery("#footer").hide();
+        jQuery("#retailerVideo").hide();
+
+
+        //var checkedradio = jQuery('[name="MediaTypeId"]:radio:checked').val();
+        //if (checkedradio == 'Image') {
+
+        //    var srcImage = jQuery("#hiddenMediaLinkImage").val();
+        //    jQuery("#retailerLogo").show();
+        //    jQuery("#retailerLogo").attr("src", "../pictures/Retailers/" + srcImage);
+
+        //    jQuery("#retailerVideo").hide();
+        //} else {
+        //    jQuery("#retailerLogo").hide();
+        //    jQuery("#retailerVideo").show();
+
+        //    var src = jQuery("#hiddenMediaLinkVideo").val();
+
+        //    var srcVideo = "small.mp4";
+
+        //    if (src.substring(src.length - 3) == 'mp4') {     
+        //        srcVideo = src;
+
+        //    }
+
+        //    jQuery("#retailerVideo").attr("src", "../pictures/retailers/" + srcVideo);
+
+        //}
+
+        var checkedradio = jQuery('[name="MediaTypeId"]:radio:checked').val();
+        if (checkedradio == 'Image') {
+
+            jQuery("#retailerLogo").show();
+            jQuery("#retailerVideo").hide();
+
+            var id = jQuery("#MediaLinkImageId").val();
+            var json = {
+                "id": id
+            };
+            jQuery.ajax({
+                type: "POST",
+                url: "/Application/GetMediaNameById",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(json),
+                dataType: "json",
+                cache: false,
+                success: function (results) {
+
+                    var obj = JSON.stringify(results);
+                    var value = obj.split(":");
+                    var finalValue = value[1].substring(1, value[1].length - 2);
+                    jQuery("#retailerLogo").show();
+                    jQuery("#retailerLogo").attr("src", "../pictures/Retailers/" + finalValue);
+                    jQuery("#retailerVideo").hide();
+                },
+
+            });
+
+        } else {
+            jQuery("#retailerLogo").hide();
+            jQuery("#retailerVideo").show();
+
+            var idVideo = jQuery("#MediaLinkVideoId").val();
+
+            var json1 = {
+                "id": idVideo
+            };
+            jQuery.ajax({
+                type: "POST",
+                url: "/Application/GetMediaNameById",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(json1),
+                dataType: "json",
+                cache: false,
+                success: function (results) {
+                    var obj = JSON.stringify(results);
+                    var value = obj.split(":");
+                    var finalValue = value[1].substring(1, value[1].length - 2);
+                    var srcVideo = "small.mp4";
+                    if (finalValue.substring(finalValue.length - 3) == 'mp4') {
+                        srcVideo = finalValue;
+                    }
+                    jQuery("#retailerVideo").attr("src", "../pictures/retailers/" + srcVideo);
+                },
+                //error: savePublishItemFailed
+            });
+        }
+
+        if (jQuery("#SocialMedia1Link").val() != "") {
+            jQuery("#pFacebook").attr("href", jQuery("#SocialMedia1Link").val());
+        }
+
+        if (jQuery("#SocialMedia2Link").val() != "") {
+            jQuery("#ptwitter").attr("href", jQuery("#SocialMedia2Link").val());
+        }
+
+        if (jQuery("#SocialMedia3Link").val() != "") {
+            jQuery("#plinkedin").attr("href", jQuery("#SocialMedia3Link").val());
+        }
+
+    });
+
+    jQuery(':radio[name=MediaTypeId]').change(function () {
+
+        var checkedradio = jQuery('[name="MediaTypeId"]:radio:checked').val();
+        if (checkedradio == 'Image') {
+
+            jQuery("#retailerLogo").show();
+            jQuery("#retailerVideo").hide();
+
+            var id = jQuery("#MediaLinkImageId").val();
+            var json1 = {
+                "id": id
+            };
+            jQuery.ajax({
+                type: "POST",
+                url: "/Application/GetMediaNameById",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(json1),
+                dataType: "json",
+                cache: false,
+                success: function (results) {
+
+                    var obj = JSON.stringify(results);
+                    var value = obj.split(":");
+                    var finalValue = value[1].substring(1, value[1].length - 2);
+                    jQuery("#retailerLogo").show();
+                    jQuery("#retailerLogo").attr("src", "../pictures/Retailers/" + finalValue);
+                    jQuery("#retailerVideo").hide();
+                },
+
+            });
+
+        } else {
+            jQuery("#retailerLogo").hide();
+            jQuery("#retailerVideo").show();
+
+            var idVideo = jQuery("#MediaLinkVideoId").val();
+
+            var json = {
+                "id": idVideo
+            };
+            jQuery.ajax({
+                type: "POST",
+                url: "/Application/GetMediaNameById",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(json),
+                dataType: "json",
+                cache: false,
+                success: function (results) {
+                    var obj = JSON.stringify(results);
+                    var value = obj.split(":");
+                    var finalValue = value[1].substring(1, value[1].length - 2);
+                    var srcVideo = "small.mp4";
+                    if (finalValue.substring(finalValue.length - 3) == 'mp4') {
+                        srcVideo = finalValue;
+                    }
+                    jQuery("#retailerVideo").attr("src", "../pictures/retailers/" + srcVideo);
+                },
+                //error: savePublishItemFailed
+            });
+        }
+    });
+
+
+    jQuery("#btnSimulate").click(function () {
+
+        var checkedradio = jQuery('[name="MediaTypeId"]:radio:checked').val();
+        if (checkedradio == 'Image') {
+
+            jQuery("#retailerLogo").show();
+            jQuery("#retailerVideo").hide();
+
+            var id = jQuery("#MediaLinkImageId").val();
+
+            var json = {
+                "id": id
+            };
+            jQuery.ajax({
+                type: "POST",
+                url: "/Application/GetMediaNameById",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(json),
+                dataType: "json",
+                cache: false,
+                success: function (results) {
+                    var obj = JSON.stringify(results);
+                    var value = obj.split(":");
+                    var finalValue = value[1].substring(1, value[1].length - 2);
+                    jQuery("#retailerLogo").show();
+                    jQuery("#retailerLogo").attr("src", "../pictures/Retailers/" + finalValue);
+                    jQuery("#retailerVideo").hide();
+                },
+
+            });
+
+        } else {
+            jQuery("#retailerLogo").hide();
+            jQuery("#retailerVideo").show();
+
+            var idVideo = jQuery("#MediaLinkVideoId").val();
+            var json1 = {
+                "id": idVideo
+            };
+            jQuery.ajax({
+                type: "POST",
+                url: "/Application/GetMediaNameById",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(json1),
+                dataType: "json",
+                cache: false,
+                success: function (results) {
+                    var obj = JSON.stringify(results);
+                    var value = obj.split(":");
+                    var finalValue = value[1].substring(1, value[1].length - 2);
+                    var srcVideo = "small.mp4";
+                    if (finalValue.substring(finalValue.length - 3) == 'mp4') {
+                        srcVideo = finalValue;
+                    }
+                    jQuery("#retailerVideo").attr("src", "../pictures/retailers/" + srcVideo);
+                },
+                //error: savePublishItemFailed
+            });
+        }
+
+        if (jQuery("#SocialMedia1Link").val() != "") {
+            jQuery("#pFacebook").attr("href", jQuery("#SocialMedia1Link").val());
+        }
+
+        if (jQuery("#SocialMedia2Link").val() != "") {
+            jQuery("#ptwitter").attr("href", jQuery("#SocialMedia2Link").val());
+        }
+
+        if (jQuery("#SocialMedia3Link").val() != "") {
+            jQuery("#plinkedin").attr("href", jQuery("#SocialMedia3Link").val());
+        }
+
+    });
+
+
+    jQuery("#btnSaveAndPublish").click(function () {
+        var hiddenIdValue = $("#hiddenId").val();
+        var txtSocialMedia1Link = $("#SocialMedia1Link").val();
+        var txtSocialMedia2Link = $("#SocialMedia2Link").val();
+        var txtSocialMedia3Link = $("#SocialMedia3Link").val();
+        var mediaTypeId = $("#MediaTypeId").val();
+        var mediaLinkImageId = $("#MediaLinkImageId").val();
+        var mediaLinkVideoId = $("#MediaLinkVideoId").val();
+
+        
+        var checkedradio = jQuery('[name="MediaTypeId"]:radio:checked').val();
+        if (checkedradio == 'Image') {
+            mediaTypeId = 'Image';
+        }
+        else {
+            mediaTypeId = 'Video';
+        }
+
+        var json = {
+            "hiddenIdValue": hiddenIdValue,
+            "txtSocialMedia1Link": txtSocialMedia1Link,
+            "txtSocialMedia2Link": txtSocialMedia2Link,
+            "txtSocialMedia3Link": txtSocialMedia3Link,
+            "mediaTypeId": mediaTypeId, "mediaLinkImageId": mediaLinkImageId,
+            "mediaLinkVideoId": mediaLinkVideoId
+
+        };
+       
+        $.ajax({
+            type: "POST",
+            url: "/Application/SetRetailerInfo",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify(json),
+            dataType: "json",
+            success: function (results) {
+                location.reload();
+            }
+        });
+     
+    });
+
+  
+
+    function DropDown(el) {
+        this.dd = el;
+        this.placeholder = this.dd.children('span');
+        this.opts = this.dd.find('ul.dropdown > li');
+        this.val = '';
+        this.index = -1;
+        this.initEvents();
+    }
+
+    DropDown.prototype = {
+        initEvents: function () {
+            var obj = this;
+
+            obj.dd.on('click', function (event) {
+                $(this).toggleClass('active');
+                return false;
+            });
+
+            obj.opts.on('click', function () {
+                var opt = $(this);
+                obj.val = opt.text();
+                obj.index = opt.index();
+                obj.placeholder.text(obj.val);
+            });
+        },
+        getValue: function () {
+            return this.val;
+        },
+        getIndex: function () {
+            return this.index;
+        }
+    };
+
+
+    jQuery(function () {
+
+        var dd = new DropDown($('#dd'));
+
+        $(document).click(function () {
+            // all dropdowns
+            $('.wrapper-dropdown-3').removeClass('active');
+        });
+
+    });
+
+
+
+</script>
+
+

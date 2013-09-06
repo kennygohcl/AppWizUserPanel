@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Consumers";
+   
+}
+
+
+        <div id="tabsIdConsumers">
+           <p style="width: 50px; float: left;">@Mui.Search</p>
+            <input type="text" id="search" style="float: left;" />
+           
+            <p style="width: 150px; float: left;">@Mui.NotificationGrouping</p>
+            @Html.Awe().AjaxDropdown("NotificationGrouping").Prefix("search")
+          
+            <button type="button" id="sb" class="awe-btn ibtn" >@Mui.Search</button>
+
+            <br/>
+            @(Html.Awe().Grid("ConsumerGrid")
+                  .Url(Url.Action("GetItems", "ConsumerGrid"))
+                  .Parent("search")
+                  .Persistence(Persistence.Session)
+                  .Width(650)
+                  .Columns(
+                      new Column { Name = "Name",Header = "Name",  PercentWidth = 20},
+                      new Column { Name = "Age",Header = "Age", PercentWidth = 10},
+                      new Column { Name = "BirthDate" ,Header = "BOD", PercentWidth = 6},
+                        new Column { Name = "Gender" ,Header = "Gender", PercentWidth = 10}
+                 ))
+        </div>
+

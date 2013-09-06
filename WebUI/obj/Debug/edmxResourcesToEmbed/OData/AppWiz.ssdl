@@ -1,0 +1,933 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbDFrontierAppWizardModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="dbDFrontierAppWizardModelStoreContainer">
+    <EntitySet Name="Advertisements" EntityType="dbDFrontierAppWizardModel.Store.Advertisements" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Applications" EntityType="dbDFrontierAppWizardModel.Store.Applications" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Branches" EntityType="dbDFrontierAppWizardModel.Store.Branches" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ConsumerFeedBacks" EntityType="dbDFrontierAppWizardModel.Store.ConsumerFeedBacks" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Consumers" EntityType="dbDFrontierAppWizardModel.Store.Consumers" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Countries" EntityType="dbDFrontierAppWizardModel.Store.Countries" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Feedbacks" EntityType="dbDFrontierAppWizardModel.Store.Feedbacks" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Industries" EntityType="dbDFrontierAppWizardModel.Store.Industries" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Leads" EntityType="dbDFrontierAppWizardModel.Store.Leads" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Orders" EntityType="dbDFrontierAppWizardModel.Store.Orders" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PaymentGateways" EntityType="dbDFrontierAppWizardModel.Store.PaymentGateways" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProductCategories" EntityType="dbDFrontierAppWizardModel.Store.ProductCategories" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Products" EntityType="dbDFrontierAppWizardModel.Store.Products" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PromotionProducts" EntityType="dbDFrontierAppWizardModel.Store.PromotionProducts" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Promotions" EntityType="dbDFrontierAppWizardModel.Store.Promotions" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Roles" EntityType="dbDFrontierAppWizardModel.Store.Roles" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="sysAgent_JobActivity" EntityType="dbDFrontierAppWizardModel.Store.sysAgent_JobActivity" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="sysAgent_JobDefinitions" EntityType="dbDFrontierAppWizardModel.Store.sysAgent_JobDefinitions" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="sysmail_account" EntityType="dbDFrontierAppWizardModel.Store.sysmail_account" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="sysmail_account_credential" EntityType="dbDFrontierAppWizardModel.Store.sysmail_account_credential" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="sysmail_mailitems" EntityType="dbDFrontierAppWizardModel.Store.sysmail_mailitems" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="sysmail_principalprofile" EntityType="dbDFrontierAppWizardModel.Store.sysmail_principalprofile" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="sysmail_profile" EntityType="dbDFrontierAppWizardModel.Store.sysmail_profile" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="sysmail_profileaccount" EntityType="dbDFrontierAppWizardModel.Store.sysmail_profileaccount" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="sysmail_server" EntityType="dbDFrontierAppWizardModel.Store.sysmail_server" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="sysmail_servertype" EntityType="dbDFrontierAppWizardModel.Store.sysmail_servertype" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Transactions" EntityType="dbDFrontierAppWizardModel.Store.Transactions" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserBillingInformations" EntityType="dbDFrontierAppWizardModel.Store.UserBillingInformations" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserIndustries" EntityType="dbDFrontierAppWizardModel.Store.UserIndustries" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserRoles" EntityType="dbDFrontierAppWizardModel.Store.UserRoles" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Users" EntityType="dbDFrontierAppWizardModel.Store.Users" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserTypes" EntityType="dbDFrontierAppWizardModel.Store.UserTypes" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK__sysmail_p__accou__3493CFA7" Association="dbDFrontierAppWizardModel.Store.FK__sysmail_p__accou__3493CFA7">
+      <End Role="sysmail_account" EntitySet="sysmail_account" />
+      <End Role="sysmail_profileaccount" EntitySet="sysmail_profileaccount" />
+    </AssociationSet>
+    <AssociationSet Name="FK__sysmail_p__profi__339FAB6E" Association="dbDFrontierAppWizardModel.Store.FK__sysmail_p__profi__339FAB6E">
+      <End Role="sysmail_profile" EntitySet="sysmail_profile" />
+      <End Role="sysmail_principalprofile" EntitySet="sysmail_principalprofile" />
+    </AssociationSet>
+    <AssociationSet Name="FK__sysmail_s__accou__3587F3E0" Association="dbDFrontierAppWizardModel.Store.FK__sysmail_s__accou__3587F3E0">
+      <End Role="sysmail_account" EntitySet="sysmail_account" />
+      <End Role="sysmail_server" EntitySet="sysmail_server" />
+    </AssociationSet>
+    <AssociationSet Name="FK__sysmail_s__serve__367C1819" Association="dbDFrontierAppWizardModel.Store.FK__sysmail_s__serve__367C1819">
+      <End Role="sysmail_servertype" EntitySet="sysmail_servertype" />
+      <End Role="sysmail_server" EntitySet="sysmail_server" />
+    </AssociationSet>
+    <AssociationSet Name="FK__userroles__rolei__2B3F6F97" Association="dbDFrontierAppWizardModel.Store.FK__userroles__rolei__2B3F6F97">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="UserRoles" EntitySet="UserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK__userroles__useri__2A4B4B5E" Association="dbDFrontierAppWizardModel.Store.FK__userroles__useri__2A4B4B5E">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="UserRoles" EntitySet="UserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Advertisement_Application" Association="dbDFrontierAppWizardModel.Store.FK_Advertisement_Application">
+      <End Role="Applications" EntitySet="Applications" />
+      <End Role="Advertisements" EntitySet="Advertisements" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Application_Users" Association="dbDFrontierAppWizardModel.Store.FK_Application_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Applications" EntitySet="Applications" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Branches_Countries" Association="dbDFrontierAppWizardModel.Store.FK_Branches_Countries">
+      <End Role="Countries" EntitySet="Countries" />
+      <End Role="Branches" EntitySet="Branches" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Branches_Users" Association="dbDFrontierAppWizardModel.Store.FK_Branches_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Branches" EntitySet="Branches" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ConsumerFeedBacks_Consumers" Association="dbDFrontierAppWizardModel.Store.FK_ConsumerFeedBacks_Consumers">
+      <End Role="Consumers" EntitySet="Consumers" />
+      <End Role="ConsumerFeedBacks" EntitySet="ConsumerFeedBacks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Feedbacks_Users" Association="dbDFrontierAppWizardModel.Store.FK_Feedbacks_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Feedbacks" EntitySet="Feedbacks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orders_Consumers" Association="dbDFrontierAppWizardModel.Store.FK_Orders_Consumers">
+      <End Role="Consumers" EntitySet="Consumers" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orders_Promotions" Association="dbDFrontierAppWizardModel.Store.FK_Orders_Promotions">
+      <End Role="Promotions" EntitySet="Promotions" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PaymentGateway_Users" Association="dbDFrontierAppWizardModel.Store.FK_PaymentGateway_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="PaymentGateways" EntitySet="PaymentGateways" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductCategories_Users" Association="dbDFrontierAppWizardModel.Store.FK_ProductCategories_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="ProductCategories" EntitySet="ProductCategories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Products_ProductCategories" Association="dbDFrontierAppWizardModel.Store.FK_Products_ProductCategories">
+      <End Role="ProductCategories" EntitySet="ProductCategories" />
+      <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Products_Users" Association="dbDFrontierAppWizardModel.Store.FK_Products_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PromotionProducts_Products" Association="dbDFrontierAppWizardModel.Store.FK_PromotionProducts_Products">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="PromotionProducts" EntitySet="PromotionProducts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PromotionProducts_Promotions" Association="dbDFrontierAppWizardModel.Store.FK_PromotionProducts_Promotions">
+      <End Role="Promotions" EntitySet="Promotions" />
+      <End Role="PromotionProducts" EntitySet="PromotionProducts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReatailerIndustries_Industries" Association="dbDFrontierAppWizardModel.Store.FK_ReatailerIndustries_Industries">
+      <End Role="Industries" EntitySet="Industries" />
+      <End Role="UserIndustries" EntitySet="UserIndustries" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReatailerIndustries_Users" Association="dbDFrontierAppWizardModel.Store.FK_ReatailerIndustries_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="UserIndustries" EntitySet="UserIndustries" />
+    </AssociationSet>
+    <AssociationSet Name="FK_sysAgent_JobActivity_sysAgent_JobDefinitions" Association="dbDFrontierAppWizardModel.Store.FK_sysAgent_JobActivity_sysAgent_JobDefinitions">
+      <End Role="sysAgent_JobDefinitions" EntitySet="sysAgent_JobDefinitions" />
+      <End Role="sysAgent_JobActivity" EntitySet="sysAgent_JobActivity" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Transactions_Orders" Association="dbDFrontierAppWizardModel.Store.FK_Transactions_Orders">
+      <End Role="Orders" EntitySet="Orders" />
+      <End Role="Transactions" EntitySet="Transactions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserBillingInformations_Users" Association="dbDFrontierAppWizardModel.Store.FK_UserBillingInformations_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="UserBillingInformations" EntitySet="UserBillingInformations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_UserTypes" Association="dbDFrontierAppWizardModel.Store.FK_Users_UserTypes">
+      <End Role="UserTypes" EntitySet="UserTypes" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Advertisements">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ApplicationId" Type="int" Nullable="false" />
+    <Property Name="WebSiteReference" Type="nvarchar" Nullable="false" MaxLength="250" />
+    <Property Name="Banner" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="DatePosted" Type="datetime" Nullable="false" />
+    <Property Name="Start" Type="datetime" Nullable="false" />
+    <Property Name="End" Type="datetime" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Applications">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ApplicationName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="MediaTypeId" Type="nvarchar" Nullable="false" MaxLength="5" />
+    <Property Name="MediaLink" Type="nvarchar" Nullable="false" MaxLength="1050" />
+    <Property Name="SocialMedia1Link" Type="nvarchar" MaxLength="1050" />
+    <Property Name="SocialMedia1Image" Type="nvarchar" MaxLength="250" />
+    <Property Name="SocialMedia2Link" Type="nvarchar" MaxLength="1050" />
+    <Property Name="SocialMedia2Image" Type="nvarchar" MaxLength="250" />
+    <Property Name="SocialMedia3Link" Type="nvarchar" MaxLength="1050" />
+    <Property Name="SocialMedia3Image" Type="nvarchar" MaxLength="250" />
+    <Property Name="VoucherMessage" Type="nvarchar" MaxLength="1050" />
+    <Property Name="VourcherMessageStart" Type="datetime" />
+    <Property Name="VourcherMessageEnd" Type="datetime" />
+    <Property Name="VoucherMessageFrequency" Type="nvarchar" MaxLength="10" />
+    <Property Name="VourhcerMessageTriggerPoint" Type="int" />
+    <Property Name="TermsAndConditions" Type="nvarchar(max)" />
+    <Property Name="IsLoyaltyVisible" Type="bit" Nullable="false" />
+    <Property Name="LoyaltyTermsAndConditions" Type="nvarchar(max)" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Branches">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CountryId" Type="int" Nullable="false" />
+    <Property Name="BranchName" Type="nvarchar" Nullable="false" MaxLength="15" />
+    <Property Name="Address" Type="nvarchar" Nullable="false" MaxLength="250" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ConsumerFeedBacks">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ConsumerId" Type="int" Nullable="false" />
+    <Property Name="Comments" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DatePosted" Type="date" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Consumers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Age" Type="int" Nullable="false" />
+    <Property Name="BirthDate" Type="date" Nullable="false" />
+    <Property Name="Gender" Type="char" MaxLength="1" />
+    <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Phone" Type="bigint" />
+    <Property Name="Address" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Token" Type="nvarchar" MaxLength="100" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Countries">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="30" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Feedbacks">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="Comments" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DatePosted" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Industries">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Leads">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="EmailAddress" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Address" Type="nvarchar" Nullable="false" MaxLength="250" />
+    <Property Name="ReferredBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Orders">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ConsumerId" Type="int" Nullable="false" />
+    <Property Name="PromotionId" Type="int" Nullable="false" />
+    <Property Name="DateOfOrder" Type="datetime" Nullable="false" />
+    <Property Name="Quantity" Type="int" Nullable="false" />
+    <Property Name="Total" Type="decimal" Nullable="false" Scale="2" />
+  </EntityType>
+  <EntityType Name="PaymentGateways">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="ApiLogin" Type="nvarchar" Nullable="false" MaxLength="150" />
+    <Property Name="TransactionKey" Type="nvarchar" Nullable="false" MaxLength="150" />
+    <Property Name="Type" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductCategories">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Products">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ProductCategoryId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="Picture" Type="nvarchar" MaxLength="40" />
+    <Property Name="Price" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PromotionProducts">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="PromotionId" Type="int" />
+    <Property Name="ProductId" Type="int" />
+  </EntityType>
+  <EntityType Name="Promotions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Start" Type="datetime" />
+    <Property Name="End" Type="datetime" />
+    <Property Name="Price" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="Description" Type="nvarchar" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="Isdeleted" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="sysAgent_JobActivity">
+    <Key>
+      <PropertyRef Name="ActivityId" />
+    </Key>
+    <Property Name="ActivityId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="JobId" Type="int" Nullable="false" />
+    <Property Name="StartExecutionTime" Type="datetime" Nullable="false" />
+    <Property Name="StopExecutionTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="sysAgent_JobDefinitions">
+    <Key>
+      <PropertyRef Name="JobId" />
+    </Key>
+    <Property Name="JobId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="JobName" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="SqlToExecute" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="ConnectionStringToUse" Type="nvarchar" MaxLength="512" />
+  </EntityType>
+  <EntityType Name="sysmail_account">
+    <Key>
+      <PropertyRef Name="account_id" />
+    </Key>
+    <Property Name="account_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="description" Type="nvarchar" MaxLength="256" />
+    <Property Name="email_address" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="display_name" Type="nvarchar" MaxLength="128" />
+    <Property Name="replyto_address" Type="nvarchar" MaxLength="128" />
+    <Property Name="last_mod_datetime" Type="datetime" Nullable="false" />
+    <Property Name="last_mod_user" Type="nvarchar" Nullable="false" MaxLength="128" />
+  </EntityType>
+  <EntityType Name="sysmail_account_credential">
+    <Key>
+      <PropertyRef Name="credential_id" />
+    </Key>
+    <Property Name="credential_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="nvarchar" MaxLength="256" />
+    <Property Name="cyphertext" Type="nvarchar" MaxLength="256" />
+  </EntityType>
+  <EntityType Name="sysmail_mailitems">
+    <Key>
+      <PropertyRef Name="mailitem_id" />
+    </Key>
+    <Property Name="mailitem_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="profile_id" Type="int" Nullable="false" />
+    <Property Name="recipients" Type="varchar(max)" />
+    <Property Name="copy_recipients" Type="varchar(max)" />
+    <Property Name="blind_copy_recipients" Type="varchar(max)" />
+    <Property Name="subject" Type="nvarchar" MaxLength="255" />
+    <Property Name="from_address" Type="varchar(max)" />
+    <Property Name="reply_to" Type="varchar(max)" />
+    <Property Name="body" Type="nvarchar(max)" />
+    <Property Name="body_format" Type="varchar" MaxLength="20" />
+    <Property Name="importance" Type="varchar" MaxLength="6" />
+    <Property Name="sensitivity" Type="varchar" MaxLength="12" />
+    <Property Name="file_attachments" Type="nvarchar(max)" />
+    <Property Name="attachment_encoding" Type="varchar" MaxLength="20" />
+    <Property Name="query" Type="nvarchar(max)" />
+    <Property Name="execute_query_database" Type="nvarchar" MaxLength="128" />
+    <Property Name="attach_query_result_as_file" Type="bit" />
+    <Property Name="query_result_header" Type="bit" />
+    <Property Name="query_result_width" Type="int" />
+    <Property Name="query_result_separator" Type="char" MaxLength="1" />
+    <Property Name="exclude_query_output" Type="bit" />
+    <Property Name="append_query_error" Type="bit" />
+    <Property Name="send_request_date" Type="datetime" Nullable="false" />
+    <Property Name="send_request_user" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="sent_account_id" Type="int" />
+    <Property Name="sent_status" Type="tinyint" />
+    <Property Name="sent_date" Type="datetime" />
+    <Property Name="last_mod_date" Type="datetime" Nullable="false" />
+    <Property Name="last_mod_user" Type="nvarchar" Nullable="false" MaxLength="128" />
+  </EntityType>
+  <EntityType Name="sysmail_principalprofile">
+    <Key>
+      <PropertyRef Name="profile_id" />
+      <PropertyRef Name="principal_sid" />
+    </Key>
+    <Property Name="profile_id" Type="int" Nullable="false" />
+    <Property Name="principal_sid" Type="varbinary" Nullable="false" MaxLength="85" />
+    <Property Name="is_default" Type="bit" Nullable="false" />
+    <Property Name="last_mod_datetime" Type="datetime" Nullable="false" />
+    <Property Name="last_mod_user" Type="nvarchar" Nullable="false" MaxLength="128" />
+  </EntityType>
+  <EntityType Name="sysmail_profile">
+    <Key>
+      <PropertyRef Name="profile_id" />
+    </Key>
+    <Property Name="profile_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="description" Type="nvarchar" MaxLength="256" />
+    <Property Name="last_mod_datetime" Type="datetime" Nullable="false" />
+    <Property Name="last_mod_user" Type="nvarchar" Nullable="false" MaxLength="128" />
+  </EntityType>
+  <EntityType Name="sysmail_profileaccount">
+    <Key>
+      <PropertyRef Name="profile_id" />
+      <PropertyRef Name="account_id" />
+    </Key>
+    <Property Name="profile_id" Type="int" Nullable="false" />
+    <Property Name="account_id" Type="int" Nullable="false" />
+    <Property Name="sequence_number" Type="int" />
+    <Property Name="last_mod_datetime" Type="datetime" Nullable="false" />
+    <Property Name="last_mod_user" Type="nvarchar" Nullable="false" MaxLength="128" />
+  </EntityType>
+  <EntityType Name="sysmail_server">
+    <Key>
+      <PropertyRef Name="account_id" />
+      <PropertyRef Name="servertype" />
+    </Key>
+    <Property Name="account_id" Type="int" Nullable="false" />
+    <Property Name="servertype" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="servername" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="port" Type="int" Nullable="false" />
+    <Property Name="username" Type="nvarchar" MaxLength="128" />
+    <Property Name="credential_id" Type="int" />
+    <Property Name="use_default_credentials" Type="bit" Nullable="false" />
+    <Property Name="enable_ssl" Type="bit" Nullable="false" />
+    <Property Name="flags" Type="int" Nullable="false" />
+    <Property Name="last_mod_datetime" Type="datetime" Nullable="false" />
+    <Property Name="last_mod_user" Type="nvarchar" Nullable="false" MaxLength="128" />
+  </EntityType>
+  <EntityType Name="sysmail_servertype">
+    <Key>
+      <PropertyRef Name="servertype" />
+    </Key>
+    <Property Name="servertype" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="is_incoming" Type="bit" Nullable="false" />
+    <Property Name="is_outgoing" Type="bit" Nullable="false" />
+    <Property Name="last_mod_datetime" Type="datetime" Nullable="false" />
+    <Property Name="last_mod_user" Type="nvarchar" Nullable="false" MaxLength="128" />
+  </EntityType>
+  <EntityType Name="Transactions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="OrderId" Type="int" Nullable="false" />
+    <Property Name="PaymentModeId" Type="int" Nullable="false" />
+    <Property Name="DateofTransaction" Type="datetime" Nullable="false" />
+    <Property Name="PaymentRefence" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="TotalAmount" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="DiscountOfTotalPercent" Type="int" Nullable="false" />
+    <Property Name="FinalAmount" Type="decimal" Scale="2" />
+  </EntityType>
+  <EntityType Name="UserBillingInformations">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="25" />
+    <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="BillingAddress" Type="nvarchar" Nullable="false" MaxLength="250" />
+    <Property Name="BillingZipCode" Type="nvarchar" Nullable="false" MaxLength="10" />
+    <Property Name="BillingContactNumber" Type="nvarchar" Nullable="false" MaxLength="15" />
+    <Property Name="BillingContactEmail" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="CreditCardNumber" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="ExpiryDate" Type="nvarchar" Nullable="false" MaxLength="8" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserIndustries">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="IndustryId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="RoleId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Login" Type="nvarchar" Nullable="false" MaxLength="15" />
+    <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" />
+    <Property Name="UserTypeId" Type="int" Nullable="false" />
+    <Property Name="Company" Type="nvarchar" MaxLength="50" />
+    <Property Name="Address" Type="nvarchar" MaxLength="250" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+    <Property Name="DateCreated" Type="datetime" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserTypes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="nvarchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK__sysmail_p__accou__3493CFA7">
+    <End Role="sysmail_account" Type="dbDFrontierAppWizardModel.Store.sysmail_account" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="sysmail_profileaccount" Type="dbDFrontierAppWizardModel.Store.sysmail_profileaccount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sysmail_account">
+        <PropertyRef Name="account_id" />
+      </Principal>
+      <Dependent Role="sysmail_profileaccount">
+        <PropertyRef Name="account_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__sysmail_p__profi__339FAB6E">
+    <End Role="sysmail_profile" Type="dbDFrontierAppWizardModel.Store.sysmail_profile" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="sysmail_principalprofile" Type="dbDFrontierAppWizardModel.Store.sysmail_principalprofile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sysmail_profile">
+        <PropertyRef Name="profile_id" />
+      </Principal>
+      <Dependent Role="sysmail_principalprofile">
+        <PropertyRef Name="profile_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__sysmail_s__accou__3587F3E0">
+    <End Role="sysmail_account" Type="dbDFrontierAppWizardModel.Store.sysmail_account" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="sysmail_server" Type="dbDFrontierAppWizardModel.Store.sysmail_server" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sysmail_account">
+        <PropertyRef Name="account_id" />
+      </Principal>
+      <Dependent Role="sysmail_server">
+        <PropertyRef Name="account_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__sysmail_s__serve__367C1819">
+    <End Role="sysmail_servertype" Type="dbDFrontierAppWizardModel.Store.sysmail_servertype" Multiplicity="1" />
+    <End Role="sysmail_server" Type="dbDFrontierAppWizardModel.Store.sysmail_server" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sysmail_servertype">
+        <PropertyRef Name="servertype" />
+      </Principal>
+      <Dependent Role="sysmail_server">
+        <PropertyRef Name="servertype" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__userroles__rolei__2B3F6F97">
+    <End Role="Roles" Type="dbDFrontierAppWizardModel.Store.Roles" Multiplicity="1" />
+    <End Role="UserRoles" Type="dbDFrontierAppWizardModel.Store.UserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserRoles">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__userroles__useri__2A4B4B5E">
+    <End Role="Users" Type="dbDFrontierAppWizardModel.Store.Users" Multiplicity="1" />
+    <End Role="UserRoles" Type="dbDFrontierAppWizardModel.Store.UserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserRoles">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Advertisement_Application">
+    <End Role="Applications" Type="dbDFrontierAppWizardModel.Store.Applications" Multiplicity="1" />
+    <End Role="Advertisements" Type="dbDFrontierAppWizardModel.Store.Advertisements" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Applications">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Advertisements">
+        <PropertyRef Name="ApplicationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Application_Users">
+    <End Role="Users" Type="dbDFrontierAppWizardModel.Store.Users" Multiplicity="1" />
+    <End Role="Applications" Type="dbDFrontierAppWizardModel.Store.Applications" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Applications">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Branches_Countries">
+    <End Role="Countries" Type="dbDFrontierAppWizardModel.Store.Countries" Multiplicity="1" />
+    <End Role="Branches" Type="dbDFrontierAppWizardModel.Store.Branches" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Countries">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Branches">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Branches_Users">
+    <End Role="Users" Type="dbDFrontierAppWizardModel.Store.Users" Multiplicity="1" />
+    <End Role="Branches" Type="dbDFrontierAppWizardModel.Store.Branches" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Branches">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ConsumerFeedBacks_Consumers">
+    <End Role="Consumers" Type="dbDFrontierAppWizardModel.Store.Consumers" Multiplicity="1" />
+    <End Role="ConsumerFeedBacks" Type="dbDFrontierAppWizardModel.Store.ConsumerFeedBacks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Consumers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ConsumerFeedBacks">
+        <PropertyRef Name="ConsumerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Feedbacks_Users">
+    <End Role="Users" Type="dbDFrontierAppWizardModel.Store.Users" Multiplicity="1" />
+    <End Role="Feedbacks" Type="dbDFrontierAppWizardModel.Store.Feedbacks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Feedbacks">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orders_Consumers">
+    <End Role="Consumers" Type="dbDFrontierAppWizardModel.Store.Consumers" Multiplicity="1" />
+    <End Role="Orders" Type="dbDFrontierAppWizardModel.Store.Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Consumers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="ConsumerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orders_Promotions">
+    <End Role="Promotions" Type="dbDFrontierAppWizardModel.Store.Promotions" Multiplicity="1" />
+    <End Role="Orders" Type="dbDFrontierAppWizardModel.Store.Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Promotions">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="PromotionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PaymentGateway_Users">
+    <End Role="Users" Type="dbDFrontierAppWizardModel.Store.Users" Multiplicity="1" />
+    <End Role="PaymentGateways" Type="dbDFrontierAppWizardModel.Store.PaymentGateways" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PaymentGateways">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductCategories_Users">
+    <End Role="Users" Type="dbDFrontierAppWizardModel.Store.Users" Multiplicity="1" />
+    <End Role="ProductCategories" Type="dbDFrontierAppWizardModel.Store.ProductCategories" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductCategories">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Products_ProductCategories">
+    <End Role="ProductCategories" Type="dbDFrontierAppWizardModel.Store.ProductCategories" Multiplicity="1" />
+    <End Role="Products" Type="dbDFrontierAppWizardModel.Store.Products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductCategories">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Products">
+        <PropertyRef Name="ProductCategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Products_Users">
+    <End Role="Users" Type="dbDFrontierAppWizardModel.Store.Users" Multiplicity="1" />
+    <End Role="Products" Type="dbDFrontierAppWizardModel.Store.Products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Products">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PromotionProducts_Products">
+    <End Role="Products" Type="dbDFrontierAppWizardModel.Store.Products" Multiplicity="0..1" />
+    <End Role="PromotionProducts" Type="dbDFrontierAppWizardModel.Store.PromotionProducts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PromotionProducts">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PromotionProducts_Promotions">
+    <End Role="Promotions" Type="dbDFrontierAppWizardModel.Store.Promotions" Multiplicity="0..1" />
+    <End Role="PromotionProducts" Type="dbDFrontierAppWizardModel.Store.PromotionProducts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Promotions">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PromotionProducts">
+        <PropertyRef Name="PromotionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReatailerIndustries_Industries">
+    <End Role="Industries" Type="dbDFrontierAppWizardModel.Store.Industries" Multiplicity="1" />
+    <End Role="UserIndustries" Type="dbDFrontierAppWizardModel.Store.UserIndustries" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Industries">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserIndustries">
+        <PropertyRef Name="IndustryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReatailerIndustries_Users">
+    <End Role="Users" Type="dbDFrontierAppWizardModel.Store.Users" Multiplicity="1" />
+    <End Role="UserIndustries" Type="dbDFrontierAppWizardModel.Store.UserIndustries" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserIndustries">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_sysAgent_JobActivity_sysAgent_JobDefinitions">
+    <End Role="sysAgent_JobDefinitions" Type="dbDFrontierAppWizardModel.Store.sysAgent_JobDefinitions" Multiplicity="1" />
+    <End Role="sysAgent_JobActivity" Type="dbDFrontierAppWizardModel.Store.sysAgent_JobActivity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sysAgent_JobDefinitions">
+        <PropertyRef Name="JobId" />
+      </Principal>
+      <Dependent Role="sysAgent_JobActivity">
+        <PropertyRef Name="JobId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Transactions_Orders">
+    <End Role="Orders" Type="dbDFrontierAppWizardModel.Store.Orders" Multiplicity="1" />
+    <End Role="Transactions" Type="dbDFrontierAppWizardModel.Store.Transactions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Orders">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Transactions">
+        <PropertyRef Name="OrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserBillingInformations_Users">
+    <End Role="Users" Type="dbDFrontierAppWizardModel.Store.Users" Multiplicity="1" />
+    <End Role="UserBillingInformations" Type="dbDFrontierAppWizardModel.Store.UserBillingInformations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserBillingInformations">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_UserTypes">
+    <End Role="UserTypes" Type="dbDFrontierAppWizardModel.Store.UserTypes" Multiplicity="1" />
+    <End Role="Users" Type="dbDFrontierAppWizardModel.Store.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserTypes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="UserTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="CleanUp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_send_dbmail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="profile_name" Type="nvarchar" Mode="In" />
+    <Parameter Name="recipients" Type="varchar(max)" Mode="In" />
+    <Parameter Name="copy_recipients" Type="varchar(max)" Mode="In" />
+    <Parameter Name="blind_copy_recipients" Type="varchar(max)" Mode="In" />
+    <Parameter Name="subject" Type="nvarchar" Mode="In" />
+    <Parameter Name="body" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="body_format" Type="varchar" Mode="In" />
+    <Parameter Name="importance" Type="varchar" Mode="In" />
+    <Parameter Name="sensitivity" Type="varchar" Mode="In" />
+    <Parameter Name="file_attachments" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="query" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="execute_query_database" Type="nvarchar" Mode="In" />
+    <Parameter Name="attach_query_result_as_file" Type="bit" Mode="In" />
+    <Parameter Name="query_attachment_filename" Type="nvarchar" Mode="In" />
+    <Parameter Name="query_result_header" Type="bit" Mode="In" />
+    <Parameter Name="query_result_width" Type="int" Mode="In" />
+    <Parameter Name="query_result_separator" Type="char" Mode="In" />
+    <Parameter Name="exclude_query_output" Type="bit" Mode="In" />
+    <Parameter Name="append_query_error" Type="bit" Mode="In" />
+    <Parameter Name="query_no_truncate" Type="bit" Mode="In" />
+    <Parameter Name="query_result_no_padding" Type="bit" Mode="In" />
+    <Parameter Name="mailitem_id" Type="int" Mode="InOut" />
+    <Parameter Name="from_address" Type="varchar(max)" Mode="In" />
+    <Parameter Name="reply_to" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="sysmail_add_account_sp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="account_name" Type="nvarchar" Mode="In" />
+    <Parameter Name="email_address" Type="nvarchar" Mode="In" />
+    <Parameter Name="display_name" Type="nvarchar" Mode="In" />
+    <Parameter Name="replyto_address" Type="nvarchar" Mode="In" />
+    <Parameter Name="description" Type="nvarchar" Mode="In" />
+    <Parameter Name="mailserver_name" Type="nvarchar" Mode="In" />
+    <Parameter Name="mailserver_type" Type="nvarchar" Mode="In" />
+    <Parameter Name="port" Type="int" Mode="In" />
+    <Parameter Name="username" Type="nvarchar" Mode="In" />
+    <Parameter Name="password" Type="nvarchar" Mode="In" />
+    <Parameter Name="use_default_credentials" Type="bit" Mode="In" />
+    <Parameter Name="enable_ssl" Type="bit" Mode="In" />
+    <Parameter Name="account_id" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="sysmail_add_principalprofile_sp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="principal_id" Type="int" Mode="In" />
+    <Parameter Name="principal_name" Type="nvarchar" Mode="In" />
+    <Parameter Name="profile_id" Type="int" Mode="In" />
+    <Parameter Name="profile_name" Type="nvarchar" Mode="In" />
+    <Parameter Name="is_default" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sysmail_add_profile_sp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="profile_name" Type="nvarchar" Mode="In" />
+    <Parameter Name="description" Type="nvarchar" Mode="In" />
+    <Parameter Name="profile_id" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="sysmail_add_profileaccount_sp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="profile_id" Type="int" Mode="In" />
+    <Parameter Name="profile_name" Type="nvarchar" Mode="In" />
+    <Parameter Name="account_id" Type="int" Mode="In" />
+    <Parameter Name="account_name" Type="nvarchar" Mode="In" />
+    <Parameter Name="sequence_number" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sysmail_create_user_credential_sp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="username" Type="nvarchar" Mode="In" />
+    <Parameter Name="password" Type="nvarchar" Mode="In" />
+    <Parameter Name="credential_id" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="sysmail_verify_account_sp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="account_id" Type="int" Mode="In" />
+    <Parameter Name="account_name" Type="nvarchar" Mode="In" />
+    <Parameter Name="allow_both_nulls" Type="bit" Mode="In" />
+    <Parameter Name="allow_id_name_mismatch" Type="bit" Mode="In" />
+    <Parameter Name="accountid" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="sysmail_verify_accountparams_sp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="use_default_credentials" Type="bit" Mode="In" />
+    <Parameter Name="mailserver_type" Type="nvarchar" Mode="InOut" />
+    <Parameter Name="username" Type="nvarchar" Mode="InOut" />
+    <Parameter Name="password" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="sysmail_verify_principal_sp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="principal_id" Type="int" Mode="In" />
+    <Parameter Name="principal_name" Type="nvarchar" Mode="In" />
+    <Parameter Name="allow_both_nulls" Type="bit" Mode="In" />
+    <Parameter Name="principal_sid" Type="varbinary" Mode="InOut" />
+  </Function>
+  <Function Name="sysmail_verify_profile_sp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="profile_id" Type="int" Mode="In" />
+    <Parameter Name="profile_name" Type="nvarchar" Mode="In" />
+    <Parameter Name="allow_both_nulls" Type="bit" Mode="In" />
+    <Parameter Name="allow_id_name_mismatch" Type="bit" Mode="In" />
+    <Parameter Name="profileid" Type="int" Mode="InOut" />
+  </Function>
+</Schema>

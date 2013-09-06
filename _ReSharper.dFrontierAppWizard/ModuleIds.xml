@@ -1,0 +1,11 @@
+<Modules>
+  <Module PersistentId="F668A08B-1888-468B-BA3F-9EE5513108CE" ModuleId="Core" />
+  <Module PersistentId="C5D7AF01-8760-4CEF-9442-DF307AF3C73A" ModuleId="Data" />
+  <Module PersistentId="92603C80-C30F-4E9F-884B-EBBCFAE5A5F1" ModuleId="WebUI" />
+  <Module PersistentId="046EF484-2278-4760-B7DD-FADF08ACE1F8" ModuleId="Service" />
+  <Module PersistentId="850C3E33-8872-4141-8532-8ABF8C4EB641" ModuleId="Tests" />
+  <Module PersistentId="4889C84C-9CDF-4928-BFE1-6801EB3E6380" ModuleId="Infra" />
+  <Module PersistentId="B603F35A-0F5C-4F45-9A5F-633DED479F1F" ModuleId="Resources" />
+  <Module PersistentId="6BF0821B-5C36-48FB-8D06-7950D8741EF2" ModuleId="WorkerRole.EmailNotification" />
+  <Module PersistentId="EEBB1121-BE32-4881-9F2B-FE0547BD2E04" ModuleId="WcfService" />
+</Modules>

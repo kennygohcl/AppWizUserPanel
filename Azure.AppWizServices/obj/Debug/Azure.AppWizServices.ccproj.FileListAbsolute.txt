@@ -1,0 +1,2 @@
+C:\SourceCodes\DFrontierAppWizard\Azure.AppWizServices\bin\Debug\ServiceConfiguration.cscfg
+C:\SourceCodes\DFrontierAppWizard\Azure.AppWizServices\bin\Debug\ServiceDefinition.csdef

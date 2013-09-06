@@ -1,0 +1,107 @@
+﻿@model ApplicationInput
+@{
+    Layout = "~/Views/Shared/_LayoutApp.cshtml";
+    ViewBag.Title = "Loyalty";
+    ViewBag.SelectedView = 9;
+}
+
+@section previewMobileSection {
+    @Html.Partial("Simulator/_Loyalty")
+}
+
+
+
+<div style="width: 700px; height: 600px;">
+    <div class="efield">
+        <div class="elabel">Image:</div>
+        <div class="einput" style="float:left">
+            <div class="fl">
+                @using (Html.BeginForm("UploadFilesLoyalty", "Application", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                { 
+                    <input type="file" name="file" />
+                    <input class="awe-btn" type="submit" name="Submit" id="Submit" value="Upload" />
+                }
+                @Html.Awe().AjaxDropdownFor(o => o.LoyaltyGiftImageId).Parameter("appId", @Model.Id)
+            </div>
+            <div class="fr">
+                
+            </div>
+            
+        </div>
+         <input class="awe-btn" style="float: right; width: 100px; height: 30px; font-size: small;" type="button" title="Hide Loyalty" value="Hide Loyalty" />
+            @Html.HiddenFor(o => o.Id, new { id = "hiddenId" })
+    </div>
+   
+    @using (Html.BeginForm())
+    {  
+            <div style="text-align:left">
+        @Html.EditorFor(o => o.LoyaltyPassword)
+                </div>
+     
+    }
+    <div style="clear:both">&nbsp</div>
+    <div style="text-align: center">
+        <button id="btnSimulator" class="button-orange btnAdvanceLarge marginTopBottom10">@Mui.Simulate</button>
+        <button id="btnSaveAndPublish" class="button-orange btnAdvanceLarge marginTopBottom10">@Mui.SaveAndPublish</button>
+        <button id="btnCancel" class="button-orange btnAdvanceLarge marginTopBottom10">@Mui.Cancel</button>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    jQuery(document).ready(function () {
+
+        //   jQuery(".elabel").hide();
+        //   jQuery('div').removeClass('efield');
+        // jQuery('div').removeClass('einput');
+
+        jQuery('#LoyaltyPassword').addClass('einputRefined');
+        jQuery("#footer").hide();
+
+    });
+
+    jQuery("#btnCancel").click(function () {
+        location.reload();
+    });
+
+    jQuery("#btnSimulate").click(function () {
+
+
+
+
+    });
+
+
+    jQuery("#btnSaveAndPublish").click(function () {
+        var hiddenIdValue = $("#hiddenId").val();
+        var loyaltyGiftImageId = $("#LoyaltyGiftImageId").val();
+        var loyaltyPassword = $("#LoyaltyPassword").val();
+
+        var json = {
+            "hiddenIdValue": hiddenIdValue,
+            "loyaltyGiftImageId": loyaltyGiftImageId,
+            "loyaltyPassword": loyaltyPassword
+        };
+        $.ajax({
+            type: "POST",
+            url: "/Application/SetLoyalty",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify(json),
+            dataType: "json",
+            success: savePublishCompleted,
+            //error: savePublishItemFailed
+        });
+
+    });
+
+    function savePublishCompleted(results) {
+
+    }
+
+
+
+
+
+</script>
+
+

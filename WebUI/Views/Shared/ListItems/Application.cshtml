@@ -1,0 +1,21 @@
+﻿@model IEnumerable<Application>
+@foreach (var o in Model)
+{
+    <li id='application@(o.Id)' class="awe-li applicationImage awe-il" data-val="@o.Id">
+        <div>@o.ApplicationName
+        </div>
+        <div>
+            <div class="fl">
+                <img  id="applicationImageLink" src='@Url.Content("~/pictures/Products/" + (string.IsNullOrEmpty(o.MediaLink) ? "0.jpg" : o.MediaLink))' class="thumb"  alt='picture' /></div>
+          
+            <br class="cbt" />
+        </div>
+        <div class="cbt" style="margin-top: 0.5em;">
+            <div class='cool fl'>
+                <button id="applicationImagebutton" class="awe-btn" onclick="@(Url.Awe().PopupAction().Url(Url.Action("ChangePicture", "Application", new { o.Id })).Fullscreen(true).RemoveOnClose(false))" style="padding:0.1em 0.3em">Change image</button>
+               
+                @Html.Hidden("MeliaName",o.MediaLink)
+            </div>
+        </div>
+    </li>
+}

@@ -1,0 +1,31 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutMyProfile.cshtml";
+    string xx = @ViewBag.ApplicationId.ToString();
+}
+
+@section previewLeftSidebarSection {
+    @Html.Partial("SideBar/SideBarMyProfile")
+}
+
+<div style=" width: 90%;">
+    <div>
+       <p>@Mui.Search</p>
+               <input type="text" id="search" />
+                <button type="button" id="sb" class="awe-btn ibtn">@Mui.Search</button>
+    </div>
+    <div>
+         @Html.Hidden("searchFilter",xx )
+    </div>
+ 
+    @(Html.Awe().Grid("FrequencyGrid")
+          .Url(Url.Action("GetItems", "FrequencyGrid"))
+          .Parent("searchFilter", "parentSearch")
+          .Parent("search")
+          .Persistence(Persistence.Session)
+          .Width(450)
+          .Columns(
+              new Column { Name = "Description", PercentWidth = 100},
+              new Column { ClientFormat = ".Actions", Width = 80 }
+              ))
+    
+</div>

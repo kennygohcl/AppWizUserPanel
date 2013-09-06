@@ -1,0 +1,105 @@
+﻿@model IEnumerable<Promotion>
+
+<ul  class="awe-ajaxlist promotionslist awe-srl" >
+@foreach (var o in Model)
+{
+    <li id='promotionSimulator@(o.Id)cat@(ViewBag.CategoryId)' class="awe-liSmall" data-val="@o.Id" style="float: left; width: 290px; left:0px; position: relative; height: 60px;">
+
+        <br class="cbt" />
+        @foreach (var m in o.Products)
+        {
+            <div  style="float: left; width: 50px; ">
+                <img src='@Url.Content("~/pictures/Products/s" + (m.Picture ?? "0.jpg"))' class="sthumb" alt='@m.Name' style="width: 50px; height: 50px; padding-right: 5px;" />
+            </div>
+        
+            <div class="fr" style="width: 240px; left: 0px; ">
+                <div style="float: left; width: 200px; font-size: 10px; line-height:100%; padding-left: 5px;" >
+                    @o.Description
+                </div>
+                <div style="float: left; width: 35px;" >
+                    <label id='promotionPrice@(o.Id)cat@(ViewBag.CategoryId)' style="font-size: 11px; color:darkred; font-weight: bold;" >
+                        @{ 
+                            @o.Price
+                        }
+                    </label>
+                </div>
+            
+                <br class="cbt" />    
+                <div class="fl" style="padding-left: 5px; font-size: 9px; font-weight: normal;">
+          
+                    @{
+                        // Difference in days, hours, and minutes.
+                        TimeSpan ts = @o.End - DateTime.Now;
+                        // Difference in days.
+                        int differenceInDays = ts.Days;
+                        int differenceInHours = ts.Hours;
+                        ViewBag.differenceInDays = differenceInDays;
+                        ViewBag.differenceInHours = differenceInHours;
+                   
+                    }
+
+                    @{
+                        string value = string.Format("{0} day(s) {1} hour(s) left", ViewBag.differenceInDays, ViewBag.differenceInHours);
+                        if (ViewBag.differenceInDays > 0)
+                        {
+                            ViewBag.TimeRemaining = value;
+                        }
+                        else
+                        {
+                            if (ViewBag.differenceInHours>0)
+                            {
+                                value = string.Format("{0} hours(s) left", differenceInHours < 0 ? 0 : differenceInHours);
+                                ViewBag.TimeRemaining = value;
+                            }
+                            else
+                            {
+                                ViewBag.TimeRemaining = "Promo expired";
+                            }
+                        }
+                        <span style="font-size: 9px; font-weight: bold;">
+                            @ViewBag.TimeRemaining
+                        </span>
+                    }
+                </div> 
+                <div class="fr" >
+                    <a href="@Url.Action("ProductDetail", "Application", new { promoId = o.Id })"  >
+                        <img src="@Url.Content("~/Content/arrowRight.png")"  />
+                    </a>
+                </div>
+                <br class="cbt" />  
+            </div>
+       
+        }
+  
+    </li>
+
+}
+</ul>
+<!-- load jQuery 1.9.1 -->
+<script type="text/javascript" src="@Url.Content("~/Scripts/jquery-1.9.1.min.js")"></script>
+
+<script type="text/javascript" >
+    
+    var jQuery_1_9_1 = $.noConflict(true);
+    jQuery_1_9_1(document).ready(function () {
+        
+        jQuery_1_9_1("#" + "pro@(ViewBag.CategoryId)" + "PromotionsReadOnly").css({ "position": "absolute" });
+        jQuery_1_9_1("#" + "pro@(ViewBag.CategoryId)" + "PromotionsReadOnly").css({ "width": "315px" });
+        jQuery_1_9_1("#" + "pro@(ViewBag.CategoryId)" + "PromotionsReadOnly").css({ "height": "390px" });
+        jQuery_1_9_1("#" + "pro@(ViewBag.CategoryId)" + "PromotionsReadOnly").css({ "left": "0px" });
+        jQuery_1_9_1("#" + "pro@(ViewBag.CategoryId)" + "PromotionsReadOnly").css({ "overflow": "auto" });
+        jQuery_1_9_1("#" + "pro@(ViewBag.CategoryId)" + "PromotionsReadOnly").css({ "float": "left" });
+
+
+
+   /*     jQuery_1_9_1('tbody').removeClass('awe-srl');
+        jQuery_1_9_1('tbody').css({ "left": "-20px" });
+        jQuery_1_9_1('tbody').css({ "float": "left" });*/
+      //  jQuery_1_9_1('tbody').css({ "height": "290px" });
+        //  jQuery_1_9_1('#PromotionsReadOnly').attr('id', 'PromotionsReadOnly@(ViewBag.CategoryId)');
+      
+       
+  });
+  
+  
+</script>

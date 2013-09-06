@@ -1,0 +1,34 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutMyProfile.cshtml";
+    ViewBag.Title = "Addresses";
+}
+<br/>
+
+@section previewLeftSidebarSection {
+    @Html.Partial("SideBar/SideBarMyProfile")
+}
+
+<div style=" width: 90%;">
+
+    <h2>@Mui.Addresses</h2>
+ <fieldset>
+        <legend>@Mui.Search</legend>
+        <input type="text" id="search" />
+        <button type="button" id="sb" class="awe-btn ibtn">@Mui.Search</button>
+    </fieldset>
+    <br />
+  <button class="awe-btn" onclick="@(Url.Awe().PopupFormAction().Url(Url.Action("create")).Success("refreshBranchGrid").Height(300))">@Mui.Create</button>
+     @Html.Awe().Form().FormClass("BranchRestore").Success("refreshBranchGrid").Url(Url.Action("Restore"))
+    @Html.Awe().Form().Confirm(true).FormClass("BranchConfirm").Success("refreshBranchGrid").Url(Url.Action("Delete"))
+    @(Html.Awe().Grid("BranchGrid")
+          .Url(Url.Action("GetItems", "BranchGrid"))
+          .Parent("search")
+          .Width(800)
+          .Persistence(Persistence.Session)
+          .Columns(
+              new Column { Name = "BranchName", PercentWidth = 30},
+              new Column { Name = "Address" },
+              new Column { Name = "ZipCode" },
+              new Column { Name = "Country.Name", ClientFormat = ".Country", Header = "Country" },
+              new Column { ClientFormat = ".Actions", Width = 80 }))
+</div>

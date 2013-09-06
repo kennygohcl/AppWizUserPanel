@@ -1,0 +1,14 @@
+﻿@{
+    var editFormat = string.Format(
+        "<button type='button' class='awe-btn' onclick=\"{0}\"><span class='ico-edit'></span></button>",
+        Url.Awe().PopupFormAction().Url(Url.Action("Edit", new { Id = ".Id" })).Success("edit").Fullscreen(true));
+}
+@(Html.Awe().Grid("PromotionsGrid")
+      .Url(Url.Action("GetItems", "PromotionGrid"))
+      .Columns(
+          new Column { Name = "Products.Count", ClientFormat = ".ProductsCount", Header = "Products count", Width = 130},
+          new Column { ClientFormat = editFormat, Width = 50 },
+          new Column { ClientFormatFunc = "promotionsDelFormat", Width = 50 })
+      .Parent("PromotionName", "search")
+      .Parent("searchProductCategoryId", "productCategory")
+      .Parent("searchProducts", "products"))

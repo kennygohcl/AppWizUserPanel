@@ -1,0 +1,54 @@
+﻿@{
+    ViewBag.Title = "Products";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br/>
+
+@Html.ActionLink(@Mui.MainScreen, "MainScreen", "Application") >> @Html.ActionLink(@Mui.Categories, "Index", "ProductCategory") >> @Html.ActionLink(@Mui.Promotions, "Index", "Promotion") 
+
+
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
+<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+
+<h2>@Mui.Products</h2>
+<fieldset><legend>@Mui.Search</legend>
+    @Html.Awe().TextBox("Search").Placeholder(Mui.Search)
+</fieldset>
+<br />
+<button class="awe-btn" onclick="@(Url.Awe().PopupFormAction().Url(Url.Action("create")).Success("createProduct").Height(450))">@Mui.Create @Mui.Product</button>
+
+<div id="tabsProduct">     
+
+    <ul>
+        @foreach (var category in ViewBag.Categories)
+        { 
+            <li><a href="#tabsProductId@(category.Description)">@category.Description</a></li>
+        }
+    </ul>
+    
+    <div>
+      @foreach (var category in ViewBag.Categories)
+      { 
+          <div id="tabsProductId@(category.Description)">
+              @{
+          ViewBag.CategoryId = category.Id.ToString();
+              }
+              @{Html.RenderPartial("ProductListPerCategory");}
+ 
+          </div>
+      }
+    </div>
+</div>
+
+<script type="text/javascript">
+    
+
+    jQuery(document).ready(function () {
+        jQuery( "#tabsProduct" ).tabs();
+    });
+   
+</script>
+
+
+
+

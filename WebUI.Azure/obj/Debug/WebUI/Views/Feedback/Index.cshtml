@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Feedbacks";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    p {
+        margin: 0;
+    }
+    
+</style>
+<h2>Feedback</h2>
+<br/>
+<button class="awe-btn" onclick="@(Url.Awe().PopupFormAction()
+                                        .Url(Url.Action("Create"))
+                                        .Success("reload")
+                                        .Height(500)
+                                        .Width(900))">@Mui.Create</button>
+
+@Html.Awe().AjaxList("Feedback")
+
+<script>
+    function reload() {
+        $('#Feedback').data('api').load({ });
+    }
+</script>

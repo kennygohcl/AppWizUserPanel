@@ -1,0 +1,9 @@
+﻿@model MediaDocument
+<div class="awe-il">
+    <button class="awe-btn" onclick="@(Url.Awe().PopupFormAction().Url(Url.Action("Edit", "MediaDocument", new { Model.Id })).Success("refreshMediaDocumentGrid").Height(300))">
+        <span class="ico-edit"></span>
+    </button>
+</div>&nbsp;
+<div class="awe-il">
+@Html.Partial("deletebtn", new DelBtn { Id = Model.Id, IsDeleted = Model.IsDeleted, Controller = "MediaDocument" })
+</div>

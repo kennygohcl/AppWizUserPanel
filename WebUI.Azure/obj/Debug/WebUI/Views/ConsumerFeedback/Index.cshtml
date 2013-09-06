@@ -1,0 +1,21 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Feedbacks";
+}
+
+<fieldset>
+    <legend>@Mui.Search</legend>
+    <input type="text" id="search" />
+    <button type="button" id="sb" class="awe-btn ibtn">@Mui.Search</button>
+</fieldset>
+<br />
+
+@Html.Awe().Form().Confirm(true).FormClass("BranchConfirm").Success("refreshConsumerFeedbackGrid").Url(Url.Action("Delete"))
+@(Html.Awe().Grid("ConsumerFeedbackGrid")
+      .Url(Url.Action("GetItems", "ConsumerFeedbackGrid"))
+      .Parent("search")
+      .Persistence(Persistence.Session)
+      .Columns(
+          new Column { Name = "Comments", PercentWidth = 80},
+          new Column { Name = "DatePosted" },
+          new Column { ClientFormat = ".Actions", Width = 80 }))

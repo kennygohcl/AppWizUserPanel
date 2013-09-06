@@ -1,0 +1,30 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Ads";
+}
+<h2>@Mui.Advertisements</h2>
+<fieldset>
+    <legend>@Mui.Search</legend>
+    <input type="text" id="search" />
+    <button type="button" id="sb" class="awe-btn ibtn">@Mui.Search</button>
+</fieldset>
+<br />
+
+<button class="awe-btn" onclick="@(Url.Awe().PopupFormAction().Url(Url.Action("create")).Success("createAd").Height(300))">@Mui.Create</button>
+
+@Html.Awe().Form().FormClass("AdvertisementRestore").Success("refreshAdGrid").Url(Url.Action("Restore"))
+@Html.Awe().Form().Confirm(true).FormClass("BranchConfirm").Success("refreshAdGrid").Url(Url.Action("Delete"))
+@(Html.Awe().Grid("AdGrid")
+      .Url(Url.Action("GetItems", "AdGrid"))
+      .Parent("search")
+      .Persistence(Persistence.Session)
+      .Columns(
+          new Column { Name = "Application"},
+          new Column { Name = "WebSiteReference",PercentWidth = 70 },
+          new Column { Name = "Banner" },
+          new Column { Name = "Start" },
+          new Column { Name = "End" },
+          new Column { ClientFormat = ".Actions", Width = 80 }))
+
+
+

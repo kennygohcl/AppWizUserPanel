@@ -1,0 +1,10 @@
+﻿@model LeadInput
+@using (Html.BeginForm())
+{    
+    @Html.EditorFor(o => o.FirstName) 
+    @Html.EditorFor(o => o.LastName)         
+    @Html.EditorFor(o => o.EmailAddress)       
+     @Html.EditorFor(o => o.Address)  
+     @Html.EditorFor(o => o.ReferredBy)  
+            
+}

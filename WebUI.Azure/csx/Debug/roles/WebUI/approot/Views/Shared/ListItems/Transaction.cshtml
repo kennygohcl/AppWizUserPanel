@@ -1,0 +1,26 @@
+﻿@model IEnumerable<Transaction>
+@foreach (var o in Model)
+{
+    <tr data-val="@o.Id" class="awe-li" id="trans@(o.Id)">
+        <td>@o.DateofTransaction
+        </td>
+        <td>@o.DiscountOfTotalPercent 
+        </td>
+        <td>@o.FinalAmount
+        </td>
+        <td>@o.PaymentReference
+        </td>
+        <td>@o.Status
+        </td>
+        <td>@o.TotalAmount
+        </td>
+        <td>
+            <button class="awe-btn" onclick="@(Url.Awe().PopupFormAction().Url(Url.Action("Edit", "Transaction", new { o.Id })).Success("edit").Height(300))">
+                <span class="ico-edit"></span>
+            </button>
+        </td>
+        <td>
+@Html.Partial("deletebtn", new DelBtn{ Id = o.Id, IsDeleted = o.IsDeleted, Controller = "Transaction" })
+        </td>
+    </tr>               
+}

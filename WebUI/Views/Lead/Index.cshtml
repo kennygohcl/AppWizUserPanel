@@ -1,0 +1,31 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Leads";
+}
+<h2>@Mui.NewLeads</h2>
+<fieldset>
+    <legend>@Mui.Search</legend>
+    <input type="text" id="search" />
+    <button type="button" id="sb" class="awe-btn ibtn">@Mui.Search</button>
+    <div class="fr">
+         @Html.ActionLink(Mui.ExportToExcel,"ExportLead","Lead")
+    </div>
+</fieldset>
+<br />
+<button class="awe-btn" onclick="@(Url.Awe().PopupFormAction().Url(Url.Action("create")).Success("refreshLeadGrid").Height(300))">@Mui.Create</button>
+@Html.Awe().Form().FormClass("LeadRestore").Success("refreshLeadGrid").Url(Url.Action("Restore"))
+@Html.Awe().Form().Confirm(true).FormClass("BranchConfirm").Success("refreshLeadGrid").Url(Url.Action("Delete"))
+@(Html.Awe().Grid("LeadGrid")
+      .Url(Url.Action("GetItems", "LeadGrid"))
+      .Parent("search")
+      .Persistence(Persistence.Session)
+      .Columns(
+          new Column { Name = "FirstName", PercentWidth = 30},
+          new Column { Name = "LastName" },
+          new Column { Name = "EmailAddress" },
+          new Column { Name = "Address" },
+          new Column { Name = "Mobile" },
+          new Column { Name = "ReferredBy" },
+          new Column { Name = "DateCreated" },
+          
+          new Column { ClientFormat = ".Actions", Width = 80 }))

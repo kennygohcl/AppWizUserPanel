@@ -1,0 +1,12 @@
+V:\Valentin\awe release\ProDinner\Service\bin\Debug\Omu.ProDinner.Service.dll
+V:\Valentin\awe release\ProDinner\Service\bin\Debug\Omu.ProDinner.Service.pdb
+V:\Valentin\awe release\ProDinner\Service\bin\Debug\Omu.Drawing.dll
+V:\Valentin\awe release\ProDinner\Service\bin\Debug\Omu.Encrypto.dll
+V:\Valentin\awe release\ProDinner\Service\bin\Debug\Omu.ProDinner.Core.dll
+V:\Valentin\awe release\ProDinner\Service\bin\Debug\Omu.ValueInjecter.dll
+V:\Valentin\awe release\ProDinner\Service\bin\Debug\Omu.ProDinner.Core.pdb
+V:\Valentin\awe release\ProDinner\Service\bin\Debug\Omu.Drawing.pdb
+V:\Valentin\awe release\ProDinner\Service\bin\Debug\Omu.ValueInjecter.xml
+V:\Valentin\awe release\ProDinner\Service\obj\Debug\ResolveAssemblyReference.cache
+V:\Valentin\awe release\ProDinner\Service\obj\Debug\Omu.ProDinner.Service.dll
+V:\Valentin\awe release\ProDinner\Service\obj\Debug\Omu.ProDinner.Service.pdb

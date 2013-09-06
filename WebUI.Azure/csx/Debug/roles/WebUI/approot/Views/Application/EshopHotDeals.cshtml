@@ -1,0 +1,124 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutApp.cshtml";
+    ViewBag.Title = "Eshop";
+    ViewBag.SelectedView = 4;
+}     
+
+@section previewMobileSection {
+    @Html.Partial("Simulator/_Eshop")
+}
+
+
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+
+<div id="tabsEshop"  style="width: 95%; height: 800px; ">  
+        <ul>
+        @foreach (var eshop in ViewBag.EshopTabs)
+        {
+                    <li><a href="#subTabsEshop@(eshop)" style="font-size: 12px; font-weight: bold; ">@eshop</a></li>
+        }
+        </ul> 
+        @foreach (var eshop in ViewBag.EshopTabs)
+        {
+            <div id="subTabsEshop@(eshop)">
+           
+            </div>
+        }    
+      
+    </div>
+ 
+<script type="text/javascript">
+    
+   jQuery(document).ready(function () {
+       
+        jQuery("#tabsEshop").tabs();
+        loadPagePromotion('IndexNoHeader');
+        jQuery("#tabsEshop").tabs("option", "active", 2);
+    });
+    
+
+    jQuery('#tabsEshop').tabs({
+        activate: function (event, ui) {
+
+            if (ui.newTab.index() == 0) {
+                loadPageCategories('IndexNoHeader');
+            }
+            else if (ui.newTab.index() == 1) {
+                loadPageProducts('IndexNoHeader');
+            }
+            else if (ui.newTab.index() == 2) {
+                loadPagePromotion('IndexNoHeader');
+            }
+        }
+    });
+  
+    function loadPageCategories(action) {
+        jQuery.post("/ProductCategory/" + action, function (data) {
+            jQuery("#subTabsEshopCategories").html(data);
+           
+        });
+    }
+    function loadPageProducts(action) {
+        jQuery.post("/Product/" + action, function (data) {
+            jQuery("#subTabsEshopProducts").html(data);
+        });
+    }
+
+    function loadPagePromotion(action) {
+        
+        jQuery.post("/Promotion/" + action, function (data) {
+            jQuery("#subTabsEshopPromotions").html(data);
+         
+        });
+        
+        /* add at sign 
+        jQuery.ajax({
+            url: 'Url.Action("EShopHotDeals", "Application")',
+               dataType: 'html',
+              traditional: true,
+               type: 'POST',
+               success: function (content) {
+                   jQuery("#main-container").html(content);
+               }
+           });*/
+    }
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*
+<input class="awe-btn" style="width: 300px;height: 100px; font-size: large;" type="button" title="Categories" value="Categories" onclick="location.href='@Url.Action("Index", "ProductCategory")    '" />
+<div class="cbt"/><br/>
+<input class="awe-btn" style="width: 300px;height: 100px; font-size: large;" type="button" title="Promotions" value="Promotions" onclick="location.href='@Url.Action("Index", "Promotion")    '" />
+<div class="cbt"/><div class="cbt"/><br/>
+<input class="awe-btn" style="width: 300px;height: 100px; font-size: large;" type="button" title="Products" value="Products" onclick="location.href='@Url.Action("Index", "Product")    '" />
+<div class="cbt"/><div class="cbt"/><br/>
+<input class="awe-btn" style="width: 300px;height: 100px; font-size: large;" type="button" title="Shopping Cart" value="Shopping Cart" onclick="location.href='@Url.Action("ShoppingCart", "Application")    '" />
+<div class="cbt"/><div class="cbt"/><br/>
+<input class="awe-btn" style="width: 300px;height: 100px; font-size: large;" type="button" title="Terms and Condition" value="Terms and Condition" onclick="location.href='@Url.Action("TermsAndConditions", "Application")    '" />*@

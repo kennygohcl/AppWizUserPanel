@@ -1,0 +1,203 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Application";
+}
+    
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+
+@*    <script src="@Url.Content("http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js")" type="text/javascript"></script>*@
+
+                   <div style="height: 800px; width: 1100px; ">
+                     <div  style="height: 800px; float: left;  " >
+                            <img src="@Url.Content("~/Content/1login.png")" style="padding: 30px; float: left;"  />
+                            
+                            <div id="tabsMainScreen" class="tabs-bottom" style="float:left; left:-380px; width: 315px; height: 470px;  top: 180px;">    
+                                <ul>
+                                    @foreach (var module in ViewBag.Modules)
+                                    { 
+                                        <li><a href="#tabsId@(module.Code)" style="font-size: 8px; font-weight: bold; ">@module.Description</a></li>
+                                    }
+                                </ul>                       
+                                                    
+                              @foreach (var module in ViewBag.Modules)
+                              { 
+                                    <div id="tabsId@(module.Code)" style="width: 315px; height: 420px; float: left; left:5px;">
+                                        @if (module.Code == "LocMarketing")
+                                        {
+                                            Html.RenderPartial("RetailerIntro");
+                                        }
+                                        else if (module.Code == "EShopping")
+                                        {
+                                            <div id="subTabsEshopping" style="float:left; left:-20px; top:0px;  width: 305px; height: 420px; ">    
+                                                <ul>
+                                                    @foreach (var category in ViewBag.Categories)
+                                                    { 
+                                                        <li><a href="#subTabsEshopping@(category.Description)" style="font-size: 9px; font-weight: bold; ">@category.Description</a></li>
+                                                    }
+                                                </ul>                           
+                                                    
+                                                @foreach (var category in ViewBag.Categories)
+                                                { 
+                                                    <div id="subTabsEshopping@(category.Description)" style="width: 315px; height: 390px; float: left; position: relative;">
+                                                        @{
+                                                    string cc = category.Id.ToString();
+                                                        }
+                                      
+                                                        @Html.Hidden("selectedProductCategory" + cc, cc)
+                                                        @(Html.Awe().AjaxList("PromotionsReadOnly").Prefix("pro" + cc)
+                                                              .TableLayout(true).Parent("search", "search")
+                                                              .Parent("selectedProductCategory" + cc, "productCategory"))
+ 
+                                                    </div>
+                                                }
+                                            </div>
+                                        }
+                                        else if (module.Code == "Loyalty")
+                                        {
+                                            Html.RenderPartial("LoyaltyTab");
+                                        }
+                                        else if (module.Code == "Feedback")
+                                        {
+                                            Html.RenderPartial("FeedbackTab");
+                                        }
+                                        else if (module.Code == "Profile")
+                                        {
+                                            Html.RenderPartial("ProfileTab");
+                                        }
+                                    </div>
+                                    
+                              }
+                            </div>
+                          
+                       </div>
+                      <div style="width: 500px; height: 800px; float: right; position: absolute; left: 550px;">
+                         
+                          @Html.Partial("PreviewOptions")
+
+                          @* <div id="tabsMainScreenModules"  style="float:left; left:0px; width: 800px; height: 740px;  top: 30px;">    
+                              <ul>
+                                  @foreach (var module in ViewBag.Modules)
+                                  { 
+                                      <li><a href="#tabsIdModule@(module.Code)" style="font-size: 12px; font-weight: bold; ">@module.Description</a></li>
+                                  }
+                              </ul> 
+                              @foreach (var module in ViewBag.Modules)
+                              { 
+                                  <div id="tabsIdModule@(module.Code)" style="width: 800px; height: 740px; float: left; left:0px;">
+                                      
+                                  </div>
+                              }
+                          </div>*@
+
+                         </div>
+                     </div>
+           
+
+<style>
+ 
+/* force a height so the tabs don't jump as content height changes */
+#tabs .tabs-spacer { float: left; height: 200px; }
+.tabs-bottom .ui-tabs-nav { clear: left; padding: 0 .2em .2em .2em; }
+.tabs-bottom .ui-tabs-nav li { top: auto; bottom: 0; margin: 0 .2em 1px 0; border-bottom: auto; border-top: 0; }
+.tabs-bottom .ui-tabs-nav li.ui-tabs-active { margin-top: -1px; padding-top: 1px; }
+
+</style>       
+<script type="text/javascript">
+
+    jQuery(document).ready(function () {
+        jQuery("#tabsMainScreen").tabs();
+        
+
+        // fix the classes
+        jQuery(".tabs-bottom .ui-tabs-nav, .tabs-bottom .ui-tabs-nav > *")
+        .removeClass("ui-corner-all ui-corner-top")
+        .addClass("ui-corner-bottom");
+        // move the nav to the bottom
+        jQuery(".tabs-bottom .ui-tabs-nav").appendTo(".tabs-bottom");
+        
+        jQuery("#subTabsEshopping").tabs();
+        
+      //  jQuery("#tabsMainScreenModules").tabs();
+      //  loadPageLocation('RetailerInfo');
+        
+    });
+
+   /* jQuery('#tabsMainScreenModules').tabs({
+        activate: function (event, ui) {
+            //console.log(event);
+            // console.log(ui.newTab.index());
+            if (ui.newTab.index() == 0) {
+                //  loadPageLocation('tabsIdModuleLocMarketing');
+                loadPageLocation('RetailerInfo');
+            }
+            else if (ui.newTab.index()==1) {
+                //loadPageEShopping('tabsIdModuleEShopping');
+                loadPageEShopping('Eshop');
+            }
+            else if (ui.newTab.index() == 2) {
+                //loadPageEShopping('tabsIdModuleEShopping');
+                loadPageLoyalty('Loyalty');
+            }
+            else if (ui.newTab.index() == 3) {
+
+                loadPageFeedback('Feedback');
+            }
+            else if (ui.newTab.index() == 4) {
+
+                loadPageFeedback('Profile');
+            }
+        }
+    });
+
+    function loadPageLocation(action) {
+        jQuery.post("/Application/" + action, function (data) {
+            $("#tabsIdModuleLocMarketing").html(data);
+        });
+    }
+    function loadPageEShopping(action) {
+        jQuery.post("/Application/" + action, function (data) {
+            $("#tabsIdModuleEShopping").html(data);
+        });
+    }
+  
+    function loadPageLoyalty(action) {
+        jQuery.post("/Application/" + action, function (data) {
+            $("#tabsIdModuleLoyalty").html(data);
+        });
+    }
+    
+    function loadPageFeedback(action) {
+        jQuery.post("/Application/" + action, function (data) {
+            $("#tabsIdModuleFeedback").html(data);
+        });
+    }
+
+    function loadPageProfile(action) {
+        jQuery.post("/Application/" + action, function (data) {
+            $("#tabsIdModuleProfile").html(data);
+        });
+    }
+*/
+
+
+ /*   $(document).ready(function () {
+        $("#pAppName").text($("#ApplicationName").val());
+    });
+
+    $("#btnSimulate").click(function () {
+        $("#pAppName").text($("#ApplicationName").val());
+    });
+    
+    $("#btnCancel").click(function () {
+        $("#pAppName").text("");
+        //   $("#pEmail").text("");
+    });
+  
+    $("#btnSaveAndPublish").click(function () {
+      
+    });*/
+
+  
+</script>

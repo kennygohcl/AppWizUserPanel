@@ -1,0 +1,4 @@
+C:\SourceCodes\DFrontierAppWizard\Core\bin\Release\DFrontier.AppWizard.Core.dll
+C:\SourceCodes\DFrontierAppWizard\Core\bin\Release\DFrontier.AppWizard.Core.pdb
+C:\SourceCodes\DFrontierAppWizard\Core\obj\Release\DFrontier.AppWizard.Core.dll
+C:\SourceCodes\DFrontierAppWizard\Core\obj\Release\DFrontier.AppWizard.Core.pdb

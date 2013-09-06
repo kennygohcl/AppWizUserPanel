@@ -1,0 +1,20 @@
+﻿@model IEnumerable<PaymentGateway>
+@foreach (var o in Model)
+{
+    <tr data-val="@o.Id" class="awe-li" id="paymentGateway@(o.Id)">
+        <td>@o.ApiLogin
+        </td>
+        <td>@o.TransactionKey 
+        </td>
+          <td>@o.Type
+        </td>
+        <td>
+            <button class="awe-btn" onclick="@(Url.Awe().PopupFormAction().Url(Url.Action("Edit", "PaymentGateway", new { o.Id })).Success("edit").Height(300))">
+                <span class="ico-edit"></span>
+            </button>
+        </td>
+        <td>
+          @Html.Partial("deletebtn", new DelBtn{ Id = o.Id, IsDeleted = o.IsDeleted, Controller = "PaymentGateway" })
+        </td>
+    </tr>               
+}

@@ -1,0 +1,19 @@
+﻿@model ApplicationInput
+@{
+    Layout = "~/Views/Shared/_LayoutApp.cshtml";
+    ViewBag.Title = "ProductDetail";
+    ViewBag.SelectedView = 5;
+}
+
+@section previewMobileSection {
+    @Html.Partial("Simulator/_ProductDetail")
+}         
+
+       
+<script type="text/javascript">
+
+    jQuery(document).ready(function () {
+        
+    });
+
+</script>

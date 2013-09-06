@@ -1,0 +1,15 @@
+﻿@model IEnumerable<ConsumerFeedback>
+@foreach (var o in Model)
+{
+    <tr data-val="@o.Id" class="awe-li" id="consumerFeedback@(o.Id)">
+        <td>@o.Consumer.Name
+        </td>
+        <td>@o.Comments
+        </td>
+        <td>@o.DatePosted 
+        </td>
+        <td>
+            @Html.Partial("deletebtn", new DelBtn{ Id = o.Id, IsDeleted = o.IsDeleted, Controller = "ConsumerFeedback" })
+        </td>
+    </tr>               
+}

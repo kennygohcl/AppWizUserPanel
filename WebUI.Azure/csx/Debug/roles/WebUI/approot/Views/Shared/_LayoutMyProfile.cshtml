@@ -1,0 +1,188 @@
+﻿@using System.Threading
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        @ViewBag.Title
+    </title>
+    <link rel="shortcut icon" href="@Url.Content("~/favicon.ico")" type="image/x-icon" />
+    @*css styles*@
+    <link href="@Url.Content("~")Content/themes/@Html.Action("GetTheme", "ChangeTheme")/Site.css?v=1" rel="stylesheet" type="text/css" id="demoStyle" />
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.24/themes/@Html.Action("GetJqTheme", "ChangeTheme")/jquery-ui.css" rel="stylesheet" id="jqStyle" />
+    <link href="@Url.Content("~")Content/themes/@Html.Action("GetTheme", "ChangeTheme")/AwesomeMvc.css" rel="stylesheet" type="text/css" id="aweStyle" />
+    <link href="@Url.Content("~/Content/Common.css")?v=3" rel="stylesheet" type="text/css" />
+    @*js scripts*@
+    <script src="@Url.Content("~/Scripts/JSON2.js")" type="text/javascript"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.js"
+        type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.24/jquery-ui.min.js"></script>
+    <script src="@Url.Content("~/Scripts/AwesomeMvc.js")" type="text/javascript"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/ckeditor/ckeditor.js")"></script>
+    <script src="@Url.Content("~/Scripts/modernizr-2.5.3.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/Site.js")?v=2" type="text/javascript"></script>
+
+
+
+    <script type="text/javascript">
+        //by default jquery.validate 1.9 doesn't validate hidden inputs
+        jQuery.validator.setDefaults({ ignore: [] });
+
+        jQuery(function () {
+
+            awe.err = function (xhr, textStatus, errorThrown) {
+                var msg = "unexpected error occured";
+                if (xhr) {
+                    msg = xhr.responseText.replace(".js", "").replace(".css", "");
+                }
+                msg += "<hr/> you see this message because in _Layout.cshtml awe.err is set to a function that shows this popup";
+                jQuery('<div/>').dialog({ title: 'unexpected error', width: 370, height: 200, position: ["left", "bottom"], dialogClass: "errPopup" }).html(msg);
+            };
+
+            @*//setting the correct date format for jquery.validate*@
+            jQuery.validator.addMethod(
+           'date',
+           function (value, element, params) {
+               if (this.optional(element)) {
+                   return true;
+               };
+               var result = false;
+               try {
+                   jQuery.datepicker.parseDate('@(JQueryDate.ConvertDateFormat(Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortDatePattern))', value);
+                   result = true;
+               } catch (err) {
+                   result = false;
+               }
+               return result;
+           },
+            ''
+        );
+
+            //parsing the unobtrusive attributes when we get content via ajax
+            jQuery(document).ajaxComplete(function (e, xhr, settings) {
+                jQuery.validator.unobtrusive.parse(document);
+
+                //make server-side generated validation errors look like the client side ones
+                jQuery('.field-validation-error').each(function () {
+                    if (!jQuery(this).find('span').length) {
+                        var x = jQuery(this).html();
+                        jQuery(this).html('<span>' + x + '</span>');
+                    }
+                });
+            });
+            var root = '@Url.Content("~")';
+            jQuery('#chTheme').change(function () {
+                var v = jQuery(this).val().split("|");
+                var theme = v[0];
+                var jqTheme = v[1];
+                jQuery('#jqStyle').attr('href', "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/" + jqTheme + "/jquery-ui.css");
+                jQuery('#aweStyle').attr('href', root + "Content/themes/" + theme + "/AwesomeMvc.css");
+                jQuery('#demoStyle').attr('href', root + "Content/themes/" + theme + "/Site.css");
+                jQuery.post('@Url.Action("Change", "ChangeTheme")', { s: theme });
+            });
+        });
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-27119754-1']);
+        _gaq.push(['_setDomainName', 'www.appwiz.com.sg']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
+</head>
+<body>
+    <noscript>
+        <div id="nos">
+            this site works best with javascript allowed
+        </div>
+    </noscript>
+  @*  @Html.Partial("doggy")*@
+    <div id="top-wrapper">
+        <div id="header" class="container">
+            <div id="hlogo">
+                <a href="@Url.Content("~")" id="fun">
+                    <img src='@Url.Content("~\\Content\\logo.png")' alt="logo" />
+                </a>
+            </div>
+            <table class="hmenus">
+                <tr>
+                    <td>
+                        @if (@User.Identity.IsAuthenticated)
+                        {
+                            <div class="trmiPadded">Welcome @HttpContext.Current.User.Identity.Name, Last Login @DateTime.Now</div>
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="hmenus">
+
+                            <div class="nav">@Html.Action("Index", "Nav")</div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            @*            <div class="trmi"><iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.facebook.com%2Fpages%2Fapp.wiz.1%2F122618154599091&amp;send=false&amp;layout=button_count&amp;width=450&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:103px; height:21px;margin-top:5px;" allowTransparency="true"></iframe></div>*@
+        </div>
+        <div class="cbt">
+        </div>
+    </div>
+    <div id="main-container">
+        <div id="main" class="maindiv ">
+
+            <div id="sidebarSettings">
+                @RenderSection("previewLeftSidebarSection", required: false)
+            </div>
+            <div id="maindiv-right" class="maindiv-right">
+                <div id="contentRightBottomPanel" style="float: left;">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+        <div class="maindiv">
+            @*<span style="margin: 10px; float: right;"><a href="https://twitter.com/share"
+                class="twitter-share-button" data-url="http://propromotion.aspnetawesome.com" data-count="none"
+                data-hashtags="aspnetawesome">Tweet</a>
+                <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = "//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } } (document, "script", "twitter-wjs");</script>
+            </span><br/><span><a href='http://propromotion.codeplex.com'>project home: http://propromotion.codeplex.com</a></span>*@
+
+            @*    <div id="fblike">
+                  <div class="fb-like" data-href="http://www.facebook.com/app.wiz.1" data-send="true" data-width="450" data-show-faces="false" data-font="arial">
+                  </div>
+                  <div id="fb-root">
+                  </div>
+                  <script>                                (function (d, s, id) {
+                                    var js, fjs = d.getElementsByTagName(s)[0];
+                                    if (d.getElementById(id)) return;
+                                    js = d.createElement(s); js.id = id;
+                                    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+                                    fjs.parentNode.insertBefore(js, fjs);
+                                }(document, 'script', 'facebook-jssdk'));
+
+                  </script>
+            </div>*@
+
+        </div>
+    </div>
+</body>
+</html>
+
+<script type="text/javascript">
+
+    jQuery(document).ready(function () {
+        //jQuery("#sidebarSettings").height(jQuery("#main").height());
+        //jQuery("#maindiv-right").width(jQuery("#main").width() - jQuery("#sidebarSettings").width());
+        //jQuery("#contentRightBottomPanel").width(jQuery("#main").width() - jQuery("#sidebarSettings").width());
+        //jQuery("#contentRightBottomPanel").height(jQuery("#sidebarSettings").height() - jQuery("#contentRightTopPanel").height());
+        //jQuery("#maindiv-right").width(jQuery(".maindiv").width() - jQuery("#sidebarSettings").width());
+    });
+
+</script>
